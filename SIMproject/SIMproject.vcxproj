@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5E01141A-ED24-477D-8FED-DD53C0C6D75C}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>SIMproject</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies />
+      <NoEntryPoint>false</NoEntryPoint>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\imebra\library\base\src\baseObject.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\baseStream.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\charsetConversion.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\charsetConversionIconv.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\charsetConversionICU.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\charsetConversionWindows.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\criticalSection.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\exception.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\huffmanTable.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\memory.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\memoryStream.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\stream.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\streamController.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\streamReader.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\streamWriter.cpp" />
+    <ClCompile Include=".\imebra\library\base\src\thread.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\buffer.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\charsetsList.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\codec.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\codecFactory.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\colorTransform.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\colorTransformsFactory.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\data.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataGroup.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandler.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerDate.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerDateTime.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerDateTimeBase.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerString.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringAE.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringAS.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringCS.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringDS.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringIS.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringLO.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringLT.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringPN.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringSH.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringST.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringUI.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringUnicode.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerStringUT.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataHandlerTime.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dataSet.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dicomCodec.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dicomDict.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\dicomDir.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\drawBitmap.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\image.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\jpegCodec.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\LUT.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\modalityVOILUT.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\MONOCHROME1ToMONOCHROME2.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\MONOCHROME1ToRGB.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\MONOCHROME2ToRGB.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\MONOCHROME2ToYBRFULL.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\PALETTECOLORToRGB.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\RGBToMONOCHROME2.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\RGBToYBRFULL.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\RGBToYBRPARTIAL.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\transaction.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\transform.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\transformHighBit.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\transformsChain.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\viewHelper.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\VOILUT.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\waveform.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\YBRFULLToMONOCHROME2.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\YBRFULLToRGB.cpp" />
+    <ClCompile Include=".\imebra\library\imebra\src\YBRPARTIALToRGB.cpp" />
+    <ClCompile Include="DicomDataAdapter.cpp" />
+    <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Parser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\imebra\library\base\include\baseObject.h" />
+    <ClInclude Include=".\imebra\library\base\include\baseStream.h" />
+    <ClInclude Include=".\imebra\library\base\include\charsetConversion.h" />
+    <ClInclude Include=".\imebra\library\base\include\charsetConversionIconv.h" />
+    <ClInclude Include=".\imebra\library\base\include\charsetConversionICU.h" />
+    <ClInclude Include=".\imebra\library\base\include\charsetConversionWindows.h" />
+    <ClInclude Include=".\imebra\library\base\include\configuration.h" />
+    <ClInclude Include=".\imebra\library\base\include\criticalSection.h" />
+    <ClInclude Include=".\imebra\library\base\include\exception.h" />
+    <ClInclude Include=".\imebra\library\base\include\huffmanTable.h" />
+    <ClInclude Include=".\imebra\library\base\include\memory.h" />
+    <ClInclude Include=".\imebra\library\base\include\memoryStream.h" />
+    <ClInclude Include=".\imebra\library\base\include\nullStream.h" />
+    <ClInclude Include=".\imebra\library\base\include\stream.h" />
+    <ClInclude Include=".\imebra\library\base\include\streamController.h" />
+    <ClInclude Include=".\imebra\library\base\include\streamReader.h" />
+    <ClInclude Include=".\imebra\library\base\include\streamWriter.h" />
+    <ClInclude Include=".\imebra\library\base\include\thread.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\buffer.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\bufferStream.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\charsetsList.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\codec.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\codecFactory.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\colorTransform.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\colorTransformsFactory.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\data.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataCollection.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataGroup.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandler.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerDate.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerDateTime.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerDateTimeBase.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerNumeric.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerString.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringAE.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringAS.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringCS.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringDS.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringIS.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringLO.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringLT.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringPN.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringSH.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringST.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringUI.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringUnicode.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerStringUT.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataHandlerTime.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dataSet.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dicomCodec.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dicomDict.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\dicomDir.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\drawBitmap.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\image.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\imebra.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\imebraDoc.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\jpegCodec.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\LUT.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\modalityVOILUT.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\MONOCHROME1ToMONOCHROME2.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\MONOCHROME1ToRGB.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\MONOCHROME2ToRGB.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\MONOCHROME2ToYBRFULL.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\PALETTECOLORToRGB.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\RGBToMONOCHROME2.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\RGBToYBRFULL.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\RGBToYBRPARTIAL.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\transaction.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\transform.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\transformHighBit.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\transformsChain.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\viewHelper.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\VOILUT.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\waveform.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\YBRFULLToMONOCHROME2.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\YBRFULLToRGB.h" />
+    <ClInclude Include=".\imebra\library\imebra\include\YBRPARTIALToRGB.h" />
+    <ClInclude Include="DicomDataAdapter.h" />
+    <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Parser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
