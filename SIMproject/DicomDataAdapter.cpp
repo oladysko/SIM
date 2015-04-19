@@ -60,6 +60,10 @@ void DicomDataAdapter::getFrameSize(imbxUint32 frameNumber, imbxUint32& height, 
 	Image->getSize(&width, &height);
 }
 
+
+////////////////////////////////////////////////
+/// funkcja pobiera obraz jako macierz intów od 0 do 256
+///////////////////////////////////////////////
 void DicomDataAdapter::getValuesMatrix(imbxUint32 frameNumber, imbxUint32 height, imbxUint32 width, int * outputMatrix)
 {
 	ptr<image>presentationImage =  this->PrepareImage(frameNumber);
