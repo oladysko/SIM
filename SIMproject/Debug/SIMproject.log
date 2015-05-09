@@ -1,106 +1,88 @@
-﻿Build started 2015-04-18 21:37:55.
-     1>Project "C:\Users\CLEVO\Documents\GitHub\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2015-05-09 13:03:15.
+     1>Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib .\imebra\library\base\src\baseObject.cpp .\imebra\library\base\src\baseStream.cpp .\imebra\library\base\src\charsetConversion.cpp .\imebra\library\base\src\charsetConversionIconv.cpp .\imebra\library\base\src\charsetConversionICU.cpp .\imebra\library\base\src\charsetConversionWindows.cpp .\imebra\library\base\src\criticalSection.cpp .\imebra\library\base\src\exception.cpp .\imebra\library\base\src\huffmanTable.cpp .\imebra\library\base\src\memory.cpp .\imebra\library\base\src\memoryStream.cpp .\imebra\library\base\src\stream.cpp .\imebra\library\base\src\streamController.cpp .\imebra\library\base\src\streamReader.cpp .\imebra\library\base\src\streamWriter.cpp .\imebra\library\base\src\thread.cpp .\imebra\library\imebra\src\buffer.cpp .\imebra\library\imebra\src\charsetsList.cpp .\imebra\library\imebra\src\codec.cpp .\imebra\library\imebra\src\codecFactory.cpp .\imebra\library\imebra\src\colorTransform.cpp .\imebra\library\imebra\src\colorTransformsFactory.cpp .\imebra\library\imebra\src\data.cpp .\imebra\library\imebra\src\dataGroup.cpp .\imebra\library\imebra\src\dataHandler.cpp .\imebra\library\imebra\src\dataHandlerDate.cpp .\imebra\library\imebra\src\dataHandlerDateTime.cpp .\imebra\library\imebra\src\dataHandlerDateTimeBase.cpp .\imebra\library\imebra\src\dataHandlerString.cpp .\imebra\library\imebra\src\dataHandlerStringAE.cpp .\imebra\library\imebra\src\dataHandlerStringAS.cpp .\imebra\library\imebra\src\dataHandlerStringCS.cpp .\imebra\library\imebra\src\dataHandlerStringDS.cpp .\imebra\library\imebra\src\dataHandlerStringIS.cpp .\imebra\library\imebra\src\dataHandlerStringLO.cpp .\imebra\library\imebra\src\dataHandlerStringLT.cpp .\imebra\library\imebra\src\dataHandlerStringPN.cpp .\imebra\library\imebra\src\dataHandlerStringSH.cpp .\imebra\library\imebra\src\dataHandlerStringST.cpp .\imebra\library\imebra\src\dataHandlerStringUI.cpp .\imebra\library\imebra\src\dataHandlerStringUnicode.cpp .\imebra\library\imebra\src\dataHandlerStringUT.cpp .\imebra\library\imebra\src\dataHandlerTime.cpp .\imebra\library\imebra\src\dataSet.cpp .\imebra\library\imebra\src\dicomCodec.cpp .\imebra\library\imebra\src\dicomDict.cpp .\imebra\library\imebra\src\dicomDir.cpp .\imebra\library\imebra\src\drawBitmap.cpp .\imebra\library\imebra\src\image.cpp .\imebra\library\imebra\src\jpegCodec.cpp .\imebra\library\imebra\src\LUT.cpp .\imebra\library\imebra\src\modalityVOILUT.cpp .\imebra\library\imebra\src\MONOCHROME1ToMONOCHROME2.cpp .\imebra\library\imebra\src\MONOCHROME1ToRGB.cpp .\imebra\library\imebra\src\MONOCHROME2ToRGB.cpp .\imebra\library\imebra\src\MONOCHROME2ToYBRFULL.cpp .\imebra\library\imebra\src\PALETTECOLORToRGB.cpp .\imebra\library\imebra\src\RGBToMONOCHROME2.cpp .\imebra\library\imebra\src\RGBToYBRFULL.cpp .\imebra\library\imebra\src\RGBToYBRPARTIAL.cpp .\imebra\library\imebra\src\transaction.cpp .\imebra\library\imebra\src\transform.cpp .\imebra\library\imebra\src\transformHighBit.cpp .\imebra\library\imebra\src\transformsChain.cpp .\imebra\library\imebra\src\viewHelper.cpp .\imebra\library\imebra\src\VOILUT.cpp .\imebra\library\imebra\src\waveform.cpp .\imebra\library\imebra\src\YBRFULLToMONOCHROME2.cpp .\imebra\library\imebra\src\YBRFULLToRGB.cpp .\imebra\library\imebra\src\YBRPARTIALToRGB.cpp DicomDataAdapter.cpp MyForm.cpp Parser.cpp
-         baseObject.cpp
-         baseStream.cpp
-         charsetConversion.cpp
-         charsetConversionIconv.cpp
-         charsetConversionICU.cpp
-         charsetConversionWindows.cpp
-         criticalSection.cpp
-         exception.cpp
-         huffmanTable.cpp
-         memory.cpp
-     1>.\imebra\library\base\src\memory.cpp(475): warning C4101: 'e' : unreferenced local variable
-         memoryStream.cpp
-         stream.cpp
-     1>.\imebra\library\base\src\stream.cpp(175): warning C4996: '_wfopen': This function or variable may be unsafe. Consider using _wfopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\wchar.h(841) : see declaration of '_wfopen'
-         streamController.cpp
-         streamReader.cpp
-     1>.\imebra\library\base\src\streamReader.cpp(144): warning C4018: '>=' : signed/unsigned mismatch
-         streamWriter.cpp
-         thread.cpp
-         buffer.cpp
-         charsetsList.cpp
-         codec.cpp
-         codecFactory.cpp
-         Generating Code...
-         Compiling...
-         colorTransform.cpp
-         colorTransformsFactory.cpp
-         data.cpp
-         dataGroup.cpp
-         dataHandler.cpp
-         dataHandlerDate.cpp
-         dataHandlerDateTime.cpp
-         dataHandlerDateTimeBase.cpp
-         dataHandlerString.cpp
-         dataHandlerStringAE.cpp
-         dataHandlerStringAS.cpp
-         dataHandlerStringCS.cpp
-         dataHandlerStringDS.cpp
-         dataHandlerStringIS.cpp
-         dataHandlerStringLO.cpp
-         dataHandlerStringLT.cpp
-         dataHandlerStringPN.cpp
-         dataHandlerStringSH.cpp
-         dataHandlerStringST.cpp
-         dataHandlerStringUI.cpp
-         Generating Code...
-         Compiling...
-         dataHandlerStringUnicode.cpp
-         dataHandlerStringUT.cpp
-         dataHandlerTime.cpp
-         dataSet.cpp
-         dicomCodec.cpp
-         dicomDict.cpp
-         dicomDir.cpp
-         drawBitmap.cpp
-         image.cpp
-         jpegCodec.cpp
-     1>.\imebra\library\imebra\src\jpegCodec.cpp(1277): warning C4101: 'e' : unreferenced local variable
-         LUT.cpp
-         modalityVOILUT.cpp
-         MONOCHROME1ToMONOCHROME2.cpp
-         MONOCHROME1ToRGB.cpp
-         MONOCHROME2ToRGB.cpp
-         MONOCHROME2ToYBRFULL.cpp
-         PALETTECOLORToRGB.cpp
-         RGBToMONOCHROME2.cpp
-         RGBToYBRFULL.cpp
-         RGBToYBRPARTIAL.cpp
-         Generating Code...
-         Compiling...
-         transaction.cpp
-         transform.cpp
-         transformHighBit.cpp
-         transformsChain.cpp
-         viewHelper.cpp
-         VOILUT.cpp
-     1>c:\users\clevo\documents\github\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(336): warning C4244: 'initializing' : conversion from 'float' to 'imbxInt32', possible loss of data
-                 .\imebra\library\imebra\src\VOILUT.cpp(389) : see reference to function template instantiation 'void puntoexe::imebra::transforms::VOILUT::templateFindOptimalVOI<float>(inputType *,size_t,imbxUint32,imbxInt32,imbxInt32,imbxInt32,imbxInt32)' being compiled
-                 with
-                 [
-                     inputType=float
-                 ]
-     1>c:\users\clevo\documents\github\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(343): warning C4244: '=' : conversion from 'float' to 'imbxInt32', possible loss of data
-     1>c:\users\clevo\documents\github\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(336): warning C4244: 'initializing' : conversion from 'double' to 'imbxInt32', possible loss of data
-                 .\imebra\library\imebra\src\VOILUT.cpp(389) : see reference to function template instantiation 'void puntoexe::imebra::transforms::VOILUT::templateFindOptimalVOI<double>(inputType *,size_t,imbxUint32,imbxInt32,imbxInt32,imbxInt32,imbxInt32)' being compiled
-                 with
-                 [
-                     inputType=double
-                 ]
-     1>c:\users\clevo\documents\github\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(343): warning C4244: '=' : conversion from 'double' to 'imbxInt32', possible loss of data
-         waveform.cpp
-         YBRFULLToMONOCHROME2.cpp
-         YBRFULLToRGB.cpp
-         YBRPARTIALToRGB.cpp
-         DicomDataAdapter.cpp
-     1>DicomDataAdapter.cpp(66): warning C4101: 'channelPixelSize' : unreferenced local variable
-     1>Done Building Project "C:\Users\CLEVO\Documents\GitHub\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Marek\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\baseObject.obj
+         Debug\baseStream.obj
+         Debug\charsetConversion.obj
+         Debug\charsetConversionIconv.obj
+         Debug\charsetConversionICU.obj
+         Debug\charsetConversionWindows.obj
+         Debug\criticalSection.obj
+         Debug\exception.obj
+         Debug\huffmanTable.obj
+         Debug\memory.obj
+         Debug\memoryStream.obj
+         Debug\stream.obj
+         Debug\streamController.obj
+         Debug\streamReader.obj
+         Debug\streamWriter.obj
+         Debug\thread.obj
+         Debug\buffer.obj
+         Debug\charsetsList.obj
+         Debug\codec.obj
+         Debug\codecFactory.obj
+         Debug\colorTransform.obj
+         Debug\colorTransformsFactory.obj
+         Debug\data.obj
+         Debug\dataGroup.obj
+         Debug\dataHandler.obj
+         Debug\dataHandlerDate.obj
+         Debug\dataHandlerDateTime.obj
+         Debug\dataHandlerDateTimeBase.obj
+         Debug\dataHandlerString.obj
+         Debug\dataHandlerStringAE.obj
+         Debug\dataHandlerStringAS.obj
+         Debug\dataHandlerStringCS.obj
+         Debug\dataHandlerStringDS.obj
+         Debug\dataHandlerStringIS.obj
+         Debug\dataHandlerStringLO.obj
+         Debug\dataHandlerStringLT.obj
+         Debug\dataHandlerStringPN.obj
+         Debug\dataHandlerStringSH.obj
+         Debug\dataHandlerStringST.obj
+         Debug\dataHandlerStringUI.obj
+         Debug\dataHandlerStringUnicode.obj
+         Debug\dataHandlerStringUT.obj
+         Debug\dataHandlerTime.obj
+         Debug\dataSet.obj
+         Debug\dicomCodec.obj
+         Debug\dicomDict.obj
+         Debug\dicomDir.obj
+         Debug\drawBitmap.obj
+         Debug\image.obj
+         Debug\jpegCodec.obj
+         Debug\LUT.obj
+         Debug\modalityVOILUT.obj
+         Debug\MONOCHROME1ToMONOCHROME2.obj
+         Debug\MONOCHROME1ToRGB.obj
+         Debug\MONOCHROME2ToRGB.obj
+         Debug\MONOCHROME2ToYBRFULL.obj
+         Debug\PALETTECOLORToRGB.obj
+         Debug\RGBToMONOCHROME2.obj
+         Debug\RGBToYBRFULL.obj
+         Debug\RGBToYBRPARTIAL.obj
+         Debug\transaction.obj
+         Debug\transform.obj
+         Debug\transformHighBit.obj
+         Debug\transformsChain.obj
+         Debug\viewHelper.obj
+         Debug\VOILUT.obj
+         Debug\waveform.obj
+         Debug\YBRFULLToMONOCHROME2.obj
+         Debug\YBRFULLToRGB.obj
+         Debug\YBRPARTIALToRGB.obj
+         Debug\DicomDataAdapter.obj
+         Debug\MyForm.obj
+         Debug\Parser.obj
+         "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+         SIMproject.vcxproj -> C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe
+     1>Done Building Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:01:22.06
+Time Elapsed 00:00:15.95

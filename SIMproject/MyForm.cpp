@@ -1,6 +1,9 @@
 #include "MyForm.h"
 #include "Parser.h"
 #include "DicomDataAdapter.h"
+extern "C"{
+#include "libavcodec/avcodec.h"
+}
 
 using namespace System; 
 using namespace System::Windows::Forms; 
