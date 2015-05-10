@@ -1,12 +1,10 @@
-﻿Build started 2015-05-09 13:03:15.
+﻿Build started 2015-05-10 09:35:36.
      1>Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
          MyForm.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Marek\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\baseObject.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\baseObject.obj
          Debug\baseStream.obj
          Debug\charsetConversion.obj
          Debug\charsetConversionIconv.obj
@@ -79,10 +77,12 @@
          Debug\DicomDataAdapter.obj
          Debug\MyForm.obj
          Debug\Parser.obj
+         Debug\VideoHandler.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+     1>VideoHandler.obj : warning LNK4248: unresolved typeref token (01000017) for 'AVDictionary'; image may not run
          SIMproject.vcxproj -> C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe
      1>Done Building Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:15.95
+Time Elapsed 00:00:12.04

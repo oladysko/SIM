@@ -57,7 +57,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalDependencies>ffmpeg\dev\lib\avcodec.lib;ffmpeg\dev\lib\avutil.lib;ffmpeg\dev\lib\avformat.lib;ffmpeg\dev\lib\swresample.lib;ffmpeg\dev\lib\swscale.lib;ffmpeg\dev\lib\postproc.lib</AdditionalDependencies>
       <NoEntryPoint>false</NoEntryPoint>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
@@ -155,6 +155,7 @@
     <ClCompile Include="DicomDataAdapter.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="VideoHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\imebra\library\base\include\baseObject.h" />
@@ -239,6 +240,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="VideoHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

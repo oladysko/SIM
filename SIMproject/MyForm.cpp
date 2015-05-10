@@ -1,9 +1,7 @@
 #include "MyForm.h"
 #include "Parser.h"
 #include "DicomDataAdapter.h"
-extern "C"{
-#include "libavcodec/avcodec.h"
-}
+#include "VideoHandler.h"
 
 using namespace System; 
 using namespace System::Windows::Forms; 
@@ -20,6 +18,29 @@ void Main(array<String^>^ args)
 
 namespace SIMproject{
 	System::Void MyForm::button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		/*test generacji video*/
+		VideoHandler *vh = new VideoHandler(352, 352, 25); //generalnie na razie w konstruktorze przekazuje sie parametry video
+		/*int *tab = new int[352 * 352]; //wskaznik na frame'a
+		for (int i = 0; i < 352 * 352; i++)
+		{
+			tab[i] = (352 - 1 - i % 352) + i / 352;
+		}
+		for (int i = 0; i < 50; i++) //50 razy 1/25 = 2s
+			vh->addNewFrame(tab);*/
+		int *tab; //wskaznik na frame'a
+		for (int t = 0; t < 50; t++) //50 razy 1/25 = 2s
+		{
+			tab = new int[352 * 352]; //tworze nowego frame'a
+			for (int i = 0; i < 352 * 352; i++)
+			{
+				tab[i] = (352 - 1 - i % 352) + i / 352 +t * 5; //wypelniam czyms
+			}
+			vh->addNewFrame(tab); //dodaj nowego frame'a
+		}
+		vh->video_encode("test.mp4", AV_CODEC_ID_MPEG4);
+		delete(vh);
+		/*koniec testu generacji video*/
 
 		//variables
 		unsigned int frameNumber;

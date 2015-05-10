@@ -246,6 +246,9 @@
     <ClCompile Include=".\imebra\library\imebra\src\YBRPARTIALToRGB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VideoHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -486,6 +489,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include=".\imebra\library\imebra\include\YBRPARTIALToRGB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
