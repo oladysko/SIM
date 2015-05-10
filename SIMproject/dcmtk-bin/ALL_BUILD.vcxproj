@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{E96B5D03-4122-4EDD-AE52-B735FAD8DD0A}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\include;F:\Ola\Moje\dcmtk-3.6.0\ofstd\include;F:\Ola\Moje\dcmtk-3.6.0\oflog\include;F:\Ola\Moje\dcmtk-3.6.0\dcmdata\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimgle\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimage\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg8;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg12;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg16;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmnet\include;F:\Ola\Moje\dcmtk-3.6.0\dcmpstat\include;F:\Ola\Moje\dcmtk-3.6.0\dcmqrdb\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsign\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsr\include;F:\Ola\Moje\dcmtk-3.6.0\dcmtls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmwlm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\include;F:\Ola\Moje\dcmtk-3.6.0\ofstd\include;F:\Ola\Moje\dcmtk-3.6.0\oflog\include;F:\Ola\Moje\dcmtk-3.6.0\dcmdata\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimgle\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimage\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg8;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg12;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg16;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmnet\include;F:\Ola\Moje\dcmtk-3.6.0\dcmpstat\include;F:\Ola\Moje\dcmtk-3.6.0\dcmqrdb\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsign\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsr\include;F:\Ola\Moje\dcmtk-3.6.0\dcmtls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmwlm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\include;F:\Ola\Moje\dcmtk-3.6.0\ofstd\include;F:\Ola\Moje\dcmtk-3.6.0\oflog\include;F:\Ola\Moje\dcmtk-3.6.0\dcmdata\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimgle\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimage\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg8;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg12;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg16;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmnet\include;F:\Ola\Moje\dcmtk-3.6.0\dcmpstat\include;F:\Ola\Moje\dcmtk-3.6.0\dcmqrdb\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsign\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsr\include;F:\Ola\Moje\dcmtk-3.6.0\dcmtls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmwlm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\include;F:\Ola\Moje\dcmtk-3.6.0\ofstd\include;F:\Ola\Moje\dcmtk-3.6.0\oflog\include;F:\Ola\Moje\dcmtk-3.6.0\dcmdata\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimgle\include;F:\Ola\Moje\dcmtk-3.6.0\dcmimage\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg8;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg12;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\libijg16;F:\Ola\Moje\dcmtk-3.6.0\dcmjpeg\include;F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmnet\include;F:\Ola\Moje\dcmtk-3.6.0\dcmpstat\include;F:\Ola\Moje\dcmtk-3.6.0\dcmqrdb\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsign\include;F:\Ola\Moje\dcmtk-3.6.0\dcmsr\include;F:\Ola\Moje\dcmtk-3.6.0\dcmtls\include;F:\Ola\Moje\dcmtk-3.6.0\dcmwlm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HF:/Ola/Moje/dcmtk-3.6.0 -BF:/Ola/Moje/SIM/SIMproject/dcmtk-bin --check-stamp-file F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInitialize.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCCompiler.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCXXCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeRCCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\3rdparty.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\GenerateDCMTKConfigure.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckLibraryExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\CheckFunctionWithHeaderExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\osconfig.h.in;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HF:/Ola/Moje/dcmtk-3.6.0 -BF:/Ola/Moje/SIM/SIMproject/dcmtk-bin --check-stamp-file F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInitialize.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCCompiler.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCXXCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeRCCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\3rdparty.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\GenerateDCMTKConfigure.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckLibraryExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\CheckFunctionWithHeaderExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\osconfig.h.in;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HF:/Ola/Moje/dcmtk-3.6.0 -BF:/Ola/Moje/SIM/SIMproject/dcmtk-bin --check-stamp-file F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInitialize.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCCompiler.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCXXCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeRCCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\3rdparty.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\GenerateDCMTKConfigure.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckLibraryExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\CheckFunctionWithHeaderExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\osconfig.h.in;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -HF:/Ola/Moje/dcmtk-3.6.0 -BF:/Ola/Moje/SIM/SIMproject/dcmtk-bin --check-stamp-file F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInitialize.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCCompiler.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeCXXCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\3.2.2\CMakeRCCompiler.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CMakeCommonLanguageInclude.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\3rdparty.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\GenerateDCMTKConfigure.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckTypeSize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckIncludeFiles.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckFunctionExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.2\Modules\CheckLibraryExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\CheckFunctionWithHeaderExists.cmake;F:\Ola\Moje\dcmtk-3.6.0\CMake\osconfig.h.in;F:\Ola\Moje\dcmtk-3.6.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:\Ola\Moje\SIM\SIMproject\dcmtk-bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/ZERO_CHECK.vcxproj">
+      <Project>6262508C-6A47-456B-AD19-9CDCE441F315</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpls/libcharls/charls.vcxproj">
+      <Project>A66BA10A-8877-49E0-A972-13184C1FBBC5</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcm2pdf.vcxproj">
+      <Project>20EEFACC-6334-49AE-AFE9-B4AB81715B42</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimage/apps/dcm2pnm.vcxproj">
+      <Project>3FB33423-2006-4B6C-A806-40F7538E9D21</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcm2xml.vcxproj">
+      <Project>D824EC7E-5C3E-4980-B6A5-DF8FA730B468</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/apps/dcmcjpeg.vcxproj">
+      <Project>E7855AFE-BF51-470F-91D6-DD2188079367</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpls/apps/dcmcjpls.vcxproj">
+      <Project>6921311D-2CF8-4422-BCC1-A07D20DD58F4</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmconv.vcxproj">
+      <Project>259D6A34-699E-4C13-ACDE-8D7282C094EC</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmcrle.vcxproj">
+      <Project>56F66D76-14E9-4888-83BF-6100506448C3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/libsrc/dcmdata.vcxproj">
+      <Project>8D487DDE-F5F1-4654-9C32-5DB8FFB17EDE</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/apps/dcmdjpeg.vcxproj">
+      <Project>1489C3D8-BEBC-4471-AA32-5835C74DB5AC</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpls/apps/dcmdjpls.vcxproj">
+      <Project>5DD45F86-4D3F-490F-ABF5-8A51262152F5</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmdrle.vcxproj">
+      <Project>8C853827-4367-4E40-B2A5-90A888E66AF0</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsign/libsrc/dcmdsig.vcxproj">
+      <Project>40DF7E25-B7FD-4F2E-BD60-133589AFE86C</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimgle/apps/dcmdspfn.vcxproj">
+      <Project>02A45254-08AE-4748-B8C4-93F9A38E248A</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmdump.vcxproj">
+      <Project>CABAAB34-352D-4AF4-A2D7-F5B33A58BBE8</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmftest.vcxproj">
+      <Project>44BA1D74-143F-42D7-A149-49EB4759C90B</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmgpdir.vcxproj">
+      <Project>B3E963E1-A7EC-45D0-88EB-E391EECC4342</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimage/libsrc/dcmimage.vcxproj">
+      <Project>86E17099-C9D2-47AF-A936-FBAC1D0CEFAB</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimgle/libsrc/dcmimgle.vcxproj">
+      <Project>69DB8863-DA2F-4E1A-BEEC-B203F9D961D4</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/apps/dcmj2pnm.vcxproj">
+      <Project>EDB07C46-0C27-4A81-827D-B9AE21E1B593</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/libsrc/dcmjpeg.vcxproj">
+      <Project>5E598D7F-1854-4BF9-A628-1F94F350B75F</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpls/libsrc/dcmjpls.vcxproj">
+      <Project>69730017-8D4B-47D4-8F26-4557F04A0B53</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpls/apps/dcml2pnm.vcxproj">
+      <Project>A6E917FD-9C76-49F7-A731-17C8CD7955F3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmmkcrv.vcxproj">
+      <Project>351D7A7B-79DC-4C21-9A41-0177786FAEB4</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/apps/dcmmkdir.vcxproj">
+      <Project>4DC788F3-53F8-4D8B-94EF-E978DCE2E47C</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmmklut.vcxproj">
+      <Project>0CE3C758-76F3-48D3-A2F9-4EC558825A99</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/libsrc/dcmnet.vcxproj">
+      <Project>A5A9AF50-21BA-452B-82A0-161C013F72D3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dcmodify.vcxproj">
+      <Project>8C697CC7-8121-4DEE-8905-D97EB34DEABD</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmp2pgm.vcxproj">
+      <Project>6277AB0B-01F7-415E-B791-59F263004C69</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmprscp.vcxproj">
+      <Project>BBC51EB5-F6F8-4D0B-AE3A-110ED4053124</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmprscu.vcxproj">
+      <Project>C4798A99-4609-4662-A344-C21168D35EE8</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmpschk.vcxproj">
+      <Project>1FC81E1C-8B47-4600-9AD4-058593A00E9E</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmpsmk.vcxproj">
+      <Project>95215134-8B7B-48D4-A279-5ECA23979DE2</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmpsprt.vcxproj">
+      <Project>7C5EB988-6AA3-4D95-8963-8C01E0433C5C</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmpsrcv.vcxproj">
+      <Project>98A83B65-A7B1-46FD-A797-439793227050</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/apps/dcmpssnd.vcxproj">
+      <Project>E38B622E-C00F-4F64-9426-1224EBF9D287</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmpstat/libsrc/dcmpstat.vcxproj">
+      <Project>043625FC-330A-46CE-850C-90AFFF923D43</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmqrdb/libsrc/dcmqrdb.vcxproj">
+      <Project>688422D2-5C92-406E-9D24-631DCA8EB88F</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmqrdb/apps/dcmqridx.vcxproj">
+      <Project>153A1F91-BA06-4D67-9145-648681BB7A0E</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmqrdb/apps/dcmqrscp.vcxproj">
+      <Project>BB294808-9EA4-4E2D-9E78-168436D83503</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmqrdb/apps/dcmqrti.vcxproj">
+      <Project>7D61A787-0C7E-42CE-8CEE-A694C9ECA393</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimage/apps/dcmquant.vcxproj">
+      <Project>08D0D7DA-FF9E-4AA0-B7CD-71766AFD73CE</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimage/apps/dcmscale.vcxproj">
+      <Project>1823D171-3A8B-42F8-9674-4646DD3CEBC3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsign/apps/dcmsign.vcxproj">
+      <Project>65255959-D2F0-4957-B877-64D679C043EE</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/libsrc/dcmsr.vcxproj">
+      <Project>DD4E4B18-D76F-40CB-88A2-3EDC03CE69F4</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmtls/libsrc/dcmtls.vcxproj">
+      <Project>6932DB58-124D-40A0-BF3F-B42421DBFC1A</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmwlm/libsrc/dcmwlm.vcxproj">
+      <Project>94E27C72-84DD-459B-A9D9-7925DD08815F</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimgle/apps/dcod2lum.vcxproj">
+      <Project>979511D4-E820-49C0-BA52-2AA15070AA89</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmimgle/apps/dconvlum.vcxproj">
+      <Project>9B03FEB3-F143-4C69-A3C7-10A3E401D3FA</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/apps/dsr2html.vcxproj">
+      <Project>CE27B263-BA96-4F3B-BDBC-FB3862D21EE3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/apps/dsr2xml.vcxproj">
+      <Project>049DC138-E5B1-4EFC-905D-7A4CFB6C8F0D</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/apps/dsrdump.vcxproj">
+      <Project>D89F6570-F8BF-4271-A350-1234E1A94002</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/dump2dcm.vcxproj">
+      <Project>EA34502A-7030-4940-BF21-5D0E6B18B1AB</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/echoscu.vcxproj">
+      <Project>0414A1B3-9E56-4FA2-9536-BE1741805CF3</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/findscu.vcxproj">
+      <Project>42A2A87C-A941-46CC-BF7F-8DC832B518FA</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/tests/i2dbmp.vcxproj">
+      <Project>107B680F-DF38-4247-A36D-62D23007E1FB</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/libijg12/ijg12.vcxproj">
+      <Project>49D632E3-AF10-48C4-B492-072FDC9B933F</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/libijg16/ijg16.vcxproj">
+      <Project>B1C8856F-6583-4A10-B1C0-5E47304A1142</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmjpeg/libijg8/ijg8.vcxproj">
+      <Project>F7F71F33-8A70-4893-95E6-3E4A159EA8CC</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/img2dcm.vcxproj">
+      <Project>1884F014-76C9-4E3A-B2B0-4F386145529E</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/libi2d/libi2d.vcxproj">
+      <Project>DC965B5D-350E-46A3-9197-9FBE150013CD</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/tests/mkreport.vcxproj">
+      <Project>5E1874F7-B0F4-4EA9-99CD-8B8862A4FF1D</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/movescu.vcxproj">
+      <Project>D7754A64-0B92-4D4A-8066-87E4E6191EA7</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/oflog/libsrc/oflog.vcxproj">
+      <Project>66FC3C57-2C52-4176-BBB0-BE9358AD3B1E</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/ofstd/libsrc/ofstd.vcxproj">
+      <Project>29C65B9A-9287-46E7-ACF2-521B8B9AD277</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/pdf2dcm.vcxproj">
+      <Project>4DE97FCC-9991-46DC-A839-6CA7C5EED7ED</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/storescp.vcxproj">
+      <Project>F54ADDE3-88F3-44A2-B6CE-F874DE222EB0</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/storescu.vcxproj">
+      <Project>118FC955-D728-4027-98DC-16F80686052D</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmnet/apps/termscu.vcxproj">
+      <Project>52A0D409-EE75-410E-B65E-BA3A2203197E</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/tests/tstchval.vcxproj">
+      <Project>CAF6FED5-AEF2-4258-AF91-5A6233893878</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/tests/tstpath.vcxproj">
+      <Project>CCCFAD1E-FC81-49EE-ABFD-0CC721DD4CC1</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/tests/tstpread.vcxproj">
+      <Project>7DC8A21C-4559-41D7-9406-087C723C9703</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/tests/tvrdatim.vcxproj">
+      <Project>15C75CD0-C71E-446B-9E8F-80685ACB9F1A</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmwlm/apps/wlmscpfs.vcxproj">
+      <Project>DCC9C04C-EF6E-4DF7-9C22-533AC35B3B76</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmdata/apps/xml2dcm.vcxproj">
+      <Project>52917794-C7BD-40CD-B967-A3C090EB13E0</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/dcmsr/apps/xml2dsr.vcxproj">
+      <Project>02DA6478-EF04-43C7-AC4C-E2200C10C2CD</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

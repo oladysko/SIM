@@ -44,6 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <IncludePath>DCMTK\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,15 +55,19 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>ffmpeg\dev\include</AdditionalIncludeDirectories>
+      <CallingConvention>Cdecl</CallingConvention>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ffmpeg\dev\lib\avcodec.lib;ffmpeg\dev\lib\avutil.lib;ffmpeg\dev\lib\avformat.lib;ffmpeg\dev\lib\swresample.lib;ffmpeg\dev\lib\swscale.lib;ffmpeg\dev\lib\postproc.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ffmpeg\dev\lib\avcodec.lib;ffmpeg\dev\lib\avutil.lib;ffmpeg\dev\lib\avformat.lib;ffmpeg\dev\lib\swresample.lib;ffmpeg\dev\lib\swscale.lib;ffmpeg\dev\lib\postproc.lib;oflog.lib;netapi32.lib;wsock32.lib;ofstd.lib;dcmdata.lib;dcmimgle.lib;dcmimage.lib;ijg8.lib;ijg12.lib;ijg16.lib;dcmjpeg.lib;dcmnet.lib;dcmdsig.lib;dcmsr.lib;dcmtls.lib;dcmpstat.lib;dcmwlm.lib;dcmqrdb.lib</AdditionalDependencies>
       <NoEntryPoint>false</NoEntryPoint>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
-      <AdditionalLibraryDirectories>ffmpeg\dev\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>ffmpeg\dev\lib\;DCMTK\lib\</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

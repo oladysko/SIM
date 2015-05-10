@@ -1,0 +1,33 @@
+# CMake generation dependency list for this directory.
+F:/Ola/Moje/dcmtk-3.6.0/CMakeLists.txt
+F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/CMakeFiles/3.2.2/CMakeSystem.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeSystemSpecificInitialize.cmake
+F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/CMakeFiles/3.2.2/CMakeCCompiler.cmake
+F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/CMakeFiles/3.2.2/CMakeCXXCompiler.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeGenericSystem.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/Windows.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/WindowsPaths.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/Windows-MSVC.cmake
+F:/Ola/Moje/SIM/SIMproject/dcmtk-bin/CMakeFiles/3.2.2/CMakeRCCompiler.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeRCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeCXXInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CMakeCommonLanguageInclude.cmake
+F:/Ola/Moje/dcmtk-3.6.0/CMake/3rdparty.cmake
+F:/Ola/Moje/dcmtk-3.6.0/CMake/GenerateDCMTKConfigure.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckTypeSize.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckIncludeFile.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckIncludeFiles.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckSymbolExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckFunctionExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.2/Modules/CheckLibraryExists.cmake
+F:/Ola/Moje/dcmtk-3.6.0/CMake/CheckFunctionWithHeaderExists.cmake
+F:/Ola/Moje/dcmtk-3.6.0/CMake/osconfig.h.in

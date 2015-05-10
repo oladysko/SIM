@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djcparam.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djdecode.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djencode.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djrparam.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djcodecd.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djutils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\djcodece.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Ola\Moje\dcmtk-3.6.0\dcmjpls\libsrc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8CA6391C-9AB2-47A5-8A17-982293846D6D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

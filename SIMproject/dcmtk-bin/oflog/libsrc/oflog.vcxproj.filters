@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\oflog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\apndimpl.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\appender.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\config.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\consap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\factory.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\fileap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\filter.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\globinit.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\hierarchy.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\hierlock.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\layout.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\logger.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\logimpl.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\logevent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\loglevel.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\loglog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\lloguser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\ndc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\ntelogap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\nullap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\objreg.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\patlay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\pointer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\property.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\rootlog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\sleep.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\socketap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\sockbuff.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\socket.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\strhelp.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\syncprims.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\syslogap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\threads.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\timehelp.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\winsock.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\windebap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\winconap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Ola\Moje\dcmtk-3.6.0\oflog\libsrc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8CA6391C-9AB2-47A5-8A17-982293846D6D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

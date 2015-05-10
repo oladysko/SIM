@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2d.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2dplvlp.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2djpgs.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2dbmps.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2dplsc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\i2dplnsc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Ola\Moje\dcmtk-3.6.0\dcmdata\libi2d\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8CA6391C-9AB2-47A5-8A17-982293846D6D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
