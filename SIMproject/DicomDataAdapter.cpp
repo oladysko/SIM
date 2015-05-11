@@ -1,18 +1,22 @@
 #include "DicomDataAdapter.h"
 #include <iostream>
-#include "./imebra/library/imebra/include/imebra.h"
-#include "./imebra/library/base/include/configuration.h"
+#include "dcmtk/config/osconfig.h"
+#include "dcmtk/dcmdata/dctk.h"
+#include "dcmtk/dcmimgle/dcmimage.h"
+#include "dcmtk/dcmimage/diregist.h"
+#include "dcmtk/dcmjpeg/djencode.h"
+#include "dcmtk/dcmjpeg/djdecode.h"
+using namespace log4cplus;
 
-DicomDataAdapter::DicomDataAdapter(std::string fileName)
+DicomDataAdapter::DicomDataAdapter(char* fileName)
 {
+	DJDecoderRegistration::registerCodecs();// register JPEG codecs
+	DcmFileFormat fileformat;
 
-	ptr<puntoexe::stream> inputStream(new puntoexe::stream);
-	inputStream->openFile(fileName, std::ios_base::in);
-	ptr<streamReader> reader(new streamReader(inputStream));
-	ptr<codecs::codecFactory> codecsFactory(codecs::codecFactory::getCodecFactory());
-
-	DicomDataAdapter::dataSet = codecsFactory->load(reader);
-	DicomDataAdapter::currentFrameNumber = 0;
+	if (fileformat.loadFile(fileName).good())
+	{
+		DicomDataAdapter::dataSet = fileformat.getDataset();
+	}
 }
 
 
@@ -22,65 +26,38 @@ DicomDataAdapter::~DicomDataAdapter()
 }
 
 
-void DicomDataAdapter::ConvertToAvi()
+void DicomDataAdapter::getFrameSize(Uint32 frameNumber, Uint32& height, Uint32& width)
 {
 
 }
 
-void DicomDataAdapter::setCurrentFrameNumber(int newFrameNumber)
+
+void DicomDataAdapter::CreateBmp()
 {
-	DicomDataAdapter::currentFrameNumber = newFrameNumber;
-}
+	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
+	DcmFileFormat fileformat;
 
+	if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good())
+	{
+		DcmDataset *dataset = fileformat.getDataset();
+		OFCondition a = dataset->chooseRepresentation(EXS_LittleEndianExplicit, NULL);
 
-ptr<image> DicomDataAdapter::PrepareImage(int frameNumber)
-{
-	ptr<imebra::image> firstImage = this->dataSet->getImage(frameNumber);
-
-	ptr<imebra::transforms::transform> modVOILUT(new imebra::transforms::modalityVOILUT(this->dataSet));
-
-	imbxUint32 width, height;
-	firstImage->getSize(&width, &height);
-	ptr<imebra::image> convertedImage(modVOILUT->allocateOutputImage(firstImage, width, height));
-	modVOILUT->runTransform(firstImage, 0, 0, width, height, convertedImage, 0, 0);
-
-	ptr<imebra::transforms::transform> myVoiLut(new imebra::transforms::VOILUT(this->dataSet));
-
-	ptr<imebra::image> presentationImage(myVoiLut->allocateOutputImage(convertedImage, width, height));
-	myVoiLut->runTransform(convertedImage, 0, 0, width, height, presentationImage, 0, 0);
-
-	return presentationImage;
-}
-
-void DicomDataAdapter::getFrameSize(imbxUint32 frameNumber, imbxUint32& height, imbxUint32& width)
-{
-	std::cout << "getFrameSize" << std::endl;
-
-	ptr<image> Image = this->dataSet->getImage(frameNumber);
-	Image->getSize(&width, &height);
-}
-
-
-////////////////////////////////////////////////
-/// funkcja pobiera obraz jako macierz intów od 0 do 256
-///////////////////////////////////////////////
-void DicomDataAdapter::getValuesMatrix(imbxUint32 frameNumber, imbxUint32 height, imbxUint32 width, int * outputMatrix)
-{
-	ptr<image>presentationImage =  this->PrepareImage(frameNumber);
-	imbxUint32 rowSize, channelPixelSize, channelNumber;
-	ptr<imebra::handlers::dataHandlerNumericBase> myHandler = presentationImage->getDataHandler(false, &rowSize, &channelNumber, &channelNumber);
-
-	//Retrive image's size in pizels
-	imbxUint32 sizeX, sizeY;
-	presentationImage->getSize(&sizeX, &sizeY);
-	//scan all the rows
-	imbxUint32 index(0);
-	for (imbxUint32 scanY = 0; scanY < height; ++scanY){
-		//scan all the colums
-		for (imbxUint32 scanX = 0; scanX < width; ++scanX){
-			for (imbxUint32 scanChannel = 0; scanChannel < channelNumber; ++scanChannel){
-				imbxInt32 channelValue = myHandler->getSignedLong(index++);
-				outputMatrix[scanX + scanY*height] = (int)channelValue;
+		//Nie wchodzi w tego ifa!
+		if (dataset->canWriteXfer(EXS_LittleEndianExplicit))
+		{
+			DcmElement* element = NULL;
+			if (EC_Normal == dataset->findAndGetElement(DCM_PixelData, element))
+			{
+				Uint32 startFragment = 0;
+				Uint32 sizeF = 0;
+				element->getUncompressedFrameSize(dataset, sizeF);
+				Uint8 * buffer = new Uint8[int(sizeF)];
+				OFString decompressedColorModel = NULL;
+				DcmFileCache * cache = NULL;
+				OFCondition cond = element->getUncompressedFrame(dataset, 0, startFragment, buffer, sizeF, decompressedColorModel, cache);
+				cond = dataset->putAndInsertUint8Array(DCM_PixelData, buffer, sizeF, true);
+				DicomImage bmImg(dataset, EXS_LittleEndianExplicit);
+				int b = bmImg.writeBMP("E:/asd.bmp", 8, 0);
 			}
 		}
 	}

@@ -1,24 +1,25 @@
 #pragma once
 #include <iostream>
-#include "./imebra/library/imebra/include/imebra.h"
-#include "./imebra/library/base/include/configuration.h"
-using namespace puntoexe;
-using namespace puntoexe::imebra;
+#include "dcmtk/config/osconfig.h"
+#include "dcmtk/dcmdata/dctk.h"
+#include "dcmtk/dcmdata/dcdatset.h"
+#include "dcmtk/dcmimgle/dcmimage.h"
+#include "dcmtk/oflog/appender.h"
+#include "dcmtk/dcmdata/dcdatset.h"
+#include "dcmtk/dcmdata/dcitem.h"
+
+using namespace log4cplus;
 
 class DicomDataAdapter
 {
 public:
-	DicomDataAdapter(std::string fileName);
+	DicomDataAdapter(char* fileName);
 	virtual ~DicomDataAdapter();
-	void ConvertToAvi();
-	void setCurrentFrameNumber(int newFramNumber);
-	ptr<image> PrepareImage(int frameNumber);
 
-	ptr<puntoexe::imebra::dataSet> dataSet;
-	void getFrameSize(imbxUint32 frameNumber, imbxUint32& height, imbxUint32& width);
-	void getValuesMatrix(imbxUint32 frameNumber, imbxUint32 height, imbxUint32 width, int * outputMatrix);
+	DcmDataset* dataSet;
+	void CreateBmp();
+	void getFrameSize(Uint32 frameNumber, Uint32& height, Uint32& width);
 
 private:
-	int currentFrameNumber;
 
 };

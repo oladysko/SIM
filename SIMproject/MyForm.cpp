@@ -19,7 +19,8 @@ void Main(array<String^>^ args)
 namespace SIMproject{
 	System::Void MyForm::button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		/*test generacji video*/
+
+		/*TEST generacji video*/
 		VideoHandler *vh = new VideoHandler(352, 352, 25); //generalnie na razie w konstruktorze przekazuje sie parametry video
 		/*int *tab = new int[352 * 352]; //wskaznik na frame'a
 		for (int i = 0; i < 352 * 352; i++)
@@ -42,13 +43,15 @@ namespace SIMproject{
 		delete(vh);
 		/*koniec testu generacji video*/
 
+
+
 		//variables
 		unsigned int frameNumber;
 		String^ debugInfo;
 		String^ fileName;
 		int bitmapHeight = 0, bitmapWidth = 0;
 		std::string stdFileName;
-
+		
 		try
 		{
 			//get frame number
@@ -68,19 +71,21 @@ namespace SIMproject{
 			this->Info_label->Text = errorHandle->Message;
 			return;
 		}
-
-		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(stdFileName);
+		
+		
+		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter("E:/Ax Flair - 5/IM-0001-0001.dcm");
+		dicomData.CreateBmp();
 
 		//get height and width
-		ParserH::getImageSize(bitmapHeight, bitmapWidth, frameNumber, &dicomData);
+		//ParserH::getImageSize(bitmapHeight, bitmapWidth, frameNumber, &dicomData);
 		debugInfo = "bitmapHeight = " + bitmapHeight + "\nbitmapWidth = " + bitmapWidth;//Format16bppGrayScale
 		//create bitmap
-		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb); 
-		ParserH::getBitmap(bitmapHeight, bitmapWidth, frameNumber, &dicomData, this->dicomImage);
+		//this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb); 
+		//ParserH::getBitmap(bitmapHeight, bitmapWidth, frameNumber, &dicomData, this->dicomImage);
 
 		//display picture
-		pictureBox1->Image = this->dicomImage;
-		this->Info_label->Text = debugInfo;
+		//pictureBox1->Image = this->dicomImage;
+		//this->Info_label->Text = debugInfo;
 	}
 
 	System::Void MyForm::saveCurrent_Click(System::Object^  sender, System::EventArgs^  e) {
