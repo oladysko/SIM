@@ -35,7 +35,7 @@ class VideoHandler {
 public:
 	int width, height, frameN = 0, fps;
 	int maxV = 0, minV = 0;
-	double totalTime; //overrides fps if not 0
+	double totalTime=0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last;
 
 	/* new instance with specified frame size and frames per seconds*/

@@ -128,7 +128,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		c->width = width;
 		c->height = height;
 		/* frames per second */
-		if (totalTime != 0)
+		if (totalTime != 0) //doesn't work right now
 		{
 			fps = (int)(totalTime / frameN); //rounds down time temporialy
 			c->time_base = av_make_q(1, fps);
@@ -184,6 +184,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		}
 
 		/* encode video */
+		current = head;
 		for (i = 0; i < frameN; i++) {
 			av_init_packet(&pkt);
 			pkt.data = NULL;    // packet data will be allocated by the encoder
@@ -198,15 +199,15 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			}*/
 			for (y = 0; y < c->height; y++) {
 				for (x = 0; x < c->width; x++) {
-					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * frame->linesize[0] + x] - minV) * 255 / (maxV - minV);
+					frame->data[0][y * frame->linesize[0] + x] = (uint8_t)((current->frame[y * frame->linesize[0] + x] - minV) * 255 / (maxV - minV));
 				}
 			}
 
 			/* Cb and Cr */
 			for (y = 0; y < c->height / 2; y++) {
 				for (x = 0; x < c->width / 2; x++) {
-					frame->data[1][y * frame->linesize[1] + x] = 128;// 128 + y + i * 2;
-					frame->data[2][y * frame->linesize[2] + x] = 128;// 64 + x + i * 5;
+					frame->data[1][y * frame->linesize[1] + x] = (uint8_t)127;
+					frame->data[2][y * frame->linesize[2] + x] = (uint8_t)127;
 				}
 			}
 
