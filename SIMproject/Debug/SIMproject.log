@@ -1,7 +1,114 @@
-﻿Build started 2015-05-10 22:00:18.
-     1>Project "F:\Ola\Moje\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Ola\Moje\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Ola\Moje\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"F:\Ola\Moje\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\baseObject.obj
+﻿Build started 2015-05-11 08:09:09.
+     1>Project "C:\Users\Marek Kos\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib .\imebra\library\base\src\baseObject.cpp .\imebra\library\base\src\baseStream.cpp .\imebra\library\base\src\charsetConversion.cpp .\imebra\library\base\src\charsetConversionIconv.cpp .\imebra\library\base\src\charsetConversionICU.cpp .\imebra\library\base\src\charsetConversionWindows.cpp .\imebra\library\base\src\criticalSection.cpp .\imebra\library\base\src\exception.cpp .\imebra\library\base\src\huffmanTable.cpp .\imebra\library\base\src\memory.cpp .\imebra\library\base\src\memoryStream.cpp .\imebra\library\base\src\stream.cpp .\imebra\library\base\src\streamController.cpp .\imebra\library\base\src\streamReader.cpp .\imebra\library\base\src\streamWriter.cpp .\imebra\library\base\src\thread.cpp .\imebra\library\imebra\src\buffer.cpp .\imebra\library\imebra\src\charsetsList.cpp .\imebra\library\imebra\src\codec.cpp .\imebra\library\imebra\src\codecFactory.cpp .\imebra\library\imebra\src\colorTransform.cpp .\imebra\library\imebra\src\colorTransformsFactory.cpp .\imebra\library\imebra\src\data.cpp .\imebra\library\imebra\src\dataGroup.cpp .\imebra\library\imebra\src\dataHandler.cpp .\imebra\library\imebra\src\dataHandlerDate.cpp .\imebra\library\imebra\src\dataHandlerDateTime.cpp .\imebra\library\imebra\src\dataHandlerDateTimeBase.cpp .\imebra\library\imebra\src\dataHandlerString.cpp .\imebra\library\imebra\src\dataHandlerStringAE.cpp .\imebra\library\imebra\src\dataHandlerStringAS.cpp .\imebra\library\imebra\src\dataHandlerStringCS.cpp .\imebra\library\imebra\src\dataHandlerStringDS.cpp .\imebra\library\imebra\src\dataHandlerStringIS.cpp .\imebra\library\imebra\src\dataHandlerStringLO.cpp .\imebra\library\imebra\src\dataHandlerStringLT.cpp .\imebra\library\imebra\src\dataHandlerStringPN.cpp .\imebra\library\imebra\src\dataHandlerStringSH.cpp .\imebra\library\imebra\src\dataHandlerStringST.cpp .\imebra\library\imebra\src\dataHandlerStringUI.cpp .\imebra\library\imebra\src\dataHandlerStringUnicode.cpp .\imebra\library\imebra\src\dataHandlerStringUT.cpp .\imebra\library\imebra\src\dataHandlerTime.cpp .\imebra\library\imebra\src\dataSet.cpp .\imebra\library\imebra\src\dicomCodec.cpp .\imebra\library\imebra\src\dicomDict.cpp .\imebra\library\imebra\src\dicomDir.cpp .\imebra\library\imebra\src\drawBitmap.cpp .\imebra\library\imebra\src\image.cpp .\imebra\library\imebra\src\jpegCodec.cpp .\imebra\library\imebra\src\LUT.cpp .\imebra\library\imebra\src\modalityVOILUT.cpp .\imebra\library\imebra\src\MONOCHROME1ToMONOCHROME2.cpp .\imebra\library\imebra\src\MONOCHROME1ToRGB.cpp .\imebra\library\imebra\src\MONOCHROME2ToRGB.cpp .\imebra\library\imebra\src\MONOCHROME2ToYBRFULL.cpp .\imebra\library\imebra\src\PALETTECOLORToRGB.cpp .\imebra\library\imebra\src\RGBToMONOCHROME2.cpp .\imebra\library\imebra\src\RGBToYBRFULL.cpp .\imebra\library\imebra\src\RGBToYBRPARTIAL.cpp .\imebra\library\imebra\src\transaction.cpp .\imebra\library\imebra\src\transform.cpp .\imebra\library\imebra\src\transformHighBit.cpp .\imebra\library\imebra\src\transformsChain.cpp .\imebra\library\imebra\src\viewHelper.cpp .\imebra\library\imebra\src\VOILUT.cpp .\imebra\library\imebra\src\waveform.cpp .\imebra\library\imebra\src\YBRFULLToMONOCHROME2.cpp .\imebra\library\imebra\src\YBRFULLToRGB.cpp .\imebra\library\imebra\src\YBRPARTIALToRGB.cpp DicomDataAdapter.cpp MyForm.cpp Parser.cpp VideoHandler.cpp
+         baseObject.cpp
+         baseStream.cpp
+         charsetConversion.cpp
+         charsetConversionIconv.cpp
+         charsetConversionICU.cpp
+         charsetConversionWindows.cpp
+         criticalSection.cpp
+         exception.cpp
+         huffmanTable.cpp
+         memory.cpp
+     1>.\imebra\library\base\src\memory.cpp(475): warning C4101: 'e' : unreferenced local variable
+         memoryStream.cpp
+         stream.cpp
+     1>.\imebra\library\base\src\stream.cpp(175): warning C4996: '_wfopen': This function or variable may be unsafe. Consider using _wfopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\wchar.h(841) : see declaration of '_wfopen'
+         streamController.cpp
+         streamReader.cpp
+     1>.\imebra\library\base\src\streamReader.cpp(144): warning C4018: '>=' : signed/unsigned mismatch
+         streamWriter.cpp
+         thread.cpp
+         buffer.cpp
+         charsetsList.cpp
+         codec.cpp
+         codecFactory.cpp
+         Generating Code...
+         Compiling...
+         colorTransform.cpp
+         colorTransformsFactory.cpp
+         data.cpp
+         dataGroup.cpp
+         dataHandler.cpp
+         dataHandlerDate.cpp
+         dataHandlerDateTime.cpp
+         dataHandlerDateTimeBase.cpp
+         dataHandlerString.cpp
+         dataHandlerStringAE.cpp
+         dataHandlerStringAS.cpp
+         dataHandlerStringCS.cpp
+         dataHandlerStringDS.cpp
+         dataHandlerStringIS.cpp
+         dataHandlerStringLO.cpp
+         dataHandlerStringLT.cpp
+         dataHandlerStringPN.cpp
+         dataHandlerStringSH.cpp
+         dataHandlerStringST.cpp
+         dataHandlerStringUI.cpp
+         Generating Code...
+         Compiling...
+         dataHandlerStringUnicode.cpp
+         dataHandlerStringUT.cpp
+         dataHandlerTime.cpp
+         dataSet.cpp
+         dicomCodec.cpp
+         dicomDict.cpp
+         dicomDir.cpp
+         drawBitmap.cpp
+         image.cpp
+         jpegCodec.cpp
+     1>.\imebra\library\imebra\src\jpegCodec.cpp(1277): warning C4101: 'e' : unreferenced local variable
+         LUT.cpp
+         modalityVOILUT.cpp
+         MONOCHROME1ToMONOCHROME2.cpp
+         MONOCHROME1ToRGB.cpp
+         MONOCHROME2ToRGB.cpp
+         MONOCHROME2ToYBRFULL.cpp
+         PALETTECOLORToRGB.cpp
+         RGBToMONOCHROME2.cpp
+         RGBToYBRFULL.cpp
+         RGBToYBRPARTIAL.cpp
+         Generating Code...
+         Compiling...
+         transaction.cpp
+         transform.cpp
+         transformHighBit.cpp
+         transformsChain.cpp
+         viewHelper.cpp
+         VOILUT.cpp
+     1>c:\users\marek kos\desktop\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(336): warning C4244: 'initializing' : conversion from 'float' to 'imbxInt32', possible loss of data
+                 .\imebra\library\imebra\src\VOILUT.cpp(389) : see reference to function template instantiation 'void puntoexe::imebra::transforms::VOILUT::templateFindOptimalVOI<float>(inputType *,size_t,imbxUint32,imbxInt32,imbxInt32,imbxInt32,imbxInt32)' being compiled
+                 with
+                 [
+                     inputType=float
+                 ]
+     1>c:\users\marek kos\desktop\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(343): warning C4244: '=' : conversion from 'float' to 'imbxInt32', possible loss of data
+     1>c:\users\marek kos\desktop\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(336): warning C4244: 'initializing' : conversion from 'double' to 'imbxInt32', possible loss of data
+                 .\imebra\library\imebra\src\VOILUT.cpp(389) : see reference to function template instantiation 'void puntoexe::imebra::transforms::VOILUT::templateFindOptimalVOI<double>(inputType *,size_t,imbxUint32,imbxInt32,imbxInt32,imbxInt32,imbxInt32)' being compiled
+                 with
+                 [
+                     inputType=double
+                 ]
+     1>c:\users\marek kos\desktop\sim\simproject\imebra\library\imebra\src\../include/VOILUT.h(343): warning C4244: '=' : conversion from 'double' to 'imbxInt32', possible loss of data
+         waveform.cpp
+         YBRFULLToMONOCHROME2.cpp
+         YBRFULLToRGB.cpp
+         YBRPARTIALToRGB.cpp
+         DicomDataAdapter.cpp
+     1>DicomDataAdapter.cpp(70): warning C4101: 'channelPixelSize' : unreferenced local variable
+         MyForm.cpp
+         Parser.cpp
+         VideoHandler.cpp
+     1>VideoHandler.cpp(159): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "C:\Users\Marek Kos\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\baseObject.obj
          Debug\baseStream.obj
          Debug\charsetConversion.obj
          Debug\charsetConversionIconv.obj
@@ -77,9 +184,43 @@
          Debug\VideoHandler.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
      1>VideoHandler.obj : warning LNK4248: unresolved typeref token (01000017) for 'AVDictionary'; image may not run
-         SIMproject.vcxproj -> F:\Ola\Moje\SIM\Debug\SIMproject.exe
-     1>Done Building Project "F:\Ola\Moje\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
+     1>oflog.lib(appender.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(appender.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(consap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(consap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(factory.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(factory.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(fileap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(fileap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(filter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(filter.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(layout.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(layout.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(logevent.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logevent.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(loglevel.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglevel.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(loglog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglog.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(lloguser.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(lloguser.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(ndc.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ndc.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(ntelogap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ntelogap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(nullap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(nullap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(objreg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(objreg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(patlay.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(patlay.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(pointer.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(pointer.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(property.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(property.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(sleep.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sleep.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(socketap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socketap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(sockbuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sockbuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(socket.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socket.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(strhelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(strhelp.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(syncprims.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(syncprims.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(threads.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(threads.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(timehelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(timehelp.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(winsock.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winsock.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(windebap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(windebap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(winconap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winconap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofcond.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcond.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofconsol.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofconsol.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(oflist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(oflist.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofstd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofstring.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstring.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofthread.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofthread.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+         SIMproject.vcxproj -> C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.exe
+     1>Done Building Project "C:\Users\Marek Kos\Desktop\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:11.79
+Time Elapsed 00:07:39.07
