@@ -11,11 +11,10 @@ using namespace log4cplus;
 DicomDataAdapter::DicomDataAdapter(char* fileName)
 {
 	DJDecoderRegistration::registerCodecs();// register JPEG codecs
-	DcmFileFormat fileformat;
 
 	if (fileformat.loadFile(fileName).good())
 	{
-		DicomDataAdapter::dataSet = fileformat.getDataset();
+		dataSet = fileformat.getDataset();
 	}
 }
 
@@ -35,15 +34,19 @@ void DicomDataAdapter::getFrameSize(Uint32 frameNumber, Uint32& height, Uint32& 
 void DicomDataAdapter::CreateBmp()
 {
 	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
-	DcmFileFormat fileformat;
 
-	if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good())
+
+	//if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good()) checkowane w konstruktorze
 	{
 		DcmDataset *dataset = fileformat.getDataset();
-		OFCondition a = dataset->chooseRepresentation(EXS_LittleEndianExplicit, NULL);
+		int representation = -1;
+		OFCondition a;
+		do{
+			a = dataset->chooseRepresentation((E_TransferSyntax)(++representation), NULL);
+		}while(!a.good()); //Jesli zaden nie jest dobry nieskonczona petla!!!
 
 		//Nie wchodzi w tego ifa!
-		if (dataset->canWriteXfer(EXS_LittleEndianExplicit))
+		if (dataset->canWriteXfer((E_TransferSyntax)(representation)))
 		{
 			DcmElement* element = NULL;
 			if (EC_Normal == dataset->findAndGetElement(DCM_PixelData, element))
@@ -56,10 +59,19 @@ void DicomDataAdapter::CreateBmp()
 				DcmFileCache * cache = NULL;
 				OFCondition cond = element->getUncompressedFrame(dataset, 0, startFragment, buffer, sizeF, decompressedColorModel, cache);
 				cond = dataset->putAndInsertUint8Array(DCM_PixelData, buffer, sizeF, true);
-				DicomImage bmImg(dataset, EXS_LittleEndianExplicit);
-				int b = bmImg.writeBMP("E:/asd.bmp", 8, 0);
+				if (cond.good())
+				{
+					DicomImage bmImg(dataset, (E_TransferSyntax)(representation));
+					if (!bmImg.writeBMP("test.bmp", 8, 0))
+					{
+						exit(4);//to do: make it smarter in future
+					}
+				}
+				else{ exit(3); }//to do: make it smarter in future
 			}
+			else{ exit(2); }//to do: make it smarter in future
 		}
+		else{ exit(1); }//to do: make it smarter in future
 	}
 }
 		

@@ -13,6 +13,8 @@ using namespace log4cplus;
 class DicomDataAdapter
 {
 public:
+	DcmFileFormat fileformat;
+
 	DicomDataAdapter(char* fileName);
 	virtual ~DicomDataAdapter();
 
