@@ -1,5 +1,6 @@
 #include <math.h>
 #include <iostream>
+#include "dcmtk/ofstd/oftypes.h"
 
 extern "C" {
 #include <libavutil/opt.h>
@@ -39,6 +40,8 @@ public:
 	DICOMBasedFrame * head, *current, *last;
 
 	/* new instance with specified frame size and frames per seconds*/
+	VideoHandler::VideoHandler(int totLength, int fps);
+	/* new instance with specified frame size and frames per seconds*/
 	VideoHandler(int width, int height, int fps);
 	/* new instance with specified frame size and total time of movie*/
 	VideoHandler(int width, int height, double time);
@@ -48,6 +51,10 @@ public:
 	Input frame is one dimension array of size [width*height].
 	*/
 	void addNewFrame(int *frame);
+	/* Adds new frame to the end of sequence.
+	Input frame is one dimension array of size [width*height].
+	*/
+	void addNewFrame(Uint8 *frame);
 	/* Adds new frame to the end of sequence.
 	Input frame is two dimension array of size [height][width].
 	*/

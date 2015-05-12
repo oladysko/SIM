@@ -11,6 +11,17 @@ DICOMBasedFrame::~DICOMBasedFrame()
 	delete next;
 }
 
+VideoHandler::VideoHandler(int totLength, int fps)
+{
+	int base = (int)(sqrt(totLength));
+	this->width = base;
+	this->height = base;
+	this->fps = fps;
+	head = NULL;
+	current = NULL;
+	last = NULL;
+	av_register_all();
+}
 VideoHandler::VideoHandler(int width, int height, int fps)
 	{
 		this->width = width;
@@ -66,6 +77,18 @@ void VideoHandler::addNewFrame(int *frame)
 			}
 		}
 	}
+/* Adds new frame to the end of sequence.
+Input frame is one dimension array of size [width*height].
+*/
+void VideoHandler::addNewFrame(Uint8 *frame)
+{
+	int *frame2 = new int[height*width];
+	for (int i = 0; i < width*height; i++)
+	{
+		frame2[i] = (int)frame[i];
+	}
+	addNewFrame(frame2);
+}
 	/* Adds new frame to the end of sequence.
 	Input frame is two dimension array of size [height][width].
 	*/
@@ -79,18 +102,7 @@ void VideoHandler::addNewFrame(int **frame)
 				oneDFrame[i*height + j] = frame[i][j];
 			}
 		}
-		if (last != NULL)
-		{
-			last->next = new DICOMBasedFrame(oneDFrame, NULL);
-			last = last->next;
-			frameN++;
-		}
-		else{
-			last = new DICOMBasedFrame(oneDFrame, NULL);
-			head = last;
-			current = head;
-			frameN++;
-		}
+		addNewFrame(oneDFrame);
 	}
 
 	/* Produces and saves the video using specified codec to the specified filename.
@@ -191,22 +203,18 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			fflush(stdout);
 			/* filling frame */
-			/*for (int j = 0; j < c->height*c->width; j++) { //my rgb fail. do not notice
-				frame->data[0][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-				frame->data[1][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-				frame->data[2][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-			}*/
+
 			for (y = 0; y < c->height; y++) {
 				for (x = 0; x < c->width; x++) {
-					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * frame->linesize[0] + x] - minV) * 255 / (maxV - minV);
+					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * c->width + x] - minV) * 255 / (maxV - minV);
 				}
 			}
 
 			/* Cb and Cr */
 			for (y = 0; y < c->height / 2; y++) {
 				for (x = 0; x < c->width / 2; x++) {
-					frame->data[1][y * frame->linesize[1] + x] = 128;// 128 + y + i * 2;
-					frame->data[2][y * frame->linesize[2] + x] = 128;// 64 + x + i * 5;
+					frame->data[1][y * frame->linesize[1] + x] = 127;
+					frame->data[2][y * frame->linesize[2] + x] = 127;
 				}
 			}
 

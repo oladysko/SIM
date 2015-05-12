@@ -6,6 +6,7 @@
 #include "dcmtk/dcmimage/diregist.h"
 #include "dcmtk/dcmjpeg/djencode.h"
 #include "dcmtk/dcmjpeg/djdecode.h"
+#include "VideoHandler.h"
 using namespace log4cplus;
 
 DicomDataAdapter::DicomDataAdapter(char* fileName)
@@ -58,11 +59,20 @@ void DicomDataAdapter::CreateBmp()
 				OFString decompressedColorModel = NULL;
 				DcmFileCache * cache = NULL;
 				OFCondition cond = element->getUncompressedFrame(dataset, 0, startFragment, buffer, sizeF, decompressedColorModel, cache);
+
+				///*Moje bazgroly
+					VideoHandler *vh = new VideoHandler(sizeF, 1);
+					for (int i = 0; i < 50;i++)
+						vh->addNewFrame(buffer); //dodaj nowego frame'a
+					vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+					delete(vh);
+				//*/
+
 				cond = dataset->putAndInsertUint8Array(DCM_PixelData, buffer, sizeF, true);
 				if (cond.good())
 				{
 					DicomImage bmImg(dataset, (E_TransferSyntax)(representation));
-					if (!bmImg.writeBMP("test.bmp", 8, 0))
+					if (bmImg.writeBMP("test.bmp"))
 					{
 						exit(4);//to do: make it smarter in future
 					}
