@@ -6,11 +6,11 @@
 #include "dcmtk/dcmimage/diregist.h"
 #include "dcmtk/dcmjpeg/djencode.h"
 #include "dcmtk/dcmjpeg/djdecode.h"
-#include "VideoHandler.h"
 using namespace log4cplus;
 
-DicomDataAdapter::DicomDataAdapter(char* fileName)
+DicomDataAdapter::DicomDataAdapter(char* fileName, VideoHandler *vh)
 {
+	this->vh = vh;
 	DJDecoderRegistration::registerCodecs();// register JPEG codecs
 	if (fileformat.loadFile(fileName).good())
 	{
@@ -81,7 +81,7 @@ void DicomDataAdapter::CreateBmp()
 				  // Access original data representation and get result within pixel sequence
 					  a = dpix->getEncapsulatedRepresentation(xferSyntax, rep, dseq);
 				  if (a == EC_Normal)
-					  {
+					{
 					    DcmPixelItem* pixitem = NULL;
 					    // Access first frame (skipping offset table)
 						    dseq->getItem(pixitem, 1);
@@ -93,17 +93,32 @@ void DicomDataAdapter::CreateBmp()
 					    if (length == 0)
 						      return;
 					    // Finally, get the compressed data for this pixel item
-						    a = pixitem->getUint8Array(pixData);
+						a = pixitem->getUint8Array(pixData);
 					    // Do something useful with pixData...
-
-							///*Moje bazgroly
-							VideoHandler *vh = new VideoHandler((int)width,(int)height, 1);
-							for (int i = 0; i < 20; i++)
+						if (a == EC_Normal)
+						{
+							if (!(vh->checkDimensions()))
+								vh->setDimensions((int)width, (int)height);
+							/*VideoHandler *vh = new VideoHandler((int)width, (int)height, 1);*/
+							//for (int i = 0; i < 20; i++)
 								vh->addNewFrame(pixData); //dodaj nowego frame'a
-							vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
-							delete(vh);
-							//*/
+							/*vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+							delete(vh);*/
 						}
+				  }else{
+					  Uint8 *arr=new Uint8 [width*height];
+					  a=element->getUint8Array(arr);
+					  if (a == EC_Normal)
+					  {
+						  if (!(vh->checkDimensions()))
+							  vh->setDimensions((int)width, (int)height);
+						  /*VideoHandler *vh = new VideoHandler((int)width, (int)height, 1);*/
+						  //for (int i = 0; i < 20; i++)
+							  vh->addNewFrame(arr); //dodaj nowego frame'a
+						  /*vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+						  delete(vh);*/
+					  }
+				  }
 			}
 			else{ exit(2); }//to do: make it smarter in future
 		}

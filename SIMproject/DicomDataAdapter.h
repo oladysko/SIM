@@ -8,6 +8,7 @@
 #include "dcmtk/dcmdata/dcdatset.h"
 #include "dcmtk/dcmdata/dcitem.h"
 #include "dcmtk/dcmdata/dcpxitem.h"
+#include "VideoHandler.h"
 
 using namespace log4cplus;
 
@@ -15,8 +16,9 @@ class DicomDataAdapter
 {
 public:
 	DcmFileFormat fileformat;
+	VideoHandler *vh;
 
-	DicomDataAdapter(char* fileName);
+	DicomDataAdapter(char* fileName, VideoHandler *vh);
 	virtual ~DicomDataAdapter();
 
 	DcmDataset* dataSet;

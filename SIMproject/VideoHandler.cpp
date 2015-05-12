@@ -10,7 +10,16 @@ DICOMBasedFrame::~DICOMBasedFrame()
 	delete frame;
 	delete next;
 }
-
+VideoHandler::VideoHandler(int fps)
+{
+	this->width = 0;
+	this->height = 0;
+	this->fps = fps;
+	head = NULL;
+	current = NULL;
+	last = NULL;
+	av_register_all();
+}
 VideoHandler::VideoHandler(int totLength, int fps)
 {
 	int mod = totLength, i = (int)(sqrt(totLength)+1);
@@ -52,6 +61,22 @@ VideoHandler::~VideoHandler()
 		delete head;
 	}
 
+void VideoHandler::setDimensions(int width, int height)
+{
+	this->width = width;
+	this->height = height;
+}
+
+bool VideoHandler::checkDimensions()
+{
+	if (width*height)//if one of them is 0 then this is false
+	{
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
 	/* Adds new frame to the end of sequence. 
 	Input frame is one dimension array of size [width*height].
 	*/ 
@@ -89,7 +114,19 @@ void VideoHandler::addNewFrame(Uint8 *frame)
 	int *frame2 = new int[height*width];
 	for (int i = 0; i < width*height; i++)
 	{
-		frame2[i] = (int)frame[i];
+		frame2[i] = frame[i];
+	}
+	addNewFrame(frame2);
+}
+/* Adds new frame to the end of sequence.
+Input frame is one dimension array of size [width*height].
+*/
+void VideoHandler::addNewFrame(Uint16 *frame)
+{
+	int *frame2 = new int[height*width];
+	for (int i = 0; i < width*height; i++)
+	{
+		frame2[i] = frame[i];
 	}
 	addNewFrame(frame2);
 }

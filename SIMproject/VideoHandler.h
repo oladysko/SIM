@@ -1,3 +1,6 @@
+#ifndef AAA_HEADER
+#define AAA_HEADER
+
 #include <math.h>
 #include <iostream>
 #include "dcmtk/ofstd/oftypes.h"
@@ -39,13 +42,20 @@ public:
 	double totalTime=0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last;
 
+	/* new instance with specified frames per seconds*/
+	VideoHandler::VideoHandler(int fps);
 	/* new instance with specified frame size and frames per seconds*/
-	VideoHandler::VideoHandler(int totLength, int fps);
+	VideoHandler(int totLength, int fps);
 	/* new instance with specified frame size and frames per seconds*/
 	VideoHandler(int width, int height, int fps);
 	/* new instance with specified frame size and total time of movie*/
 	VideoHandler(int width, int height, double time);
 	~VideoHandler();
+
+	/*changes, or sets dimensions of frame*/
+	void VideoHandler::setDimensions(int width, int height);
+	/*check whether dimensions were set*/
+	bool VideoHandler::checkDimensions();
 
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].
@@ -58,7 +68,11 @@ public:
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].
 	*/
-	void VideoHandler::addNewFrame(Uint32 *frame);
+	void addNewFrame(Uint16 *frame);
+	/* Adds new frame to the end of sequence.
+	Input frame is one dimension array of size [width*height].
+	*/
+	void addNewFrame(Uint32 *frame);
 	/* Adds new frame to the end of sequence.
 	Input frame is two dimension array of size [height][width].
 	*/
@@ -71,3 +85,5 @@ public:
 	*/
 	void video_encode(FILE *f, enum AVCodecID codec_id);
 };
+
+#endif

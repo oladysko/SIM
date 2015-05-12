@@ -22,8 +22,8 @@ void Main(array<String^>^ args)
 namespace SIMproject{
 	System::Void MyForm::button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-
-		/*TEST generacji video*/
+		/*
+		//TEST generacji video
 		VideoHandler *vh = new VideoHandler(352, 352, 25); //generalnie na razie w konstruktorze przekazuje sie parametry video
 		int *tab; //wskaznik na frame'a
 		for (int t = 0; t < 50; t++) //50 razy 1/25 = 2s
@@ -37,14 +37,14 @@ namespace SIMproject{
 		}
 		vh->video_encode("test.mp4", AV_CODEC_ID_MPEG4);
 		delete(vh);
-		/*koniec testu generacji video*/
-
-
+		//koniec testu generacji video
+		*/
 
 		//variables
 		unsigned int frameNumber;
 		String^ debugInfo;
 		String^ fileName;
+		array<System::String^>^ fileNames;
 		int bitmapHeight = 0, bitmapWidth = 0;
 		std::string stdFileName;
 		
@@ -56,21 +56,29 @@ namespace SIMproject{
 
 			//get file
 			OpenFileDialog^ dlg = gcnew OpenFileDialog();
+			dlg->Multiselect = true; //Uwaga mnogie zaznaczanie! - Marek Kos
 			dlg->ShowDialog();
-			fileName = dlg->FileName;
-			ParserH::MarshalString(fileName, stdFileName);
-			ParserH::fileNametoPath(stdFileName);
-			String^ tmpString = gcnew String(stdFileName.c_str());
-			debugInfo = debugInfo + "selected file = \n" + tmpString + "\n";
+			fileNames = dlg->FileNames;
+			//fileName = dlg->FileName;
+			if (fileNames->GetLength(0) != 0)
+			{
+				ParserH::MarshalString(fileNames[0], stdFileName);
+				ParserH::fileNametoPath(stdFileName);
+				String^ tmpString = gcnew String(stdFileName.c_str());
+				debugInfo = debugInfo + "selected file = \n" + tmpString + "\n";
+			}
 		}
 		catch (Exception^ errorHandle){
 			this->Info_label->Text = errorHandle->Message;
 			return;
 		}
 		
+		VideoHandler *vh = new VideoHandler(3);
+		for (int i = 0; i < fileNames->GetLength(0); i++)
+		{
 		//Przyklad zkradziony z MSDN
 		// Pin memory so GC can't move it while native function is called
-		pin_ptr<const wchar_t> wch = PtrToStringChars(fileName);
+		pin_ptr<const wchar_t> wch = PtrToStringChars(fileNames[i]);
 		// Conversion to char* :
 		// Can just convert wchar_t* to char* using one of the 
 		// conversion functions such as: 
@@ -78,19 +86,20 @@ namespace SIMproject{
 		// wcstombs_s()
 		// ... etc
 		size_t convertedChars = 0;
-		size_t  sizeInBytes = ((fileName->Length + 1) * 2);
+		size_t  sizeInBytes = ((fileNames[i]->Length + 1) * 2);
 		errno_t err = 0;
 		char    *ch = (char *)malloc(sizeInBytes);
 
-		err = wcstombs_s(&convertedChars,
-			ch, sizeInBytes,
-			wch, sizeInBytes);
+		err = wcstombs_s(&convertedChars,ch, sizeInBytes,wch, sizeInBytes);
 		if (err != 0)
 			//gui sie powinno rzucic tu ze podalismy nielegalne znaki w nazwie pliku
 			return;
 
-		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch);
-		dicomData.CreateBmp();
+			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
+			dicomData.CreateBmp();
+		}
+		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+		delete(vh);
 
 		//get height and width
 		//ParserH::getImageSize(bitmapHeight, bitmapWidth, frameNumber, &dicomData);
