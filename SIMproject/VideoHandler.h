@@ -24,11 +24,10 @@ extern "C" {
 
 class DICOMBasedFrame {
 public:
-	int width, height;
 	int *frame;
 	DICOMBasedFrame *next;
 
-	DICOMBasedFrame(int *frame, int width, int height, DICOMBasedFrame *next);
+	DICOMBasedFrame(int *frame, DICOMBasedFrame *next);
 	~DICOMBasedFrame();
 };
 
@@ -36,9 +35,13 @@ class VideoHandler {
 public:
 	int width, height, frameN = 0, fps;
 	int maxV = 0, minV = 0;
+	double totalTime=0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last;
 
+	/* new instance with specified frame size and frames per seconds*/
 	VideoHandler(int width, int height, int fps);
+	/* new instance with specified frame size and total time of movie*/
+	VideoHandler(int width, int height, double time);
 	~VideoHandler();
 
 	/* Adds new frame to the end of sequence.
@@ -53,4 +56,7 @@ public:
 	/* Produces and saves the video using specified codec to the specified filename.
 	*/
 	void video_encode(const char *filename, enum AVCodecID codec_id);
+	/* Produces and saves the video using specified codec to the specified filename.
+	*/
+	void video_encode(FILE *f, enum AVCodecID codec_id);
 };

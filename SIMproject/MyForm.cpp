@@ -1,7 +1,10 @@
 #include "MyForm.h"
 #include "Parser.h"
 #include "DicomDataAdapter.h"
+
+//included by Marek Kos
 #include "VideoHandler.h"
+#include <Vcclr.h>
 
 using namespace System; 
 using namespace System::Windows::Forms; 
@@ -22,13 +25,6 @@ namespace SIMproject{
 
 		/*TEST generacji video*/
 		VideoHandler *vh = new VideoHandler(352, 352, 25); //generalnie na razie w konstruktorze przekazuje sie parametry video
-		/*int *tab = new int[352 * 352]; //wskaznik na frame'a
-		for (int i = 0; i < 352 * 352; i++)
-		{
-			tab[i] = (352 - 1 - i % 352) + i / 352;
-		}
-		for (int i = 0; i < 50; i++) //50 razy 1/25 = 2s
-			vh->addNewFrame(tab);*/
 		int *tab; //wskaznik na frame'a
 		for (int t = 0; t < 50; t++) //50 razy 1/25 = 2s
 		{
@@ -72,13 +68,35 @@ namespace SIMproject{
 			return;
 		}
 		
-		
-		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter("E:/Ax Flair - 5/IM-0001-0001.dcm");
+		//Przyklad zkradziony z MSDN
+		// Pin memory so GC can't move it while native function is called
+		pin_ptr<const wchar_t> wch = PtrToStringChars(fileName);
+		// Conversion to char* :
+		// Can just convert wchar_t* to char* using one of the 
+		// conversion functions such as: 
+		// WideCharToMultiByte()
+		// wcstombs_s()
+		// ... etc
+		size_t convertedChars = 0;
+		size_t  sizeInBytes = ((fileName->Length + 1) * 2);
+		errno_t err = 0;
+		char    *ch = (char *)malloc(sizeInBytes);
+
+		err = wcstombs_s(&convertedChars,
+			ch, sizeInBytes,
+			wch, sizeInBytes);
+		if (err != 0)
+			//gui sie powinno rzucic tu ze podalismy nielegalne znaki w nazwie pliku
+			return;
+
+		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch);
 		dicomData.CreateBmp();
 
 		//get height and width
 		//ParserH::getImageSize(bitmapHeight, bitmapWidth, frameNumber, &dicomData);
-		debugInfo = "bitmapHeight = " + bitmapHeight + "\nbitmapWidth = " + bitmapWidth;//Format16bppGrayScale
+		/*debugInfo = "bitmapHeight = " + bitmapHeight + "\nbitmapWidth = " + bitmapWidth;//Format16bppGrayScale
+		rzuca mi sie to o cos, a i tak te wartosci sa nie ruszane od deklaracji wiec na razie komentuje
+		*/
 		//create bitmap
 		//this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb); 
 		//ParserH::getBitmap(bitmapHeight, bitmapWidth, frameNumber, &dicomData, this->dicomImage);
