@@ -13,9 +13,13 @@ DICOMBasedFrame::~DICOMBasedFrame()
 
 VideoHandler::VideoHandler(int totLength, int fps)
 {
-	int base = (int)(sqrt(totLength));
-	this->width = base;
-	this->height = base;
+	int mod = totLength, i = (int)(sqrt(totLength)+1);
+	while (mod != 0)
+	{
+		mod = totLength%(--i);
+	}
+	this->width = i;
+	this->height = totLength/i;
 	this->fps = fps;
 	head = NULL;
 	current = NULL;
@@ -86,6 +90,18 @@ void VideoHandler::addNewFrame(Uint8 *frame)
 	for (int i = 0; i < width*height; i++)
 	{
 		frame2[i] = (int)frame[i];
+	}
+	addNewFrame(frame2);
+}
+/* Adds new frame to the end of sequence.
+Input frame is one dimension array of size [width*height].
+*/
+void VideoHandler::addNewFrame(Uint32 *frame)
+{
+	int *frame2 = new int[height*width];
+	for (int i = 0; i < width*height; i++)
+	{
+		frame2[i] = frame[i];
 	}
 	addNewFrame(frame2);
 }

@@ -7,6 +7,7 @@
 #include "dcmtk/oflog/appender.h"
 #include "dcmtk/dcmdata/dcdatset.h"
 #include "dcmtk/dcmdata/dcitem.h"
+#include "dcmtk/dcmdata/dcpxitem.h"
 
 using namespace log4cplus;
 

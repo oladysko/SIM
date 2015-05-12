@@ -12,10 +12,17 @@ using namespace log4cplus;
 DicomDataAdapter::DicomDataAdapter(char* fileName)
 {
 	DJDecoderRegistration::registerCodecs();// register JPEG codecs
-
 	if (fileformat.loadFile(fileName).good())
 	{
 		dataSet = fileformat.getDataset();
+		if (dataSet == NULL)
+		{
+			return;
+		}
+	}
+	else
+	{
+		return;
 	}
 }
 
@@ -36,48 +43,67 @@ void DicomDataAdapter::CreateBmp()
 {
 	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
 
-
 	//if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good()) checkowane w konstruktorze
 	{
-		DcmDataset *dataset = fileformat.getDataset();
+		//DcmDataset *dataset = fileformat.getDataset();
 		int representation = -1;
 		OFCondition a;
 		do{
-			a = dataset->chooseRepresentation((E_TransferSyntax)(++representation), NULL);
+			a = dataSet->chooseRepresentation((E_TransferSyntax)(++representation), NULL);
 		}while(!a.good()); //Jesli zaden nie jest dobry nieskonczona petla!!!
 
-		//Nie wchodzi w tego ifa!
-		if (dataset->canWriteXfer((E_TransferSyntax)(representation)))
+		Uint16 width=0, height=0;
+		if (dataSet->canWriteXfer((E_TransferSyntax)(representation)))
 		{
-			DcmElement* element = NULL;
-			if (EC_Normal == dataset->findAndGetElement(DCM_PixelData, element))
+			DcmElement* element = NULL, *rows=NULL,*columns=NULL;
+			
+			if (EC_Normal == dataSet->findAndGetElement(DCM_Rows, rows))
 			{
-				Uint32 startFragment = 0;
-				Uint32 sizeF = 0;
-				element->getUncompressedFrameSize(dataset, sizeF);
-				Uint8 * buffer = new Uint8[int(sizeF)];
-				OFString decompressedColorModel = NULL;
-				DcmFileCache * cache = NULL;
-				OFCondition cond = element->getUncompressedFrame(dataset, 0, startFragment, buffer, sizeF, decompressedColorModel, cache);
+				rows->getUint16(height);
+			}
+			if (EC_Normal == dataSet->findAndGetElement(DCM_Columns, columns))
+			{
+				columns->getUint16(width);
+			}
+			if (EC_Normal == dataSet->findAndGetElement(DCM_PixelData, element))
+			{
+				DcmPixelData *dpix = NULL;
+				dpix = OFstatic_cast(DcmPixelData*, element);
+				/* Since we have compressed data, we must utilize DcmPixelSequence
+				     in order to access it in raw format, e. g. for decompressing it
+				     with an external library.
+				   */
+				  DcmPixelSequence *dseq = NULL;
+				  E_TransferSyntax xferSyntax = EXS_Unknown;
+				  const DcmRepresentationParameter *rep = NULL;
+				  // Find the key that is needed to access the right representation of the data within DCMTK
+					  dpix->getOriginalRepresentationKey(xferSyntax, rep);
+				  // Access original data representation and get result within pixel sequence
+					  a = dpix->getEncapsulatedRepresentation(xferSyntax, rep, dseq);
+				  if (a == EC_Normal)
+					  {
+					    DcmPixelItem* pixitem = NULL;
+					    // Access first frame (skipping offset table)
+						    dseq->getItem(pixitem, 1);
+					    if (pixitem == NULL)
+						      return;
+					    Uint8* pixData = NULL;
+					    // Get the length of this pixel item (i.e. fragment, i.e. most of the time, the lenght of the frame)
+						    Uint32 length = pixitem->getLength();
+					    if (length == 0)
+						      return;
+					    // Finally, get the compressed data for this pixel item
+						    a = pixitem->getUint8Array(pixData);
+					    // Do something useful with pixData...
 
-				///*Moje bazgroly
-					VideoHandler *vh = new VideoHandler(sizeF, 1);
-					for (int i = 0; i < 50;i++)
-						vh->addNewFrame(buffer); //dodaj nowego frame'a
-					vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
-					delete(vh);
-				//*/
-
-				cond = dataset->putAndInsertUint8Array(DCM_PixelData, buffer, sizeF, true);
-				if (cond.good())
-				{
-					DicomImage bmImg(dataset, (E_TransferSyntax)(representation));
-					if (bmImg.writeBMP("test.bmp"))
-					{
-						exit(4);//to do: make it smarter in future
-					}
-				}
-				else{ exit(3); }//to do: make it smarter in future
+							///*Moje bazgroly
+							VideoHandler *vh = new VideoHandler((int)width,(int)height, 1);
+							for (int i = 0; i < 20; i++)
+								vh->addNewFrame(pixData); //dodaj nowego frame'a
+							vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+							delete(vh);
+							//*/
+						}
 			}
 			else{ exit(2); }//to do: make it smarter in future
 		}

@@ -56,6 +56,10 @@ public:
 	*/
 	void addNewFrame(Uint8 *frame);
 	/* Adds new frame to the end of sequence.
+	Input frame is one dimension array of size [width*height].
+	*/
+	void VideoHandler::addNewFrame(Uint32 *frame);
+	/* Adds new frame to the end of sequence.
 	Input frame is two dimension array of size [height][width].
 	*/
 	void addNewFrame(int **frame);
