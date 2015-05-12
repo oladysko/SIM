@@ -22,15 +22,4 @@ namespace  ParserH
 				return;
 		}
 	}
-
-	void getImageSize(int& height, int& width, unsigned int frameNumber, DicomDataAdapter* dicomData)
-	{
-		height = 0;
-		width = 0;
-		Uint32 tmpHeight = 0;
-		Uint32 tmpWidth = 0;
-		dicomData->getFrameSize(frameNumber, tmpHeight, tmpWidth);
-		height = (int)tmpHeight;
-		width = (int)tmpWidth;
-	}
 }
