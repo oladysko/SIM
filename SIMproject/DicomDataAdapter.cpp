@@ -99,24 +99,16 @@ void DicomDataAdapter::CreateBmp()
 						{
 							if (!(vh->checkDimensions()))
 								vh->setDimensions((int)width, (int)height);
-							/*VideoHandler *vh = new VideoHandler((int)width, (int)height, 1);*/
-							//for (int i = 0; i < 20; i++)
 								vh->addNewFrame(pixData); //dodaj nowego frame'a
-							/*vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
-							delete(vh);*/
 						}
 				  }else{
-					  Uint8 *arr=new Uint8 [width*height];
-					  a=element->getUint8Array(arr);
+					  Uint16 *arr=new Uint16 [width*height];
+					  a=element->getUint16Array(arr);
 					  if (a == EC_Normal)
 					  {
 						  if (!(vh->checkDimensions()))
 							  vh->setDimensions((int)width, (int)height);
-						  /*VideoHandler *vh = new VideoHandler((int)width, (int)height, 1);*/
-						  //for (int i = 0; i < 20; i++)
 							  vh->addNewFrame(arr); //dodaj nowego frame'a
-						  /*vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
-						  delete(vh);*/
 					  }
 				  }
 			}

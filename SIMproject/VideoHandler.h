@@ -36,26 +36,29 @@ public:
 };
 
 class VideoHandler {
-public:
-	int width, height, frameN = 0, fps;
+private:
+	int width, height, frameN = 0, fps,infps;
 	int maxV = 0, minV = 0;
 	double totalTime=0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last;
 
+public:
 	/* new instance with specified frames per seconds*/
-	VideoHandler::VideoHandler(int fps);
+	VideoHandler(int fps, int infps);
 	/* new instance with specified frame size and frames per seconds*/
-	VideoHandler(int totLength, int fps);
+	VideoHandler(int totLength, int fps, int infps);
 	/* new instance with specified frame size and frames per seconds*/
-	VideoHandler(int width, int height, int fps);
+	VideoHandler(int width, int height, int fps, int infps);
 	/* new instance with specified frame size and total time of movie*/
-	VideoHandler(int width, int height, double time);
+	VideoHandler(int width, int height, double time, int infps);
 	~VideoHandler();
 
 	/*changes, or sets dimensions of frame*/
 	void VideoHandler::setDimensions(int width, int height);
 	/*check whether dimensions were set*/
 	bool VideoHandler::checkDimensions();
+
+	void VideoHandler::interpolate();
 
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].

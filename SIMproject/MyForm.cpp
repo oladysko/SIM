@@ -73,7 +73,8 @@ namespace SIMproject{
 			return;
 		}
 		
-		VideoHandler *vh = new VideoHandler(3);
+		VideoHandler *vh = new VideoHandler(25,1);
+		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)
 		{
 		//Przyklad zkradziony z MSDN

@@ -10,17 +10,19 @@ DICOMBasedFrame::~DICOMBasedFrame()
 	delete frame;
 	delete next;
 }
-VideoHandler::VideoHandler(int fps)
+
+VideoHandler::VideoHandler(int fps, int infps)
 {
 	this->width = 0;
 	this->height = 0;
 	this->fps = fps;
+	this->infps = infps;
 	head = NULL;
 	current = NULL;
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int totLength, int fps)
+VideoHandler::VideoHandler(int totLength, int fps, int infps)
 {
 	int mod = totLength, i = (int)(sqrt(totLength)+1);
 	while (mod != 0)
@@ -30,26 +32,29 @@ VideoHandler::VideoHandler(int totLength, int fps)
 	this->width = i;
 	this->height = totLength/i;
 	this->fps = fps;
+	this->infps = infps;
 	head = NULL;
 	current = NULL;
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int width, int height, int fps)
+VideoHandler::VideoHandler(int width, int height, int fps, int infps)
 	{
 		this->width = width;
 		this->height = height;
 		this->fps = fps;
+		this->infps = infps;
 		head = NULL;
 		current = NULL;
 		last = NULL;
 		av_register_all();
 	}
-VideoHandler::VideoHandler(int width, int height, double time)
+VideoHandler::VideoHandler(int width, int height, double time, int infps)
 {
 	this->width = width;
 	this->height = height;
 	this->fps = 0;
+	this->infps = infps;
 	this->totalTime = time;
 	head = NULL;
 	current = NULL;
@@ -75,6 +80,44 @@ bool VideoHandler::checkDimensions()
 	}else{
 		return 0;
 	}
+}
+
+void VideoHandler::interpolate()
+{
+	int endFrameN = (int)(frameN*fps/infps);
+	current = head;
+	int *lastframe,*nextframe;
+	for (int i = 0; i < endFrameN; i++)
+	{
+		if (i%fps>0)
+		{
+			int *newframe = new int [width*height];
+			for (int j = 0; j < width*height; j++)
+			{
+				newframe[j] = (int)((lastframe[j] * (fps - (i%fps))) / (fps) +
+									(nextframe[j] * (i%fps)) / (fps));
+			}
+			current->next=new DICOMBasedFrame(newframe, current->next);
+			current = current->next;
+		}
+		else{
+			lastframe = current->frame;
+			current = current->next;
+			if (current->next == NULL)
+			{
+				nextframe = new int[height*width];
+				for (int j = 0; j < width*height; j++)
+				{
+					nextframe[j] = 0;
+				}
+				current->next = new DICOMBasedFrame(nextframe, current->next);
+				last = current->next;
+			}else{
+				nextframe = current->next->frame;
+			}
+		}
+	}
+	frameN = endFrameN;
 }
 
 	/* Adds new frame to the end of sequence. 
@@ -200,6 +243,8 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		}else{
 			c->time_base = av_make_q(1, fps);
 		}
+		interpolate();
+		current = head;
 		/* emit one intra frame every ten frames
 		* check frame pict_type before passing frame
 		* to encoder, if frame->pict_type is AV_PICTURE_TYPE_I
@@ -258,7 +303,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			/* filling frame */
 
 			for (y = 0; y < c->height; y++) {
-				for (x = 0; x < c->width; x++) {
+				for (x = 0; x <c->width; x++) {
 					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * c->width + x] - minV) * 255 / (maxV - minV);
 				}
 			}
@@ -287,6 +332,10 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 				av_free_packet(&pkt);
 			}
 			current = current->next;
+			if (current == NULL)
+			{
+				break;
+			}
 		}
 
 		/* get the delayed frames */
@@ -409,14 +458,9 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			fflush(stdout);
 			/* filling frame */
-			/*for (int j = 0; j < c->height*c->width; j++) { //my rgb fail. do not notice
-			frame->data[0][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-			frame->data[1][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-			frame->data[2][j] = (current->frame[j] - minV) * 255 / (maxV - minV);
-			}*/
 			for (y = 0; y < c->height; y++) {
-				for (x = 0; x < c->width; x++) {
-					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * frame->linesize[0] + x] - minV) * 255 / (maxV - minV);
+				for (x = 0; x <c->width; x++) {
+					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * c->width + x] - minV) * 255 / (maxV - minV);
 				}
 			}
 
