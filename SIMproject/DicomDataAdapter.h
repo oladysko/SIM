@@ -19,6 +19,7 @@ public:
 	VideoHandler *vh;
 
 	DicomDataAdapter(char* fileName, VideoHandler *vh);
+	DicomDataAdapter();
 	virtual ~DicomDataAdapter();
 
 	DcmDataset* dataSet;

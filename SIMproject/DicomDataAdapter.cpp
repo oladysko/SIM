@@ -8,6 +8,9 @@
 #include "dcmtk/dcmjpeg/djdecode.h"
 using namespace log4cplus;
 
+DicomDataAdapter::DicomDataAdapter()
+{
+}
 DicomDataAdapter::DicomDataAdapter(char* fileName, VideoHandler *vh)
 {
 	this->vh = vh;

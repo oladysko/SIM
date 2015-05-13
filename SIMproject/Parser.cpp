@@ -22,4 +22,53 @@ namespace  ParserH
 				return;
 		}
 	}
+
+	void getBitmap(DicomDataAdapter* dicomData, Bitmap^ dicomImage)
+	{
+		int width;
+		int height;
+		dicomData->vh->getSize(width, height);
+		//allocate memory for dicom data, wchih is passed to imebra function, declare some variables
+		int * tmpData = new int[height *width];
+		int maxPixelValue = 1, minPixelValue = 255; // 1 to prevent dicision by 0
+		//create rectangle, special structure for storaging image data
+		Drawing::Rectangle rect = Drawing::Rectangle(0, 0, dicomImage->Width, dicomImage->Height);
+		//lock bits of image
+		BitmapData^	bmpData = dicomImage->LockBits(rect, ImageLockMode::ReadWrite, dicomImage->PixelFormat);
+		//get the addres of the first line
+		IntPtr ptr = bmpData->Scan0;
+		//declare an array to hold the bytes ot the bitmap,,doesn't work for bitmaps with grayscale or other than 24 bits per pixel
+		int bytes = Math::Abs(bmpData->Stride) * dicomImage->Height;//get data size
+		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
+		//retrive data from imebra
+		int* frame = dicomData->vh->getFirst();
+
+		//find min and max values
+		for (int n = 0; n < height*width; n++)
+		{
+			if (frame[n] > maxPixelValue)
+				maxPixelValue = tmpData[n];
+			if (frame[n] < minPixelValue)
+				minPixelValue = tmpData[n];
+		}
+
+		//normalize data to 255 in other words, make some artefacts
+		for (int n = 0; n < height*width; n++)
+		{
+			frame[n] = (int)((double)frame[n] * 255 / (double)maxPixelValue);
+		}
+
+		//copy data to bitmap, it doesn't work for simple grayscale and nedd to do something with RGB values
+		
+		for (int counter = 0; counter < rgbValues->Length; counter++){
+			rgbValues[counter] = frame[(int)(counter)];
+		}
+		
+		//copy array to bitmap
+		Runtime::InteropServices::Marshal::Copy(rgbValues, 0, ptr, bytes);
+		//unlock bits
+		dicomImage->UnlockBits(bmpData);
+		//delete pointer to data
+		delete[] rgbValues;
+	}
 }

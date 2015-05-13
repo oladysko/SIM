@@ -15,5 +15,9 @@ namespace  ParserH
 {
 	void MarshalString(String ^ s, std::string& os);
 	void fileNametoPath(std::string% os);
+	void getBitmap(DicomDataAdapter* dicomData, Bitmap^ dicomImage);
 }
+
+
+
 #endif

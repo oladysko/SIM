@@ -47,7 +47,7 @@ namespace SIMproject{
 		array<System::String^>^ fileNames;
 		int bitmapHeight = 0, bitmapWidth = 0;
 		std::string stdFileName;
-		
+
 		try
 		{
 			//get frame number
@@ -98,22 +98,17 @@ namespace SIMproject{
 
 			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
 			dicomData.CreateBmp();
+
+			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth);
+			ParserH::getBitmap(&dicomData, this->dicomImage);
+
+			//display picture
+			pictureBox1->Image = this->dicomImage;
+			//this->Info_label->Text = ;
 		}
-		vh->video_encode("test2.mp4", AV_CODEC_ID_H264);
+		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+
 		delete(vh);
-
-		//get height and width
-		//ParserH::getImageSize(bitmapHeight, bitmapWidth, frameNumber, &dicomData);
-		/*debugInfo = "bitmapHeight = " + bitmapHeight + "\nbitmapWidth = " + bitmapWidth;//Format16bppGrayScale
-		rzuca mi sie to o cos, a i tak te wartosci sa nie ruszane od deklaracji wiec na razie komentuje
-		*/
-		//create bitmap
-		//this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb); 
-		//ParserH::getBitmap(bitmapHeight, bitmapWidth, frameNumber, &dicomData, this->dicomImage);
-
-		//display picture
-		//pictureBox1->Image = this->dicomImage;
-		//this->Info_label->Text = debugInfo;
 	}
 
 	System::Void MyForm::saveCurrent_Click(System::Object^  sender, System::EventArgs^  e) {

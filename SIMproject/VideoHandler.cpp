@@ -392,7 +392,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			c->time_base = av_make_q(1, fps);
 		}
 		clearFrames();
-		interpolate();
+		//interpolate();
 		current = head;
 
 		AVFormatContext *s = avformat_alloc_context();
