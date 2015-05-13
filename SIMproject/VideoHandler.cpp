@@ -1,14 +1,15 @@
 #include "VideoHandler.h"
 
-DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next)
+DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next,DICOMBasedFrame *prev)
 {
 	this->frame = frame;
 	this->next = next;
+	this->prev = prev;
+	accepted = true;
 }
 DICOMBasedFrame::~DICOMBasedFrame()
 {
 	delete frame;
-	delete next;
 }
 
 VideoHandler::VideoHandler(int fps, int infps)
@@ -63,7 +64,13 @@ VideoHandler::VideoHandler(int width, int height, double time, int infps)
 }
 VideoHandler::~VideoHandler()
 	{
-		delete head;
+		DICOMBasedFrame *p;
+		while (head != NULL)
+		{
+			p = head;
+			head = head->next;
+			delete p;
+		}
 	}
 
 void VideoHandler::setDimensions(int width, int height)
@@ -82,6 +89,96 @@ bool VideoHandler::checkDimensions()
 	}
 }
 
+int* VideoHandler::getThisFrame()
+{
+	return current->frame;
+}
+int VideoHandler::moveToNextFrame()
+{
+	if (current->next != NULL)
+	{
+		current = current->next;
+		return 0;//all ok
+	}
+	else{
+		return 1;//Failure
+	}
+}
+int* VideoHandler::getAndMoveFrame()
+{
+	int *h = getThisFrame();
+	if (moveToNextFrame() != 0)
+	{
+		return NULL;
+	}
+	return h;
+}
+int VideoHandler::moveToPrevFrame()
+{
+	if (current->prev != NULL)
+	{
+		current = current->prev;
+		return 0;//all ok
+	}
+	else{
+		return 1;//Failure
+	}
+}
+int* VideoHandler::getAndBackFrame()
+{
+	int *h = getThisFrame();
+	if (moveToPrevFrame() != 0)
+	{
+		return NULL;
+	}
+	return h;
+}
+int* VideoHandler::getNFrame(int n)
+{
+	DICOMBasedFrame *p = head;
+	for (int i = 1; i < n; i++)
+	{
+		p = p->next;
+		if (p == NULL)
+		{
+			return NULL;
+		}
+	}
+	return p->frame;
+}
+int* VideoHandler::getFirst()
+{
+	if (head != NULL)
+		return head->frame;
+	else
+		return NULL;
+}
+int* VideoHandler::getLast()
+{
+	if (last != NULL)
+		return last->frame;
+	else
+		return NULL;
+}
+int VideoHandler::getSize(int &w, int &h)
+{
+	if (checkDimensions())
+	{
+		return 1;
+	}
+	w = width;
+	h = height;
+	return 0;
+}
+void VideoHandler::reverseCurrentState()
+{
+	current->accepted = !(current->accepted);
+}
+bool VideoHandler::getCurrentState()
+{
+	return (current->accepted);
+}
+
 void VideoHandler::interpolate()
 {
 	int endFrameN = (int)(frameN*fps/infps);
@@ -97,7 +194,7 @@ void VideoHandler::interpolate()
 				newframe[j] = (int)((lastframe[j] * (fps - (i%fps))) / (fps) +
 									(nextframe[j] * (i%fps)) / (fps));
 			}
-			current->next=new DICOMBasedFrame(newframe, current->next);
+			current->next=new DICOMBasedFrame(newframe, current->next,current);
 			current = current->next;
 		}
 		else{
@@ -110,7 +207,7 @@ void VideoHandler::interpolate()
 				{
 					nextframe[j] = 0;
 				}
-				current->next = new DICOMBasedFrame(nextframe, current->next);
+				current->next = new DICOMBasedFrame(nextframe, current->next,current);
 				last = current->next;
 			}else{
 				nextframe = current->next->frame;
@@ -118,6 +215,46 @@ void VideoHandler::interpolate()
 		}
 	}
 	frameN = endFrameN;
+}
+void VideoHandler::clearFrames()
+{
+	current = head;
+	int howManyLost = 0;
+	for (int i = 0; i < frameN; i++)
+	{
+		if (current != NULL)
+		{
+			if (!(current->accepted))
+			{
+				if (current->prev == NULL)
+				{
+					head=current->next;
+					head->prev = NULL;
+					howManyLost++;
+					delete current;
+					current = head;
+				}
+				else{
+					if (current->next == NULL)
+					{
+						last = current->prev;
+						last->next = NULL;
+						howManyLost++;
+						delete current;
+						current = last;
+					}
+					else{
+						DICOMBasedFrame *p=current->prev;
+						p->next = current->next;
+						current->next->prev = p;
+						howManyLost++;
+						delete current;
+						current = p;
+					}
+				}
+			}
+		}
+	}
 }
 
 	/* Adds new frame to the end of sequence. 
@@ -127,11 +264,11 @@ void VideoHandler::addNewFrame(int *frame)
 	{
 		if (last != NULL)
 		{
-			last->next = new DICOMBasedFrame(frame,  NULL);
+			last->next = new DICOMBasedFrame(frame,  NULL,last);
 			last = last->next;
 			frameN++;
 		}else{
-			last = new DICOMBasedFrame(frame,  NULL);
+			last = new DICOMBasedFrame(frame,  NULL,NULL);
 			head=last;
 			current = head;
 			frameN++;
@@ -203,6 +340,18 @@ void VideoHandler::addNewFrame(int **frame)
 
 	/* Produces and saves the video using specified codec to the specified filename.
 	*/
+
+int VideoHandler::read_packet(void *opaque, uint8_t *buf, int buf_size)
+{
+	struct buffer_data *bd = (struct buffer_data *)opaque;
+	buf_size = FFMIN(buf_size, bd->size);
+	printf("ptr:%p size:%zu\n", bd->ptr, bd->size);
+	/* copy internal buffer data to buf */
+	memcpy(buf, bd->ptr, buf_size);
+	bd->ptr += buf_size;
+	bd->size -= buf_size;
+	return buf_size;
+}
 void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	{
 		AVCodec *codec;
@@ -213,19 +362,18 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		AVPacket pkt;
 		uint8_t endcode[] = { 0, 0, 1, 0xb7 };
 
-		printf("Encode video file %s\n", filename);
 
 		/* find the mpeg1 video encoder */
 		codec = avcodec_find_encoder(codec_id);
 		if (!codec) {
-			fprintf(stderr, "Codec not found\n");
+			//fprintf(stderr, "Codec not found\n");
 			system("pause");
 			exit(1);
 		}
 
 		c = avcodec_alloc_context3(codec);
 		if (!c) {
-			fprintf(stderr, "Could not allocate video codec context\n");
+			//fprintf(stderr, "Could not allocate video codec context\n");
 			system("pause");
 			exit(1);
 		}
@@ -243,8 +391,36 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		}else{
 			c->time_base = av_make_q(1, fps);
 		}
+		clearFrames();
 		interpolate();
 		current = head;
+
+		AVFormatContext *s = avformat_alloc_context();
+		AVOutputFormat *of = av_guess_format(0, "test4.mp4", 0);
+		s->oformat = of;
+		s->bit_rate = 400000;
+
+		AVIOContext *avio_ctx=NULL;
+		uint8_t *buffer = NULL, *avio_ctx_buffer = NULL;
+		size_t buffer_size, avio_ctx_buffer_size = 4096;
+		char *input_filename = NULL;
+		ret = 0;
+		struct buffer_data bd = { 0 };
+		ret = av_file_map("test4.mp4", &buffer, &buffer_size, 0, NULL);
+		/* fill opaque structure used by the AVIOContext read callback */
+		bd.ptr = buffer;
+		bd.size = buffer_size;
+		avio_ctx_buffer = new uint8_t[avio_ctx_buffer_size];
+		avio_ctx = avio_alloc_context(avio_ctx_buffer, avio_ctx_buffer_size,
+			0, &bd, &read_packet, NULL, NULL);
+		s->pb = avio_ctx;
+
+		AVStream *avs=avformat_new_stream(s,codec);
+		AVRational avr = *new AVRational();
+		avr.den = fps;
+		avr.num = 1;
+		s->streams[0]->time_base=avr;
+		avformat_write_header(s, NULL);
 		/* emit one intra frame every ten frames
 		* check frame pict_type before passing frame
 		* to encoder, if frame->pict_type is AV_PICTURE_TYPE_I
@@ -298,6 +474,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			av_init_packet(&pkt);
 			pkt.data = NULL;    // packet data will be allocated by the encoder
 			pkt.size = 0;
+			pkt.pts = i;
 
 			fflush(stdout);
 			/* filling frame */
@@ -318,6 +495,10 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			frame->pts = i;
 
+			if (pkt.pts != AV_NOPTS_VALUE)
+				pkt.pts = av_rescale_q(pkt.pts, avs->codec->time_base, avs->time_base);
+			if (pkt.dts != AV_NOPTS_VALUE)
+				pkt.dts = av_rescale_q(pkt.dts, avs->codec->time_base, avs->time_base);
 			/* encode the image */
 			ret = avcodec_encode_video2(c, &pkt, frame, &got_output);
 			if (ret < 0) {
@@ -328,7 +509,9 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			if (got_output) {
 				printf("Write frame %3d (size=%5d)\n", i, pkt.size);
+				
 				fwrite(pkt.data, 1, pkt.size, f);
+				//av_write_frame(s, &pkt);
 				av_free_packet(&pkt);
 			}
 			current = current->next;
@@ -355,10 +538,15 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 				av_free_packet(&pkt);
 			}
 		}
+		
+		//av_write_trailer(s);
+		avformat_free_context(s);
 
 		/* add sequence end code to have a real mpeg file */
 		fwrite(endcode, 1, sizeof(endcode), f);
 		fclose(f);
+
+		//avcodec_close(avs->codec);
 
 		avcodec_close(c);
 		av_free(c);

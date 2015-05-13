@@ -99,7 +99,7 @@ namespace SIMproject{
 			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
 			dicomData.CreateBmp();
 		}
-		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+		vh->video_encode("test2.mp4", AV_CODEC_ID_H264);
 		delete(vh);
 
 		//get height and width
