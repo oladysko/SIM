@@ -74,6 +74,7 @@ namespace SIMproject{
 		}
 		
 		VideoHandler *vh = new VideoHandler(25,1);
+		
 		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)
 		{
@@ -96,19 +97,20 @@ namespace SIMproject{
 			//gui sie powinno rzucic tu ze podalismy nielegalne znaki w nazwie pliku
 			return;
 
-			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
+			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch, vh);
 			dicomData.CreateBmp();
-			dicomData.vh->getSize(bitmapWidth, bitmapHeight);
-			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format16bppGrayScale);
-
-			this->Info_label->Text = bitmapWidth +" "+ bitmapHeight;
-
-			ParserH::getBitmap(&dicomData, this->dicomImage);
-
-			//display picture
-			pictureBox1->Image = this->dicomImage;
-			//this->Info_label->Text = ;
 		}
+		vh->getSize(bitmapWidth, bitmapHeight);
+		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
+
+		this->Info_label->Text = bitmapWidth + " " + bitmapHeight;
+		int* frame = vh->getFirst();
+
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame);
+
+		//display picture
+		pictureBox1->Image = this->dicomImage;
+		//this->Info_label->Text = ;
 		
 		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
 

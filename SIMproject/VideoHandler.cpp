@@ -9,7 +9,7 @@ DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next,DICOMBasedFra
 }
 DICOMBasedFrame::~DICOMBasedFrame()
 {
-	delete frame;
+	delete[] frame;
 }
 
 VideoHandler::VideoHandler(int fps, int infps)

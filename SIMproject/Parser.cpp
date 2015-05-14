@@ -23,14 +23,11 @@ namespace  ParserH
 		}
 	}
 
-	void getBitmap(DicomDataAdapter* dicomData, Bitmap^ dicomImage)
+	void getBitmap(int width, int height, Bitmap^ dicomImage, int* frame)
 	{
-		int width;
-		int height;
-		dicomData->vh->getSize(width, height);
 		//allocate memory for dicom data, wchih is passed to imebra function, declare some variables
 		int * tmpData = new int[height *width];
-		int maxPixelValue = 1, minPixelValue = 255; // 1 to prevent dicision by 0
+		int maxPixelValue = 1, minPixelValue = 255; // 1 to prevent division by 0
 		//create rectangle, special structure for storaging image data
 		Drawing::Rectangle rect = Drawing::Rectangle(0, 0, dicomImage->Width, dicomImage->Height);
 		//lock bits of image
@@ -38,13 +35,10 @@ namespace  ParserH
 		//get the addres of the first line
 		IntPtr ptr = bmpData->Scan0;
 
-		//declare an array to hold the bytes ot the bitmap,,doesn't work for bitmaps with grayscale or other than 24 bits per pixel
+		//declare an array to hold the bytes of the bitmap, doesn't work for bitmaps with grayscale or other than 24 bits per pixel
 		//int bytes = Math::Abs(bmpData->Stride) * dicomImage->Height;//get data size
-		int bytes = dicomImage->Width * dicomImage->Height * 2;
+		int bytes = dicomImage->Width * dicomImage->Height*3;
 		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
-
-		//retrive data from imebra
-		int* frame = dicomData->vh->getFirst();
 
 		//find min and max values
 		for (int n = 0; n < height*width; n++)
@@ -54,10 +48,11 @@ namespace  ParserH
 			if (frame[n] < minPixelValue)
 				minPixelValue = frame[n];
 		}
-
+		int helper = 0;
 		//normalize data to 255 in other words, make some artefacts
 		for (int counter = 0; counter < rgbValues->Length; counter++){
-			rgbValues[counter] = frame[counter];
+			helper = (frame[counter] - minPixelValue) * 255 / (maxPixelValue - minPixelValue);
+			rgbValues[counter] = (helper<<16)+(helper<<8)+helper;
 		}
 		
 		//copy array to bitmap
