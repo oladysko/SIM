@@ -5,6 +5,8 @@ DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next,DICOMBasedFra
 	this->frame = frame;
 	this->next = next;
 	this->prev = prev;
+	minV = 5000000; //arbitrary maximal valueo of minimal value
+	maxV = 0;
 	accepted = true;
 }
 DICOMBasedFrame::~DICOMBasedFrame()
@@ -178,6 +180,24 @@ int VideoHandler::getSize(int &w, int &h)
 	h = height;
 	return 0;
 }
+int VideoHandler::getGlobalMinMax(int &min, int &max)
+{
+	min = minV;
+	max = maxV;
+	return 0;
+}
+int VideoHandler::getCurrentMinMax(int &min, int &max)
+{
+	if (current != NULL)
+	{
+		min = current->minV;
+		max = current->maxV;
+		return 0;
+	}
+	else{
+		return 1;
+	}
+}
 void VideoHandler::reverseCurrentState()
 {
 	current->accepted = !(current->accepted);
@@ -292,6 +312,16 @@ void VideoHandler::addNewFrame(int *frame)
 				if (frame[i] < minV)
 				{
 					minV = frame[i];
+				}
+			}
+			if (frame[i]>last->maxV)
+			{
+				last->maxV = frame[i];
+			}
+			else{
+				if (frame[i] < last->minV)
+				{
+					last->minV = frame[i];
 				}
 			}
 		}

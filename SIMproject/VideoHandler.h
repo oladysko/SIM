@@ -38,6 +38,7 @@ struct buffer_data {
 class DICOMBasedFrame {
 public:
 	int *frame;
+	int minV, maxV;
 	DICOMBasedFrame *next,*prev;
 	bool accepted;
 
@@ -48,7 +49,7 @@ public:
 class VideoHandler {
 private:
 	int width, height, frameN = 0, fps,infps;
-	int maxV = 0, minV = 0;
+	int maxV = 0, minV = 5000000;
 	double totalTime=0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last;
 
@@ -87,6 +88,12 @@ public:
 	/*Returns to parameters width and height of frames.
 	*Returns 0 if values are valid, 1 if not (w and h aren't changed either)*/
 	int getSize(int &w, int &h);
+	/*Returns to parameters minimal and maximal value of all frames.
+	*Returns 0 if values are valid, 1 if not (min and max aren't changed either)*/
+	int getGlobalMinMax(int &min, int &max);
+	/*Returns to parameters minimal and maximal value of this frame.
+	*Returns 0 if values are valid, 1 if not (min and max aren't changed either)*/
+	int getCurrentMinMax(int &min, int &max);
 	void VideoHandler::reverseCurrentState();
 	bool VideoHandler::getCurrentState();
 

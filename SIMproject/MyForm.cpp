@@ -107,9 +107,12 @@ namespace SIMproject{
 		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 
 		this->Info_label->Text = bitmapWidth + " " + bitmapHeight;
+		int min, max;
+		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
+		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
 		int* frame = vh->getAndMoveFrame();
 
-		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame);
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame,min,max);
 
 		//display picture
 		pictureBox1->Image = this->dicomImage;
@@ -133,27 +136,25 @@ namespace SIMproject{
 			this->Info_label->Text = "filename for saving: " + saveFileDialog->FileName;
 			this->dicomImage->Save(saveFileDialog->FileName, Imaging::ImageFormat::Jpeg);
 		}*/
-		int bitmapHeight = 0, bitmapWidth = 0;
+		int bitmapHeight = 0, bitmapWidth = 0, min,max;
 		int* frame;
-		bool dt;
-		do{
-			dt = false;
-			if (dir)
-			{
-				frame = vh->getAndMoveFrame();
-			}
-			else{
-				frame = vh->getAndBackFrame();
-			}
-			if (frame == NULL)
-			{
-				dt = true;
-				dir = !dir;
-			}
-		} while (dt);
+		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
+		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
+		if (dir)
+		{
+			frame = vh->getAndMoveFrame();
+		}
+		else{
+			frame = vh->getAndBackFrame();
+		}
+		if (frame == NULL)
+		{
+			frame = vh->getThisFrame();
+			dir = !dir;
+		}
 		vh->getSize(bitmapWidth, bitmapHeight);
 		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
-		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame);
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame,min,max);
 
 		//display picture
 		pictureBox1->Image = this->dicomImage;
