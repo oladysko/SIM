@@ -98,7 +98,6 @@ namespace SIMproject{
 
 			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
 			dicomData.CreateBmp();
-
 			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth);
 			ParserH::getBitmap(&dicomData, this->dicomImage);
 
@@ -106,6 +105,7 @@ namespace SIMproject{
 			pictureBox1->Image = this->dicomImage;
 			//this->Info_label->Text = ;
 		}
+		
 		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
 
 		delete(vh);

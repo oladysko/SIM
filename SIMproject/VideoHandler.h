@@ -86,7 +86,7 @@ public:
 	int* VideoHandler::getLast();
 	/*Returns to parameters width and height of frames.
 	*Returns 0 if values are valid, 1 if not (w and h aren't changed either)*/
-	int VideoHandler::getSize(int &w, int &h);
+	int getSize(int &w, int &h);
 	void VideoHandler::reverseCurrentState();
 	bool VideoHandler::getCurrentState();
 

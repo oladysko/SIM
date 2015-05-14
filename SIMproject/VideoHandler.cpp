@@ -81,11 +81,11 @@ void VideoHandler::setDimensions(int width, int height)
 
 bool VideoHandler::checkDimensions()
 {
-	if (width*height)//if one of them is 0 then this is false
+	if ((width*height)!=0)//if one of them is 0 then this is false
 	{
-		return 1;
+		return true;
 	}else{
-		return 0;
+		return false;
 	}
 }
 
@@ -162,7 +162,7 @@ int* VideoHandler::getLast()
 }
 int VideoHandler::getSize(int &w, int &h)
 {
-	if (checkDimensions())
+	if (!checkDimensions())
 	{
 		return 1;
 	}
