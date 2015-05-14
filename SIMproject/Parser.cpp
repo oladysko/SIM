@@ -51,8 +51,9 @@ namespace  ParserH
 		int helper = 0;
 		//normalize data to 255 in other words, make some artefacts
 		for (int counter = 0; counter < rgbValues->Length; counter++){
-			helper = (frame[counter] - minPixelValue) * 255 / (maxPixelValue - minPixelValue);
-			rgbValues[counter] = (helper<<16)+(helper<<8)+helper;
+			if (counter%3==0)
+				helper = (frame[counter/3] - minPixelValue) * 255 / (maxPixelValue - minPixelValue);
+			rgbValues[counter] = helper;
 		}
 		
 		//copy array to bitmap
