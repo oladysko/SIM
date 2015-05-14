@@ -10,6 +10,9 @@ using namespace System;
 using namespace System::Windows::Forms; 
 using namespace System::Drawing;
 
+VideoHandler *vh;
+bool dir = true;//z czasem
+
 [STAThread] 
 void Main(array<String^>^ args) 
 { 
@@ -73,7 +76,7 @@ namespace SIMproject{
 			return;
 		}
 		
-		VideoHandler *vh = new VideoHandler(25,1);
+		vh = new VideoHandler(25,1);
 		
 		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)
@@ -104,7 +107,7 @@ namespace SIMproject{
 		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 
 		this->Info_label->Text = bitmapWidth + " " + bitmapHeight;
-		int* frame = vh->getFirst();
+		int* frame = vh->getAndMoveFrame();
 
 		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame);
 
@@ -113,11 +116,13 @@ namespace SIMproject{
 		//this->Info_label->Text = ;
 		
 		vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
-
-		delete(vh);
+		int a, b,c;
+		c=a + b;
+		//delete(vh);
 	}
 
 	System::Void MyForm::saveCurrent_Click(System::Object^  sender, System::EventArgs^  e) {
+		/*
 		SaveFileDialog ^ saveFileDialog = gcnew SaveFileDialog();
 		saveFileDialog->Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
 		saveFileDialog->Title = "Save an Image File";
@@ -127,7 +132,31 @@ namespace SIMproject{
 		if (saveFileDialog->FileName != ""){
 			this->Info_label->Text = "filename for saving: " + saveFileDialog->FileName;
 			this->dicomImage->Save(saveFileDialog->FileName, Imaging::ImageFormat::Jpeg);
-		}
+		}*/
+		int bitmapHeight = 0, bitmapWidth = 0;
+		int* frame;
+		bool dt;
+		do{
+			dt = false;
+			if (dir)
+			{
+				frame = vh->getAndMoveFrame();
+			}
+			else{
+				frame = vh->getAndBackFrame();
+			}
+			if (frame == NULL)
+			{
+				dt = true;
+				dir = !dir;
+			}
+		} while (dt);
+		vh->getSize(bitmapWidth, bitmapHeight);
+		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame);
+
+		//display picture
+		pictureBox1->Image = this->dicomImage;
 	}
 }
 

@@ -91,17 +91,25 @@ bool VideoHandler::checkDimensions()
 
 int* VideoHandler::getThisFrame()
 {
-	return current->frame;
+	if (current != NULL)
+		return current->frame;
+	return NULL;
 }
 int VideoHandler::moveToNextFrame()
 {
-	if (current->next != NULL)
+	if (current != NULL)
 	{
-		current = current->next;
-		return 0;//all ok
+		if ((current->next) != NULL)
+		{
+			current = current->next;
+			return 0;//all ok
+		}
+		else{
+			return 1;//Failure
+		}
 	}
 	else{
-		return 1;//Failure
+		return 2;
 	}
 }
 int* VideoHandler::getAndMoveFrame()
@@ -181,6 +189,7 @@ bool VideoHandler::getCurrentState()
 
 void VideoHandler::interpolate()
 {
+	DICOMBasedFrame *current;
 	int endFrameN = (int)(frameN*fps/infps);
 	current = head;
 	int *lastframe,*nextframe;
@@ -218,6 +227,7 @@ void VideoHandler::interpolate()
 }
 void VideoHandler::clearFrames()
 {
+	DICOMBasedFrame *current;
 	current = head;
 	int howManyLost = 0;
 	for (int i = 0; i < frameN; i++)
@@ -354,6 +364,7 @@ int VideoHandler::read_packet(void *opaque, uint8_t *buf, int buf_size)
 }
 void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	{
+		DICOMBasedFrame *current;
 		AVCodec *codec;
 		AVCodecContext *c = NULL;
 		int i, ret, x, y, got_output;
