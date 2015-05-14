@@ -37,9 +37,12 @@ namespace  ParserH
 		BitmapData^	bmpData = dicomImage->LockBits(rect, ImageLockMode::ReadWrite, dicomImage->PixelFormat);
 		//get the addres of the first line
 		IntPtr ptr = bmpData->Scan0;
+
 		//declare an array to hold the bytes ot the bitmap,,doesn't work for bitmaps with grayscale or other than 24 bits per pixel
-		int bytes = Math::Abs(bmpData->Stride) * dicomImage->Height;//get data size
+		//int bytes = Math::Abs(bmpData->Stride) * dicomImage->Height;//get data size
+		int bytes = dicomImage->Width * dicomImage->Height * 2;
 		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
+
 		//retrive data from imebra
 		int* frame = dicomData->vh->getFirst();
 
@@ -47,21 +50,14 @@ namespace  ParserH
 		for (int n = 0; n < height*width; n++)
 		{
 			if (frame[n] > maxPixelValue)
-				maxPixelValue = tmpData[n];
+				maxPixelValue = frame[n];
 			if (frame[n] < minPixelValue)
-				minPixelValue = tmpData[n];
+				minPixelValue = frame[n];
 		}
 
 		//normalize data to 255 in other words, make some artefacts
-		for (int n = 0; n < height*width; n++)
-		{
-			frame[n] = (int)((double)frame[n] * 255 / (double)maxPixelValue);
-		}
-
-		//copy data to bitmap, it doesn't work for simple grayscale and nedd to do something with RGB values
-		
 		for (int counter = 0; counter < rgbValues->Length; counter++){
-			rgbValues[counter] = frame[(int)(counter)];
+			rgbValues[counter] = frame[counter];
 		}
 		
 		//copy array to bitmap

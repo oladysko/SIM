@@ -98,7 +98,11 @@ namespace SIMproject{
 
 			DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch,vh);
 			dicomData.CreateBmp();
-			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth);
+			dicomData.vh->getSize(bitmapWidth, bitmapHeight);
+			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format16bppGrayScale);
+
+			this->Info_label->Text = bitmapWidth +" "+ bitmapHeight;
+
 			ParserH::getBitmap(&dicomData, this->dicomImage);
 
 			//display picture
