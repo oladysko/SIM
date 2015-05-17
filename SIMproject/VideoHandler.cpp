@@ -380,21 +380,9 @@ void VideoHandler::addNewFrame(int **frame)
 
 	/* Produces and saves the video using specified codec to the specified filename.
 	*/
-
-int VideoHandler::read_packet(void *opaque, uint8_t *buf, int buf_size)
-{
-	struct buffer_data *bd = (struct buffer_data *)opaque;
-	buf_size = FFMIN(buf_size, bd->size);
-	printf("ptr:%p size:%zu\n", bd->ptr, bd->size);
-	/* copy internal buffer data to buf */
-	memcpy(buf, bd->ptr, buf_size);
-	bd->ptr += buf_size;
-	bd->size -= buf_size;
-	return buf_size;
-}
 void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	{
-		DICOMBasedFrame *current;
+		
 		AVCodec *codec;
 		AVCodecContext *c = NULL;
 		int i, ret, x, y, got_output;
@@ -404,24 +392,21 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		uint8_t endcode[] = { 0, 0, 1, 0xb7 };
 
 
-		/* find the mpeg1 video encoder */
+		// find the mpeg1 video encoder 
 		codec = avcodec_find_encoder(codec_id);
 		if (!codec) {
-			//fprintf(stderr, "Codec not found\n");
 			system("pause");
 			exit(1);
 		}
 
 		c = avcodec_alloc_context3(codec);
 		if (!c) {
-			//fprintf(stderr, "Could not allocate video codec context\n");
 			system("pause");
 			exit(1);
 		}
 
-		/* put sample parameters */
+		// put sample parameters 
 		c->bit_rate = 400000;
-		/* resolution must be a multiple of two */
 		c->width = width;
 		c->height = height;
 		/* frames per second */
@@ -429,45 +414,68 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		{
 			fps = (int)(totalTime / frameN); //rounds down time temporialy
 			c->time_base = av_make_q(1, fps);
-		}else{
+		}
+		else{
 			c->time_base = av_make_q(1, fps);
 		}
+
+
+		//char *fileName = "test3.mp4";
+		AVOutputFormat * outFmt = av_guess_format(NULL, filename, NULL);
+		AVFormatContext *outFmtCtx = NULL;
+		avformat_alloc_output_context2(&outFmtCtx, outFmt, NULL, filename);
+		AVStream * outStrm = avformat_new_stream(outFmtCtx, codec);
+		outStrm->id = 0;
+
+		avcodec_get_context_defaults3(outStrm->codec, codec);
+		outStrm->codec->coder_type = AVMEDIA_TYPE_VIDEO;
+
+
+		outStrm->disposition = AV_DISPOSITION_DEFAULT;
+		outStrm->codec->chroma_sample_location = AVCHROMA_LOC_LEFT;
+		outStrm->codec->codec_id = codec_id;
+		outStrm->codec->time_base.den = fps;
+		outStrm->codec->time_base.num = 1;
+		outStrm->codec->pix_fmt = PIX_FMT_YUV420P;
+		outStrm->codec->width = width;
+		outStrm->codec->height = height;
+		outStrm->codec->bit_rate = 500000;
+		outStrm->codec->gop_size = 10; // Keyframe interval(=GOP length). Determines maximum distance distance between I-frames
+		outStrm->codec->keyint_min = 25; // minimum GOP size
+		outStrm->codec->max_b_frames = 1;//16; // maximum number of B-frames between non-B-frames
+		outStrm->codec->b_frame_strategy = 1; // decides the best number of B-frames to use. Default mode in x264.
+		outStrm->codec->scenechange_threshold = 40;
+		outStrm->codec->refs = 6; // abillity to reference frames other than the one immediately prior to the current frame. specify how many references can be used.
+		outStrm->codec->qmin = 0;//10;
+		outStrm->codec->qmax = 69;//51;
+		outStrm->codec->max_qdiff = 4;
+		outStrm->codec->i_quant_factor = 1.4;//0.71;   
+
+		outStrm->codec->refs = 1;//3;
+		outStrm->codec->chromaoffset = -2;
+		outStrm->codec->thread_count = 1;
+		outStrm->codec->trellis = 1;
+		outStrm->codec->me_range = 16;
+		outStrm->codec->me_method = ME_HEX; //hex
+		outStrm->codec->flags2 |= CODEC_FLAG2_FAST;
+		outStrm->codec->coder_type = 1;
+
+		avio_open(&outFmtCtx->pb, filename, AVIO_FLAG_WRITE);
+
+		avformat_write_header(outFmtCtx, NULL);
+
 		clearFrames();
-		//interpolate();
+		interpolate();
 		current = head;
 
-		AVFormatContext *s = avformat_alloc_context();
-		AVOutputFormat *of = av_guess_format(0, "test4.mp4", 0);
-		s->oformat = of;
-		s->bit_rate = 400000;
 
-		AVIOContext *avio_ctx=NULL;
-		uint8_t *buffer = NULL, *avio_ctx_buffer = NULL;
-		size_t buffer_size, avio_ctx_buffer_size = 4096;
-		char *input_filename = NULL;
-		ret = 0;
-		struct buffer_data bd = { 0 };
-		ret = av_file_map("test4.mp4", &buffer, &buffer_size, 0, NULL);
-		/* fill opaque structure used by the AVIOContext read callback */
-		bd.ptr = buffer;
-		bd.size = buffer_size;
-		avio_ctx_buffer = new uint8_t[avio_ctx_buffer_size];
-		avio_ctx = avio_alloc_context(avio_ctx_buffer, avio_ctx_buffer_size,
-			0, &bd, &read_packet, NULL, NULL);
-		s->pb = avio_ctx;
-
-		AVStream *avs=avformat_new_stream(s,codec);
-		AVRational avr = *new AVRational();
-		avr.den = fps;
-		avr.num = 1;
-		s->streams[0]->time_base=avr;
-		avformat_write_header(s, NULL);
 		/* emit one intra frame every ten frames
 		* check frame pict_type before passing frame
 		* to encoder, if frame->pict_type is AV_PICTURE_TYPE_I
 		* then gop_size is ignored and the output of encoder
 		* will always be I frame irrespective to gop_size
 		*/
+		
 		c->gop_size = 10;
 		c->max_b_frames = 1;
 		c->pix_fmt = AV_PIX_FMT_YUV420P; //Change this to change color input style
@@ -475,19 +483,11 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		if (codec_id == AV_CODEC_ID_H264)
 			av_opt_set(c->priv_data, "preset", "slow", 0);
 
-		/* open it */
 		int err = avcodec_open2(c, codec, NULL);
 		if (err < 0) {
 			fprintf(stderr, "Could not open codec\n");
 			system("pause");
 			exit(err);
-		}
-
-		f = fopen(filename, "wb");
-		if (!f) {
-			fprintf(stderr, "Could not open %s\n", filename);
-			system("pause");
-			exit(1);
 		}
 
 		frame = av_frame_alloc();
@@ -496,14 +496,14 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			system("pause");
 			exit(1);
 		}
-		frame->format = c->pix_fmt;
-		frame->width = c->width;
-		frame->height = c->height;
+		frame->format = AV_PIX_FMT_YUV420P;
+		frame->width = width;
+		frame->height = height;
 
 		/* the image can be allocated by any means and av_image_alloc() is
 		* just the most convenient way if av_malloc() is to be used */
-		ret = av_image_alloc(frame->data, frame->linesize, c->width, c->height,
-			c->pix_fmt, 32);
+		ret = av_image_alloc(frame->data, frame->linesize, width, height,
+			AV_PIX_FMT_YUV420P, 32);
 		if (ret < 0) {
 			fprintf(stderr, "Could not allocate raw picture buffer\n");
 			system("pause");
@@ -520,15 +520,15 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			fflush(stdout);
 			/* filling frame */
 
-			for (y = 0; y < c->height; y++) {
-				for (x = 0; x <c->width; x++) {
-					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * c->width + x] - minV) * 255 / (maxV - minV);
+			for (y = 0; y < height; y++) {
+				for (x = 0; x <width; x++) {
+					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * width + x] - minV) * 255 / (maxV - minV);
 				}
 			}
 
 			/* Cb and Cr */
-			for (y = 0; y < c->height / 2; y++) {
-				for (x = 0; x < c->width / 2; x++) {
+			for (y = 0; y < height / 2; y++) {
+				for (x = 0; x < width / 2; x++) {
 					frame->data[1][y * frame->linesize[1] + x] = 127;
 					frame->data[2][y * frame->linesize[2] + x] = 127;
 				}
@@ -536,12 +536,16 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			frame->pts = i;
 
-			if (pkt.pts != AV_NOPTS_VALUE)
-				pkt.pts = av_rescale_q(pkt.pts, avs->codec->time_base, avs->time_base);
-			if (pkt.dts != AV_NOPTS_VALUE)
-				pkt.dts = av_rescale_q(pkt.dts, avs->codec->time_base, avs->time_base);
 			/* encode the image */
 			ret = avcodec_encode_video2(c, &pkt, frame, &got_output);
+			if (pkt.pts != AV_NOPTS_VALUE)
+				pkt.pts = av_rescale_q(pkt.pts, outStrm->codec->time_base, outStrm->time_base);
+			if (pkt.dts != AV_NOPTS_VALUE)
+				pkt.dts = av_rescale_q(pkt.dts, outStrm->codec->time_base, outStrm->time_base);
+
+			pkt.stream_index = 0;
+			pkt.duration = 1;
+
 			if (ret < 0) {
 				fprintf(stderr, "Error encoding frame\n");
 				system("pause");
@@ -550,9 +554,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			if (got_output) {
 				printf("Write frame %3d (size=%5d)\n", i, pkt.size);
-				
-				fwrite(pkt.data, 1, pkt.size, f);
-				//av_write_frame(s, &pkt);
+				av_write_frame(outFmtCtx, &pkt);
 				av_free_packet(&pkt);
 			}
 			current = current->next;
@@ -575,175 +577,24 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 			if (got_output) {
 				printf("Write frame %3d (size=%5d)\n", i, pkt.size);
-				fwrite(pkt.data, 1, pkt.size, f);
+				av_write_frame(outFmtCtx, &pkt);
 				av_free_packet(&pkt);
 			}
 		}
-		
-		//av_write_trailer(s);
-		avformat_free_context(s);
+
 
 		/* add sequence end code to have a real mpeg file */
-		fwrite(endcode, 1, sizeof(endcode), f);
-		fclose(f);
+		/*fwrite(endcode, 1, sizeof(endcode), f);
+		fclose(f);*/
 
-		//avcodec_close(avs->codec);
 
 		avcodec_close(c);
 		av_free(c);
 		av_freep(&frame->data[0]);
 		av_frame_free(&frame);
-		printf("\n");
-	}
 
-	/* Produces and saves the video using specified codec to the specified filename.
-	*/
-	void VideoHandler::video_encode(FILE *f, enum AVCodecID codec_id)
-	{
-		AVCodec *codec;
-		AVCodecContext *c = NULL;
-		int i, ret, x, y, got_output;
-		AVFrame *frame;
-		AVPacket pkt;
-		uint8_t endcode[] = { 0, 0, 1, 0xb7 };
+		av_write_trailer(outFmtCtx);
+		avio_close(outFmtCtx->pb);
+		avformat_free_context(outFmtCtx);
 
-		printf("Encode video file %s\n", f->_tmpfname);
-
-		/* find the mpeg1 video encoder */
-		codec = avcodec_find_encoder(codec_id);
-		if (!codec) {
-			fprintf(stderr, "Codec not found\n");
-			system("pause");
-			exit(1);
-		}
-
-		c = avcodec_alloc_context3(codec);
-		if (!c) {
-			fprintf(stderr, "Could not allocate video codec context\n");
-			system("pause");
-			exit(1);
-		}
-
-		/* put sample parameters */
-		c->bit_rate = 400000;
-		/* resolution must be a multiple of two */
-		c->width = width;
-		c->height = height;
-		/* frames per second */
-		if (totalTime != 0)
-		{
-			fps = (int)(totalTime / frameN); //rounds down time temporialy
-			c->time_base = av_make_q(1, fps);
-		}
-		else{
-			c->time_base = av_make_q(1, fps);
-		}
-		/* emit one intra frame every ten frames
-		* check frame pict_type before passing frame
-		* to encoder, if frame->pict_type is AV_PICTURE_TYPE_I
-		* then gop_size is ignored and the output of encoder
-		* will always be I frame irrespective to gop_size
-		*/
-		c->gop_size = 10;
-		c->max_b_frames = 1;
-		c->pix_fmt = AV_PIX_FMT_YUV420P; //Change this to change color input style
-
-		if (codec_id == AV_CODEC_ID_H264)
-			av_opt_set(c->priv_data, "preset", "slow", 0);
-
-		/* open it */
-		int err = avcodec_open2(c, codec, NULL);
-		if (err < 0) {
-			fprintf(stderr, "Could not open codec\n");
-			system("pause");
-			exit(err);
-		}
-
-		frame = av_frame_alloc();
-		if (!frame) {
-			fprintf(stderr, "Could not allocate video frame\n");
-			system("pause");
-			exit(1);
-		}
-		frame->format = c->pix_fmt;
-		frame->width = c->width;
-		frame->height = c->height;
-
-		/* the image can be allocated by any means and av_image_alloc() is
-		* just the most convenient way if av_malloc() is to be used */
-		ret = av_image_alloc(frame->data, frame->linesize, c->width, c->height,
-			c->pix_fmt, 32);
-		if (ret < 0) {
-			fprintf(stderr, "Could not allocate raw picture buffer\n");
-			system("pause");
-			exit(1);
-		}
-
-		/* encode video */
-		for (i = 0; i < frameN; i++) {
-			av_init_packet(&pkt);
-			pkt.data = NULL;    // packet data will be allocated by the encoder
-			pkt.size = 0;
-
-			fflush(stdout);
-			/* filling frame */
-			for (y = 0; y < c->height; y++) {
-				for (x = 0; x <c->width; x++) {
-					frame->data[0][y * frame->linesize[0] + x] = (current->frame[y * c->width + x] - minV) * 255 / (maxV - minV);
-				}
-			}
-
-			/* Cb and Cr */
-			for (y = 0; y < c->height / 2; y++) {
-				for (x = 0; x < c->width / 2; x++) {
-					frame->data[1][y * frame->linesize[1] + x] = 128;// 128 + y + i * 2;
-					frame->data[2][y * frame->linesize[2] + x] = 128;// 64 + x + i * 5;
-				}
-			}
-
-			frame->pts = i;
-
-			/* encode the image */
-			ret = avcodec_encode_video2(c, &pkt, frame, &got_output);
-			if (ret < 0) {
-				fprintf(stderr, "Error encoding frame\n");
-				system("pause");
-				exit(1);
-			}
-
-			if (got_output) {
-				printf("Write frame %3d (size=%5d)\n", i, pkt.size);
-				fwrite(pkt.data, 1, pkt.size, f);
-				av_free_packet(&pkt);
-			}
-			current = current->next;
-		}
-
-		/* get the delayed frames */
-		for (got_output = 1; got_output; i++) {
-			fflush(stdout);
-
-			ret = avcodec_encode_video2(c, &pkt, NULL, &got_output);
-			if (ret < 0) {
-				fprintf(stderr, "Error encoding frame\n");
-				system("pause");
-				exit(1);
-			}
-
-			if (got_output) {
-				printf("Write frame %3d (size=%5d)\n", i, pkt.size);
-				fwrite(pkt.data, 1, pkt.size, f);
-				av_free_packet(&pkt);
-			}
-		}
-
-		/* add sequence end code to have a real mpeg file */
-		fwrite(endcode, 1, sizeof(endcode), f);
-		fclose(f);
-
-		avcodec_close(c);
-		av_free(c);
-		av_freep(&frame->data[0]);
-		av_frame_free(&frame);
-		printf("\n");
 	}

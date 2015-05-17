@@ -121,13 +121,9 @@ public:
 	*/
 	void addNewFrame(int **frame);
 
-	static int read_packet(void *opaque, uint8_t *buf, int buf_size);
 	/* Produces and saves the video using specified codec to the specified filename.
 	*/
 	void video_encode(const char *filename, enum AVCodecID codec_id);
-	/* Produces and saves the video using specified codec to the specified filename.
-	*/
-	void video_encode(FILE *f, enum AVCodecID codec_id);
 };
 
 #endif

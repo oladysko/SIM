@@ -55,10 +55,10 @@ void DicomDataAdapter::CreateBmp()
 			a = dataSet->chooseRepresentation((E_TransferSyntax)(++representation), NULL);
 		}while(!a.good()); //Jesli zaden nie jest dobry nieskonczona petla!!!
 
-		Uint16 width=0, height=0;
+		Uint16 width=0, height=0, depth=0, maxTime;
 		if (dataSet->canWriteXfer((E_TransferSyntax)(representation)))
 		{
-			DcmElement* element = NULL, *rows=NULL,*columns=NULL;
+			DcmElement* element = NULL, *rows=NULL,*columns=NULL,*zSize=NULL,*time=NULL;
 			
 			if (EC_Normal == dataSet->findAndGetElement(DCM_Rows, rows))
 			{
@@ -67,6 +67,21 @@ void DicomDataAdapter::CreateBmp()
 			if (EC_Normal == dataSet->findAndGetElement(DCM_Columns, columns))
 			{
 				columns->getUint16(width);
+			}
+			if (EC_Normal == dataSet->findAndGetElement(DCM_Columns, zSize))
+			{
+				//zSize->getUint16(depth);
+				depth = 1; //dla chetnych znalezc tag DICOMu dzieki ktoremu to zadziala
+			}
+			else{
+				depth = 1;
+			}
+			if (EC_Normal == dataSet->findAndGetElement(DCM_NumberOfFrames, time))
+			{
+				time->getUint16(maxTime);
+			}
+			else{
+				maxTime = 1;
 			}
 			if (EC_Normal == dataSet->findAndGetElement(DCM_PixelData, element))
 			{

@@ -1,323 +1,318 @@
-﻿Build started 2015-05-14 23:46:56.
-     1>Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
-         MyForm.cpp
-     1>C:\Users\Marek\Desktop\SIM\SIMproject\DCMTK\include\dcmtk/config/osconfig.h : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
-     1>MyForm.cpp(49): warning C4101: 'fileName' : unreferenced local variable
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\DicomDataAdapter.obj
+﻿Build started 2015-05-18 00:19:26.
+     1>Project "C:\Users\Marek Kos\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\DicomDataAdapter.obj
          Debug\MyForm.obj
          Debug\Parser.obj
          Debug\VideoHandler.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
      1>VideoHandler.obj : warning LNK4248: unresolved typeref token (01000017) for 'AVDictionary'; image may not run
-     1>oflog.lib(oflog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(oflog.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(apndimpl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(apndimpl.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(appender.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(appender.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(config.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(config.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(consap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(consap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(factory.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(factory.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(fileap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(fileap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(filter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(filter.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(globinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(globinit.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(hierarchy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(hierarchy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(hierlock.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(hierlock.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(layout.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(layout.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(logger.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logger.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(logimpl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logimpl.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(logevent.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logevent.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(loglevel.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglevel.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(loglog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglog.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(lloguser.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(lloguser.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(ndc.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ndc.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(ntelogap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ntelogap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(nullap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(nullap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(objreg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(objreg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(patlay.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(patlay.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(pointer.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(pointer.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(property.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(property.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(rootlog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(rootlog.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(sleep.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sleep.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(socketap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socketap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(sockbuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sockbuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(socket.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socket.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(strhelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(strhelp.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(syncprims.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(syncprims.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(threads.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(threads.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(timehelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(timehelp.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(winsock.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winsock.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(windebap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(windebap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>oflog.lib(winconap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winconap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofcmdln.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcmdln.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofconapp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofconapp.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofcond.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcond.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofconsol.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofconsol.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofcrc32.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcrc32.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofdate.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofdate.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofdatime.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofdatime.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(oflist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(oflist.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofstd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofstring.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstring.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(ofthread.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofthread.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ofstd.lib(oftime.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(oftime.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcbytstr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcbytstr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcchrstr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcchrstr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dccodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dccodec.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcdatset.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdatset.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcdicent.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdicent.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcdict.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdict.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcdictzz.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdictzz.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcdirrec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdirrec.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcelem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcelem.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcerror.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcfilefo.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcfilefo.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dchashdi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dchashdi.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcistrma.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcistrma.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcistrmf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcistrmf.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcitem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcitem.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dclist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dclist.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcmetinf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcmetinf.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcobject.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcobject.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcostrma.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcostrma.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcostrmf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcostrmf.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcpcache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpcache.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcpixel.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpixel.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcpixseq.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpixseq.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcpxitem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpxitem.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcsequen.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcsequen.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcstack.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcstack.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcswap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcswap.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dctag.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctag.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dctagkey.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctagkey.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dctypes.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctypes.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcuid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcuid.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcwcache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcwcache.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvm.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvm.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrae.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrae.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvras.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvras.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrat.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrat.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrcs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrcs.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrda.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrda.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrds.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrds.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrdt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrdt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrfd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrfd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrfl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrfl.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvris.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvris.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrlo.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrlo.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrlt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrlt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrobow.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrobow.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrof.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrof.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrpn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrpn.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrpobw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrpobw.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrsh.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrsh.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrsl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrsl.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrss.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrss.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrtm.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrtm.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrui.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrui.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrul.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrul.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrulup.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrulup.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrus.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrus.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcvrut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrut.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(dcxfer.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcxfer.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(vrscan.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(vrscan.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmdata.lib(vrscanl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(vrscanl.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dcmimage.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dcmimage.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dibaslut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dibaslut.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(didislut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didislut.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(didispfn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didispfn.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(didocu.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didocu.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(digsdfn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(digsdfn.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(digsdlut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(digsdlut.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diimage.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diimage.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diinpx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diinpx.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diluptab.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diluptab.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimo1img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimo1img.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimo2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimo2img.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimoimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimoimg3.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg3.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimoimg4.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg4.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimoimg5.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg5.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimomod.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimomod.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimoopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoopx.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(dimopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimopx.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diovdat.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovdat.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diovlay.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovlay.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diovlimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovlimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diovpln.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovpln.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimgle.lib(diutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diutils.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(diargimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diargimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dicmyimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicmyimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dicoimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicoimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dicoopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicoopx.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dicopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicopx.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dihsvimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dihsvimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dilogger.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dilogger.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dipalimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dipalimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(diregist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diregist.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(dirgbimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dirgbimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(diybrimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diybrimg.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(diyf2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diyf2img.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmimage.lib(diyp2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diyp2img.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jccoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcdctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcdiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jchuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcodec.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcomapi.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdapimin.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdapistd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdcoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdcolor.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jddctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jddiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdinput.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmainct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmarker.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmaster.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmerge.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdpostct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdsample.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jerror.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jmemmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jmemnobs.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jquant1.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jquant2.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg8.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jutils.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jccoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcdctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcdiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jchuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcodec.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcomapi.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdapimin.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdapistd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdcoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdcolor.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jddctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jddiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdinput.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmainct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmarker.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmaster.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmerge.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdpostct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdsample.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jerror.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jmemmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jmemnobs.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jquant1.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jquant2.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg12.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jutils.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jccoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcdctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcdiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jchuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcodec.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcomapi.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdapimin.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdapistd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdcoefct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdcolor.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jddctmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jddiffct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdinput.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlhuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlossls.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlossy.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmainct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmarker.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmaster.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmerge.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdphuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdpostct.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdpred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdsample.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdscale.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdshuff.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jerror.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctflt.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctfst.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctint.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctred.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jmemmgr.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jmemnobs.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jquant1.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jquant2.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>ijg16.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jutils.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djcodecd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djcodecd.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djcparam.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djcparam.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecbas.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecbas.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecext.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecext.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdeclol.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdeclol.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecode.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecode.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecpro.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecpro.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecsps.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecsps.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdecsv1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecsv1.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdijg12.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg12.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdijg8.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg8.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djdijg16.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg16.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-     1>dcmjpeg.lib(djutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djutils.obj)' or at 'C:\Users\Marek\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
-         SIMproject.vcxproj -> C:\Users\Marek\Desktop\SIM\Debug\SIMproject.exe
-     1>Done Building Project "C:\Users\Marek\Desktop\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
+     1>oflog.lib(oflog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(oflog.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(apndimpl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(apndimpl.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(appender.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(appender.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(config.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(config.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(consap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(consap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(factory.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(factory.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(fileap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(fileap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(filter.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(filter.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(globinit.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(globinit.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(hierarchy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(hierarchy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(hierlock.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(hierlock.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(layout.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(layout.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(logger.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logger.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(logimpl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logimpl.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(logevent.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(logevent.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(loglevel.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglevel.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(loglog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(loglog.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(lloguser.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(lloguser.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(ndc.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ndc.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(ntelogap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(ntelogap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(nullap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(nullap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(objreg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(objreg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(patlay.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(patlay.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(pointer.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(pointer.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(property.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(property.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(rootlog.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(rootlog.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(sleep.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sleep.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(socketap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socketap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(sockbuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(sockbuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(socket.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(socket.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(strhelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(strhelp.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(syncprims.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(syncprims.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(threads.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(threads.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(timehelp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(timehelp.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(winsock.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winsock.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(windebap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(windebap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>oflog.lib(winconap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'oflog.lib(winconap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofcmdln.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcmdln.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofconapp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofconapp.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofcond.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcond.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofconsol.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofconsol.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofcrc32.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofcrc32.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofdate.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofdate.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofdatime.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofdatime.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(oflist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(oflist.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofstd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofstring.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofstring.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(ofthread.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(ofthread.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ofstd.lib(oftime.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ofstd.lib(oftime.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcbytstr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcbytstr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcchrstr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcchrstr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dccodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dccodec.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcdatset.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdatset.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcdicent.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdicent.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcdict.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdict.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcdictzz.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdictzz.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcdirrec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcdirrec.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcelem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcelem.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcerror.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcfilefo.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcfilefo.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dchashdi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dchashdi.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcistrma.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcistrma.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcistrmf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcistrmf.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcitem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcitem.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dclist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dclist.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcmetinf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcmetinf.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcobject.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcobject.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcostrma.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcostrma.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcostrmf.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcostrmf.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcpcache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpcache.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcpixel.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpixel.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcpixseq.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpixseq.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcpxitem.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcpxitem.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcsequen.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcsequen.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcstack.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcstack.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcswap.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcswap.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dctag.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctag.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dctagkey.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctagkey.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dctypes.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dctypes.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcuid.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcuid.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcwcache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcwcache.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvm.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvm.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrae.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrae.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvras.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvras.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrat.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrat.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrcs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrcs.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrda.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrda.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrds.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrds.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrdt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrdt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrfd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrfd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrfl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrfl.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvris.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvris.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrlo.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrlo.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrlt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrlt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrobow.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrobow.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrof.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrof.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrpn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrpn.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrpobw.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrpobw.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrsh.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrsh.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrsl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrsl.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrss.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrss.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrtm.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrtm.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrui.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrui.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrul.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrul.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrulup.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrulup.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrus.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrus.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcvrut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcvrut.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(dcxfer.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(dcxfer.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(vrscan.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(vrscan.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmdata.lib(vrscanl.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmdata.lib(vrscanl.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dcmimage.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dcmimage.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dibaslut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dibaslut.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(didislut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didislut.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(didispfn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didispfn.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(didocu.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(didocu.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(digsdfn.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(digsdfn.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(digsdlut.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(digsdlut.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diimage.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diimage.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diinpx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diinpx.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diluptab.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diluptab.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimo1img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimo1img.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimo2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimo2img.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimoimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimoimg3.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg3.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimoimg4.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg4.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimoimg5.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoimg5.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimomod.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimomod.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimoopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimoopx.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(dimopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(dimopx.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diovdat.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovdat.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diovlay.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovlay.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diovlimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovlimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diovpln.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diovpln.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimgle.lib(diutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimgle.lib(diutils.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(diargimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diargimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dicmyimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicmyimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dicoimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicoimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dicoopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicoopx.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dicopx.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dicopx.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dihsvimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dihsvimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dilogger.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dilogger.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dipalimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dipalimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(diregist.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diregist.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(dirgbimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(dirgbimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(diybrimg.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diybrimg.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(diyf2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diyf2img.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmimage.lib(diyp2img.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmimage.lib(diyp2img.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jccoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcdctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcdiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jchuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jclossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcodec.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcomapi.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jcshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdapimin.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdapistd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdcoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdcolor.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jddctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jddiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdinput.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdlossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmainct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmarker.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmaster.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdmerge.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdpostct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdsample.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jdshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jerror.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jfdctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jidctred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jmemmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jmemnobs.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jquant1.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jquant2.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg8.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg8.lib(jutils.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jccoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcdctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcdiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jchuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jclossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcodec.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcomapi.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jcshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdapimin.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdapistd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdcoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdcolor.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jddctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jddiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdinput.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdlossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmainct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmarker.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmaster.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdmerge.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdpostct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdsample.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jdshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jerror.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jfdctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jidctred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jmemmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jmemnobs.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jquant1.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jquant2.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg12.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg12.lib(jutils.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jccoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jccoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcdctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcdiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcdiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jchuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jchuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jclhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jclossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jclossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jclossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcodec.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcodec.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcomapi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcomapi.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jcshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jcshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdapimin.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdapimin.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdapistd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdapistd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdcoefct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdcolor.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdcolor.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jddctmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jddiffct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jddiffct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdinput.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdinput.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdlhuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlhuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdlossls.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlossls.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdlossy.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdlossy.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdmainct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmainct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdmarker.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmarker.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdmaster.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmaster.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdmerge.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdmerge.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdphuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdphuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdpostct.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdpostct.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdpred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdpred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdsample.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdsample.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdscale.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdscale.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jdshuff.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jdshuff.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jerror.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jerror.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jfdctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jfdctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jidctflt.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctflt.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jidctfst.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctfst.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jidctint.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctint.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jidctred.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jidctred.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jmemmgr.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jmemnobs.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jquant1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jquant1.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jquant2.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jquant2.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>ijg16.lib(jutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'ijg16.lib(jutils.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djcodecd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djcodecd.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djcparam.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djcparam.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecbas.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecbas.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecext.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecext.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdeclol.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdeclol.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecode.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecode.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecpro.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecpro.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecsps.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecsps.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdecsv1.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdecsv1.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdijg12.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg12.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdijg8.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg8.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djdijg16.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djdijg16.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+     1>dcmjpeg.lib(djutils.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'dcmjpeg.lib(djutils.obj)' or at 'C:\Users\Marek Kos\Desktop\SIM\Debug\vc120.pdb'; linking object as if no debug info
+         SIMproject.vcxproj -> C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.exe
+     1>Done Building Project "C:\Users\Marek Kos\Desktop\SIM\SIMproject\SIMproject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.35
+Time Elapsed 00:00:04.03
