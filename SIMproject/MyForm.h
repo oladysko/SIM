@@ -41,7 +41,13 @@ namespace SIMproject {
 
 	private:
 		Bitmap ^ dicomImage; //IS CAUSNG MEMORY LEAKING????=================================
-	private: System::Windows::Forms::Button^  saveCurrent;
+	private: System::Windows::Forms::Button^  next;
+
+	private: System::Windows::Forms::Button^  back;
+	private: System::Windows::Forms::Button^  video_maker;
+	private: System::Windows::Forms::CheckBox^  reverser;
+
+
 			 /// </summary>
 			 System::ComponentModel::Container ^components;
 
@@ -49,24 +55,25 @@ namespace SIMproject {
 #pragma region Windows Form Designer generated code
 			 void InitializeComponent(void)
 			 {
-				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 				 this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 				 this->ViewImage = (gcnew System::Windows::Forms::Button());
 				 this->frame_textBox = (gcnew System::Windows::Forms::TextBox());
 				 this->Debug_label = (gcnew System::Windows::Forms::Label());
 				 this->Info_label = (gcnew System::Windows::Forms::Label());
 				 this->label_FrameNumber = (gcnew System::Windows::Forms::Label());
-				 this->saveCurrent = (gcnew System::Windows::Forms::Button());
+				 this->next = (gcnew System::Windows::Forms::Button());
+				 this->back = (gcnew System::Windows::Forms::Button());
+				 this->video_maker = (gcnew System::Windows::Forms::Button());
+				 this->reverser = (gcnew System::Windows::Forms::CheckBox());
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				 this->SuspendLayout();
 				 // 
 				 // pictureBox1
 				 // 
-				 this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-				 this->pictureBox1->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.InitialImage")));
+				 this->pictureBox1->InitialImage = nullptr;
 				 this->pictureBox1->Location = System::Drawing::Point(13, 13);
 				 this->pictureBox1->Name = L"pictureBox1";
-				 this->pictureBox1->Size = System::Drawing::Size(535, 501);
+				 this->pictureBox1->Size = System::Drawing::Size(466, 410);
 				 this->pictureBox1->TabIndex = 0;
 				 this->pictureBox1->TabStop = false;
 				 this->pictureBox1->Click += gcnew System::EventHandler(this, &MyForm::pictureBox1_Click);
@@ -118,22 +125,57 @@ namespace SIMproject {
 				 this->label_FrameNumber->Text = L"Frame Number:";
 				 this->label_FrameNumber->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 				 // 
-				 // saveCurrent
+				 // next
 				 // 
-				 this->saveCurrent->Location = System::Drawing::Point(555, 106);
-				 this->saveCurrent->Name = L"saveCurrent";
-				 this->saveCurrent->Size = System::Drawing::Size(112, 33);
-				 this->saveCurrent->TabIndex = 6;
-				 this->saveCurrent->Text = L"save current pic";
-				 this->saveCurrent->UseVisualStyleBackColor = true;
-				 this->saveCurrent->Click += gcnew System::EventHandler(this, &MyForm::saveCurrent_Click);
+				 this->next->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
+				 this->next->Location = System::Drawing::Point(324, 429);
+				 this->next->Name = L"next";
+				 this->next->Size = System::Drawing::Size(57, 53);
+				 this->next->TabIndex = 6;
+				 this->next->Text = L">";
+				 this->next->UseVisualStyleBackColor = true;
+				 this->next->Click += gcnew System::EventHandler(this, &MyForm::next_Click);
+				 // 
+				 // back
+				 // 
+				 this->back->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
+				 this->back->Location = System::Drawing::Point(147, 429);
+				 this->back->Name = L"back";
+				 this->back->Size = System::Drawing::Size(57, 53);
+				 this->back->TabIndex = 7;
+				 this->back->Text = L"<";
+				 this->back->UseVisualStyleBackColor = true;
+				 this->back->Click += gcnew System::EventHandler(this, &MyForm::back_Click_1);
+				 // 
+				 // video_maker
+				 // 
+				 this->video_maker->Location = System::Drawing::Point(555, 104);
+				 this->video_maker->Name = L"video_maker";
+				 this->video_maker->Size = System::Drawing::Size(112, 38);
+				 this->video_maker->TabIndex = 8;
+				 this->video_maker->Text = L"Make video";
+				 this->video_maker->UseVisualStyleBackColor = true;
+				 this->video_maker->Click += gcnew System::EventHandler(this, &MyForm::video_maker_Click);
+				 // 
+				 // reverser
+				 // 
+				 this->reverser->AutoSize = true;
+				 this->reverser->Location = System::Drawing::Point(252, 453);
+				 this->reverser->Name = L"reverser";
+				 this->reverser->Size = System::Drawing::Size(15, 14);
+				 this->reverser->TabIndex = 9;
+				 this->reverser->UseVisualStyleBackColor = true;
+				 this->reverser->CheckedChanged += gcnew System::EventHandler(this, &MyForm::reverser_CheckedChanged);
 				 // 
 				 // MyForm
 				 // 
 				 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				 this->ClientSize = System::Drawing::Size(803, 526);
-				 this->Controls->Add(this->saveCurrent);
+				 this->Controls->Add(this->reverser);
+				 this->Controls->Add(this->video_maker);
+				 this->Controls->Add(this->back);
+				 this->Controls->Add(this->next);
 				 this->Controls->Add(this->label_FrameNumber);
 				 this->Controls->Add(this->Info_label);
 				 this->Controls->Add(this->Debug_label);
@@ -156,6 +198,12 @@ namespace SIMproject {
 		}
 		private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 		}
-		private: System::Void saveCurrent_Click(System::Object^  sender, System::EventArgs^  e);// {
-	};
+		private: System::Void next_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void back_Click_1(System::Object^  sender, System::EventArgs^  e);
+	
+		private: System::Void video_maker_Click(System::Object^  sender, System::EventArgs^  e);
+
+		private: System::Void reverser_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
+
+};
 }
