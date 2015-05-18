@@ -96,8 +96,6 @@ namespace SIMproject{
 		pictureBox1->Image = this->dicomImage;
 		//this->Info_label->Text = ;
 		
-		int a, b,c;
-		c=a + b;
 		//delete(vh);
 	}
 
@@ -156,7 +154,7 @@ namespace SIMproject{
 	
 	System::Void MyForm::reverser_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
 	{
-		vh->reverseCurrentState();
+		vh->setCurrentState(reverser->Checked);
 	}
 
 }

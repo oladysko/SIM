@@ -39,19 +39,20 @@ class DICOMBasedFrame {
 public:
 	int *frame;
 	int minV, maxV;
-	DICOMBasedFrame *next,*prev;
+	DICOMBasedFrame *next, *prev;
 	bool accepted;
 
-	DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFrame *prev);
+	DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFrame *prev, bool acc = true);
 	~DICOMBasedFrame();
 };
 
 class VideoHandler {
 private:
-	int width, height, frameN = 0, fps,infps;
+	int width, height, frameN = 0, fps, infps;
 	int maxV = 0, minV = 5000000;
-	double totalTime=0; //overrides fps if not 0
-	DICOMBasedFrame * head, *current, *last;
+	int endFrameN=0;
+	double totalTime = 0; //overrides fps if not 0
+	DICOMBasedFrame * head, *current, *last, *headInt;
 
 public:
 	/* new instance with specified frames per seconds*/
@@ -95,6 +96,7 @@ public:
 	*Returns 0 if values are valid, 1 if not (min and max aren't changed either)*/
 	int getCurrentMinMax(int &min, int &max);
 	void VideoHandler::reverseCurrentState();
+	void VideoHandler::setCurrentState(bool newState);
 	bool VideoHandler::getCurrentState();
 
 	void VideoHandler::interpolate();
