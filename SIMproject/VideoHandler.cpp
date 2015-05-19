@@ -15,21 +15,30 @@ DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFr
 }
 DICOMBasedFrame::~DICOMBasedFrame()
 {
+	if (prev != NULL)
+	{
+		prev->next = next;
+	}
+	if (next != NULL)
+	{
+		next->prev = prev;
+	}
 	delete[] frame;
 }
 
-VideoHandler::VideoHandler(int fps, int infps)
+VideoHandler::VideoHandler(int fps, int infps, ColorPalete *cpi)
 {
 	this->width = 0;
 	this->height = 0;
 	this->fps = fps;
 	this->infps = infps;
+	cp = cpi;
 	head = NULL;
 	current = NULL;
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int totLength, int fps, int infps)
+VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
 {
 	int mod = totLength, i = (int)(sqrt(totLength) + 1);
 	while (mod != 0)
@@ -40,29 +49,32 @@ VideoHandler::VideoHandler(int totLength, int fps, int infps)
 	this->height = totLength / i;
 	this->fps = fps;
 	this->infps = infps;
+	cp = cpi;
 	head = NULL;
 	current = NULL;
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int width, int height, int fps, int infps)
+VideoHandler::VideoHandler(int width, int height, int fps, int infps, ColorPalete *cpi)
 {
 	this->width = width;
 	this->height = height;
 	this->fps = fps;
 	this->infps = infps;
+	cp = cpi;
 	head = NULL;
 	current = NULL;
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int width, int height, double time, int infps)
+VideoHandler::VideoHandler(int width, int height, double time, int infps, ColorPalete *cpi)
 {
 	this->width = width;
 	this->height = height;
 	this->fps = 0;
 	this->infps = infps;
 	this->totalTime = time;
+	cp = cpi;
 	head = NULL;
 	current = NULL;
 	last = NULL;
@@ -249,7 +261,7 @@ void VideoHandler::interpolate()
 		nextframe = headInt->frame;
 	for (int i = 1; i < endFrameN; i++)
 	{
-		if (i%fps > 0)
+		if (i%(fps/infps) > 0)
 		{
 			int *newframe = new int[width*height];
 			for (int j = 0; j < width*height; j++)
@@ -276,52 +288,6 @@ void VideoHandler::interpolate()
 	}
 	current->next = headInt;
 	headInt->prev = current;
-}
-void VideoHandler::clearFrames()
-{
-	DICOMBasedFrame *current;
-	current = head;
-	int howManyLost = 0, con = 0;
-	for (int i = 0; i < frameN; i++)
-	{
-		if (current != NULL)
-		{
-			if ((current->accepted) != true)
-			{
-				if (current->prev == NULL)
-				{
-					head = current->next;
-					head->prev = NULL;
-					howManyLost++;
-					delete current;
-					current = head;
-				}
-				else{
-					if (current->next == NULL)
-					{
-						last = current->prev;
-						last->next = NULL;
-						howManyLost++;
-						delete current;
-						current = last;
-					}
-					else{
-						DICOMBasedFrame *p = current->prev;
-						p->next = current->next;
-						current->next->prev = p;
-						howManyLost++;
-						delete current;
-						current = p->next;
-					}
-				}
-			}
-			else{
-				con++;
-				current = current->next;
-			}
-		}
-	}
-	frameN -= howManyLost;
 }
 
 /* Adds new frame to the end of sequence.
@@ -559,20 +525,33 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 		fflush(stdout);
 		/* filling frame */
-
+		unsigned char * pom;
+		cp->setMinMax(minV,maxV);
 		for (y = 0; y < height; y++) {
 			for (x = 0; x <width; x++) {
-				frame->data[0][y * frame->linesize[0] + x] = (helper->frame[y * width + x] - minV) * 255 / (maxV - minV);
+				
+				if (x>(width - 10))
+				{
+					pom = cp->getYUVValues((height - 1 - y)*(maxV - minV) / (height) + minV);
+				}else{
+					pom = cp->getYUVValues(helper->frame[y*width + x]);
+				}
+				frame->data[0][y * frame->linesize[0] + x] = pom[0];
+				if (x % 2 && y % 2)
+				{
+					frame->data[1][y/2 * frame->linesize[1] + x/2] = pom[1];
+					frame->data[2][y/2 * frame->linesize[2] + x/2] = pom[2];
+				}
 			}
 		}
 
 		/* Cb and Cr */
-		for (y = 0; y < height / 2; y++) {
+		/*for (y = 0; y < height / 2; y++) {
 			for (x = 0; x < width / 2; x++) {
 				frame->data[1][y * frame->linesize[1] + x] = 127;
 				frame->data[2][y * frame->linesize[2] + x] = 127;
 			}
-		}
+		}*/
 
 		frame->pts = i;
 
@@ -598,6 +577,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			av_free_packet(&pkt);
 		}
 		helper = helper->next;
+		delete helper->prev;
 		if (helper == NULL)
 		{
 			break;

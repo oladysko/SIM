@@ -4,6 +4,7 @@
 
 //included by Marek Kos
 #include "VideoHandler.h"
+#include "ColorPalete.h"
 #include <Vcclr.h>
 
 using namespace System; 
@@ -11,6 +12,7 @@ using namespace System::Windows::Forms;
 using namespace System::Drawing;
 
 VideoHandler *vh;
+ColorPalete* cp;
 bool dir = true;//z czasem
 
 [STAThread] 
@@ -58,7 +60,8 @@ namespace SIMproject{
 			return;
 		}
 		
-		vh = new VideoHandler(25,1);
+		cp = new ColorPalete(RAINBOW);
+		vh = new VideoHandler(25,1,cp);
 		
 		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)

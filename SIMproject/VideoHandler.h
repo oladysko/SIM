@@ -4,6 +4,7 @@
 #include <math.h>
 #include <iostream>
 #include "dcmtk/ofstd/oftypes.h"
+#include "ColorPalete.h"
 
 extern "C" {
 #include <libavutil/opt.h>
@@ -53,16 +54,17 @@ private:
 	int endFrameN=0;
 	double totalTime = 0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last, *headInt;
+	ColorPalete *cp;
 
 public:
 	/* new instance with specified frames per seconds*/
-	VideoHandler(int fps, int infps);
+	VideoHandler(int fps, int infps,ColorPalete *cpi);
 	/* new instance with specified frame size and frames per seconds*/
-	VideoHandler(int totLength, int fps, int infps);
+	VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi);
 	/* new instance with specified frame size and frames per seconds*/
-	VideoHandler(int width, int height, int fps, int infps);
+	VideoHandler(int width, int height, int fps, int infps, ColorPalete *cpi);
 	/* new instance with specified frame size and total time of movie*/
-	VideoHandler(int width, int height, double time, int infps);
+	VideoHandler(int width, int height, double time, int infps, ColorPalete *cpi);
 	~VideoHandler();
 
 	/*changes, or sets dimensions of frame*/
@@ -100,7 +102,6 @@ public:
 	bool VideoHandler::getCurrentState();
 
 	void VideoHandler::interpolate();
-	void VideoHandler::clearFrames();
 
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].

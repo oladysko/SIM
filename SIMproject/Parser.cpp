@@ -1,5 +1,6 @@
 #include "Parser.h"
 #include "DicomDataAdapter.h"
+#include "ColorPalete.h"
 
 namespace  ParserH
 {
@@ -39,12 +40,19 @@ namespace  ParserH
 		int bytes = dicomImage->Width * dicomImage->Height*3;
 		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
 
-		int helper = 0;
+		ColorPalete* cp = new ColorPalete(RAINBOW);
+		cp->setMinMax(minPixelValue,maxPixelValue);
+		unsigned char* helper;
 		//normalize data to 255 in other words, make some artefacts
 		for (int counter = 0; counter < rgbValues->Length; counter++){
-			if (counter%3==0)
-				helper = (frame[counter/3] - minPixelValue) * 255 / (maxPixelValue - minPixelValue);
-			rgbValues[counter] = helper;
+			if (counter % 3 == 0)
+				helper = cp->getRGBValues(frame[counter / 3]);
+			if ((counter/3)%width>(width-10))
+			{
+				helper = cp->getRGBValues((rgbValues->Length / 3 / width - 1 - counter / 3 / width)
+					*(maxPixelValue - minPixelValue) / (rgbValues->Length / 3 / width) + minPixelValue);
+			}
+			rgbValues[counter] = helper[counter % 3];
 		}
 		
 		//copy array to bitmap
