@@ -234,23 +234,34 @@ void VideoHandler::interpolate()
 	int count = 0;
 	helper = head;
 	base = NULL;
+	int *newframe;
 	while (helper != NULL)
 	{
 		if (helper->accepted)
 		{
+			newframe = new int[width*height];
+			for (int j = 0; j < width*height; j++)
+			{
+				newframe[j] = helper->frame[j];
+			}
 			if (base == NULL)
 			{
-				base = new DICOMBasedFrame(helper->frame, NULL, NULL);
+				base = new DICOMBasedFrame(newframe, NULL, NULL);
 				baseCurrent = base;
 			}else{
-				baseCurrent = new DICOMBasedFrame(helper->frame, NULL, baseCurrent);
+				baseCurrent = new DICOMBasedFrame(newframe, NULL, baseCurrent);
 			}
 			count++;
 		}
 		helper = helper->next;
 	}
-	endFrameN = (int)(count*fps / infps);
-	headInt = new DICOMBasedFrame(base->frame,NULL,NULL);
+	endFrameN = (int)(count*(int)(fps / infps));
+	newframe = new int[width*height];
+	for (int j = 0; j < width*height; j++)
+	{
+		newframe[j] = base->frame[j];
+	}
+	headInt = new DICOMBasedFrame(newframe,NULL,NULL);
 	current = headInt;
 	helper = base->next;
 	int *lastframe, *nextframe;
@@ -259,15 +270,16 @@ void VideoHandler::interpolate()
 		nextframe = helper->frame;
 	else
 		nextframe = headInt->frame;
+	int fif = ((int)(fps / infps));
 	for (int i = 1; i < endFrameN; i++)
 	{
-		if (i%(fps/infps) > 0)
+		if (i%fif > 0)
 		{
-			int *newframe = new int[width*height];
+			newframe = new int[width*height];
 			for (int j = 0; j < width*height; j++)
 			{
-				newframe[j] = (int)((lastframe[j] * (fps - (i%fps))) / (fps)+
-									(nextframe[j] * (i%fps)) / (fps));
+				newframe[j] = (int)((lastframe[j] * (fif - (i%fif))) / (fif)+
+									(nextframe[j] * (i%fif)) / (fif));
 			}
 			current = new DICOMBasedFrame(newframe,NULL,current);
 		}else{
@@ -275,19 +287,33 @@ void VideoHandler::interpolate()
 			if (helper->next == NULL)
 			{
 				nextframe = headInt->frame;
-				current = new DICOMBasedFrame(helper->frame, NULL, current);
+				newframe = new int[width*height];
+				for (int j = 0; j < width*height; j++)
+				{
+					newframe[j] = helper->frame[j];
+				}
+				current = new DICOMBasedFrame(newframe, NULL, current);
 			}else{
+				newframe = new int[width*height];
+				for (int j = 0; j < width*height; j++)
+				{
+					newframe[j] = lastframe[j];
+				}
 				helper = helper->next;
-				if (helper != NULL)
-					nextframe = helper->frame;
-				else
-					nextframe = headInt->frame;
-				current = new DICOMBasedFrame(lastframe, NULL, current);
+				nextframe = helper->frame;
+				current = new DICOMBasedFrame(newframe, NULL, current);
 			}
 		}
 	}
 	current->next = headInt;
 	headInt->prev = current;
+	baseCurrent = base;
+	while (baseCurrent != NULL)
+	{
+		baseCurrent = baseCurrent->next;
+		if (baseCurrent!=NULL)
+			delete baseCurrent->prev;
+	}
 }
 
 /* Adds new frame to the end of sequence.
@@ -577,11 +603,11 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			av_free_packet(&pkt);
 		}
 		helper = helper->next;
-		delete helper->prev;
 		if (helper == NULL)
 		{
 			break;
 		}
+		else{ delete helper->prev; }
 	}
 
 	/* get the delayed frames */

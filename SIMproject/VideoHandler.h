@@ -23,6 +23,8 @@ extern "C" {
 #include <libavutil/mem.h>
 #include "libavformat/avformat.h"
 #include <libavutil/file.h>
+#include <libavutil/parseutils.h>
+#include <libswscale/swscale.h>
 }
 
 #define INBUF_SIZE 4096
@@ -52,6 +54,7 @@ private:
 	int width, height, frameN = 0, fps, infps;
 	int maxV = 0, minV = 5000000;
 	int endFrameN=0;
+	int dst_w=0, dst_h=0;
 	double totalTime = 0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last, *headInt;
 	ColorPalete *cp;

@@ -79,6 +79,9 @@ void DicomDataAdapter::CreateBmp()
 			if (EC_Normal == dataSet->findAndGetElement(DCM_NumberOfFrames, time))
 			{
 				time->getUint16(maxTime);
+				if (maxTime == 0)
+					maxTime=1;
+				maxTime = 1;
 			}
 			else{
 				maxTime = 1;
@@ -120,13 +123,23 @@ void DicomDataAdapter::CreateBmp()
 								vh->addNewFrame(pixData); //dodaj nowego frame'a
 						}
 				  }else{
-					  Uint16 *arr=new Uint16 [width*height];
+					  Uint16 *arr=new Uint16 [width*height*depth*maxTime];
 					  a=element->getUint16Array(arr);
 					  if (a == EC_Normal)
 					  {
-						  if (!(vh->checkDimensions()))
-							  vh->setDimensions((int)width, (int)height);
-							  vh->addNewFrame(arr); //dodaj nowego frame'a
+						if (!(vh->checkDimensions()))
+							vh->setDimensions((int)width, (int)height);
+						int* hArr;
+						for (int i = 0; i < maxTime; i++)
+						{
+							for (int j = 0; j < depth; j++)
+							{
+								hArr = new int[width*height];
+								for (int k = 0; k < width*height; k++)
+									hArr[k] = (int)arr[i*depth*width*height+j*width*height+k];
+								vh->addNewFrame(hArr); //dodaj nowego frame'a
+							}
+						}
 					  }
 				  }
 			}

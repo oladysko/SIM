@@ -5,11 +5,15 @@ ColorPalete::ColorPalete(PaleteName initialPN)
 	pn = initialPN;
 	switchPalette(initialPN);
 }
-
-int ColorPalete::calculateRGBGreyScale(int value)
+ColorPalete::~ColorPalete()
 {
-	int helper = (int)(((value - minV) * 255) / (maxV - minV));
-	return helper << 16 + helper << 8 + helper;
+	for (int i = 0; i < size; i++)
+	{
+		delete[] rgbLookUp[i];
+		delete[] yuvLookUp[i];
+	}
+	delete[] rgbLookUp;
+	delete[] yuvLookUp;
 }
 
 unsigned char* ColorPalete::calculateRGBsGreyScale(int value)
@@ -31,12 +35,6 @@ unsigned char* ColorPalete::calculateYUVsGreyScale(int value)
 	return tab;
 }
 
-int ColorPalete::calculateRGBRainbow(int value)
-{
-	int helper = (int)(((value - minV) * 255) / (maxV - minV));
-	return helper - 255 << 16 + 255 - 2 * abs(127 - helper) << 8 + 255 - helper;
-}
-
 unsigned char* ColorPalete::calculateRGBsRainbow(int value)
 {
 	unsigned char* tab = new unsigned char[3];
@@ -45,18 +43,46 @@ unsigned char* ColorPalete::calculateRGBsRainbow(int value)
 	tab[0] = 255 - value;//B
 	return tab;
 }
-int ColorPalete::calculateRGBRGB(int value)
-{
-	int helper = (int)(((value - minV) * 511) / (maxV - minV));
-	return min(0, helper - 255) << 16 + 255 - abs(255 - helper) << 8 + min(0, 255 - helper);
-}
 
-unsigned char* ColorPalete::calculateRGBsRGB(int value)
+unsigned char* ColorPalete::calculateRGBsJET(int value)
 {
 	unsigned char* tab = new unsigned char[3];
-	tab[2] = max(0, value - 255); //R
-	tab[1] = 255 - abs(255 - value);//G
-	tab[0] = max(0, 255 - value);//B
+		/*0.0  -> (0, 0, 128)    (dark blue)
+		  0.25 -> (0, 255, 0)    (green)
+		  0.5  -> (255, 255, 0)  (yellow)
+		  0.75 -> (255, 128, 0)  (orange)
+		  1.0  -> (255, 0, 0)    (red)*/
+	switch (value * 4 / 256)
+	{
+	case 0:
+	{
+		tab[2] = 0;
+		tab[1] = 4 * (value % 64);
+		tab[0] = 127 - value % 128;
+		break;
+	}
+	case 1:
+	{
+		tab[2] = 4 * (value % 64);
+		tab[1] = 255;
+		tab[0] = 0;
+		break;
+	}
+	case 2:
+	{
+		tab[2] = 255;
+		tab[1] = 255 - 2 * (value % 64);
+		tab[0] = 0;
+		break;
+	}
+	case 3:
+	{
+		tab[2] = 255;
+		tab[1] = 127 - 2 * (value % 64);
+		tab[0] = 0;
+		break;
+	}
+	}
 	return tab;
 }
 unsigned char* ColorPalete::calculateYUVs(unsigned char *rgb)
@@ -80,9 +106,10 @@ void ColorPalete::switchPalette(PaleteName paname)
 	{
 		case GREYSCALE:
 		{
-			rgbLookUp = new unsigned char*[256];
-			yuvLookUp = new unsigned char*[256];
-			for (int i = 0; i < 256; i++)
+			size = 256;
+			rgbLookUp = new unsigned char*[size];
+			yuvLookUp = new unsigned char*[size];
+			for (int i = 0; i < size; i++)
 			{
 				rgbLookUp[i] = calculateRGBsGreyScale(i);
 				yuvLookUp[i] = calculateYUVsGreyScale(i);
@@ -91,22 +118,24 @@ void ColorPalete::switchPalette(PaleteName paname)
 		}
 		case RAINBOW:
 		{
-			rgbLookUp = new unsigned char*[256];
-			yuvLookUp = new unsigned char*[256];
-			for (int i = 0; i < 256; i++)
+			size = 256;
+			rgbLookUp = new unsigned char*[size];
+			yuvLookUp = new unsigned char*[size];
+			for (int i = 0; i < size; i++)
 			{
 				rgbLookUp[i] = calculateRGBsRainbow(i);
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
 			break;
 		}
-		case RGB:
+		case JET:
 		{
-			rgbLookUp = new unsigned char*[512];
-			yuvLookUp = new unsigned char*[512];
-			for (int i = 0; i < 512; i++)
+			size = 256;
+			rgbLookUp = new unsigned char*[size];
+			yuvLookUp = new unsigned char*[size];
+			for (int i = 0; i < size; i++)
 			{
-				rgbLookUp[i] = calculateRGBsRGB(i);
+				rgbLookUp[i] = calculateRGBsJET(i);
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
 			break;
@@ -117,70 +146,11 @@ void ColorPalete::switchPalette(PaleteName paname)
 		}
 	}
 }
-
-int ColorPalete::getRGBValue(int value)
-{
-	switch (pn)
-	{
-		case GREYSCALE:
-		{
-			return calculateRGBGreyScale(value);
-		}
-		case RAINBOW:
-		{
-			return calculateRGBRainbow(value);
-		}
-		case RGB:
-		{
-			return calculateRGBRGB(value);
-		}
-		default:
-		{
-			return 0;
-		}
-	}
-}
 unsigned char* ColorPalete::getRGBValues(int value)
 {
-	switch (pn)
-	{
-		case GREYSCALE:
-		{
-			return rgbLookUp[(int)(((value - minV) * 255) / (maxV - minV))];
-		}
-		case RAINBOW:
-		{
-			return rgbLookUp[(int)(((value - minV) * 255) / (maxV - minV))];
-		}
-		case RGB:
-		{
-			return rgbLookUp[(int)(((value - minV) * 511) / (maxV - minV))];
-		}
-		default:
-		{
-			return 0;
-		}
-	}
+	return rgbLookUp[(int)(((value - minV) * (size - 1)) / (maxV - minV))];
 }
 unsigned char* ColorPalete::getYUVValues(int value)
 {
-	switch (pn)
-	{
-	case GREYSCALE:
-	{
-		return yuvLookUp[(int)(((value - minV) * 255) / (maxV - minV))];
-	}
-	case RAINBOW:
-	{
-		return yuvLookUp[(int)(((value - minV) * 255) / (maxV - minV))];
-	}
-	case RGB:
-	{
-		return yuvLookUp[(int)(((value - minV) * 511) / (maxV - minV))];
-	}
-	default:
-	{
-		return 0;
-	}
-	}
+	return yuvLookUp[(int)(((value - minV) * (size - 1)) / (maxV - minV))];
 }

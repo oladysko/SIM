@@ -60,8 +60,8 @@ namespace SIMproject{
 			return;
 		}
 		
-		cp = new ColorPalete(RAINBOW);
-		vh = new VideoHandler(25,1,cp);
+		cp = new ColorPalete(JET);
+		vh = new VideoHandler(25,2,cp);
 		
 		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)
@@ -92,7 +92,7 @@ namespace SIMproject{
 		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
 		int* frame = vh->getThisFrame();
 
-		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame,min,max);
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage,frame,min,max,cp);
 		reverser->Checked = vh->getCurrentState();
 
 		//display picture
@@ -118,7 +118,7 @@ namespace SIMproject{
 
 				vh->getSize(bitmapWidth, bitmapHeight);
 				this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
-				ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max);
+				ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max,cp);
 
 				//display picture
 				pictureBox1->Image = this->dicomImage;
@@ -141,7 +141,7 @@ namespace SIMproject{
 			frame = vh->getThisFrame();
 			vh->getSize(bitmapWidth, bitmapHeight);
 			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
-			ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max);
+			ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max,cp);
 			reverser->Checked = vh->getCurrentState();
 
 			//display picture

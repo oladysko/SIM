@@ -24,12 +24,12 @@ namespace  ParserH
 		}
 	}
 
-	void getBitmap(int width, int height, Bitmap^ dicomImage, int* frame, int minPixelValue, int maxPixelValue)
+	void getBitmap(int width, int height, Bitmap^ dicomImage, int* frame, int minPixelValue, int maxPixelValue, ColorPalete* cp)
 	{
 		//allocate memory for dicom data, wchih is passed to imebra function, declare some variables
 		int * tmpData = new int[height *width];
 		//create rectangle, special structure for storaging image data
-		Drawing::Rectangle rect = Drawing::Rectangle(0, 0, dicomImage->Width, dicomImage->Height);
+		Drawing::Rectangle rect = Drawing::Rectangle(0,0,dicomImage->Width, dicomImage->Height);
 		//lock bits of image
 		BitmapData^	bmpData = dicomImage->LockBits(rect, ImageLockMode::ReadWrite, dicomImage->PixelFormat);
 		//get the addres of the first line
@@ -40,7 +40,6 @@ namespace  ParserH
 		int bytes = dicomImage->Width * dicomImage->Height*3;
 		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
 
-		ColorPalete* cp = new ColorPalete(RAINBOW);
 		cp->setMinMax(minPixelValue,maxPixelValue);
 		unsigned char* helper;
 		//normalize data to 255 in other words, make some artefacts
