@@ -18,6 +18,7 @@ bool dir = true;//z czasem
 [STAThread] 
 void Main(array<String^>^ args) 
 { 
+	srand(time(NULL));
 	Application::EnableVisualStyles(); 
 	Application::SetCompatibleTextRenderingDefault(false); 
 	SIMproject::MyForm form;
@@ -60,8 +61,21 @@ namespace SIMproject{
 			return;
 		}
 		
-		cp = new ColorPalete(JET);
-		vh = new VideoHandler(25,2,cp);
+		cp = new ColorPalete(GREYSCALE);
+		//Zabawa. Nie przejmowac sie
+		int** tab;
+		tab = new int*[5];
+		for (int i = 0; i < 5; i++)
+		{
+			tab[i] = new int[3];
+			for (int j = 0; j < 3; j++)
+			{
+				tab[i][j] = rand()%256; //Randomowe kolorki!!! You didn't see that coming, did you?
+			}
+		}
+		cp->makeCustom(tab, 5, 256);
+		//Koniec zabawy
+		vh = new VideoHandler(10,1,cp);
 		
 		//vh->setOddLine(true);
 		for (int i = 0; i < fileNames->GetLength(0); i++)
