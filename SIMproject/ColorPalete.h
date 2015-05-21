@@ -13,6 +13,7 @@ enum PaleteName
 	JET,
 	STAR,
 	GREENSTAR,
+	RANDOM,
 	CUSTOM
 };
 class ColorPalete

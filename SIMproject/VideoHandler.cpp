@@ -13,6 +13,7 @@ DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFr
 	maxV = 0;
 	accepted = acc;
 }
+
 DICOMBasedFrame::~DICOMBasedFrame()
 {
 	if (prev != NULL)
@@ -38,7 +39,7 @@ VideoHandler::VideoHandler(int fps, int infps, ColorPalete *cpi)
 	last = NULL;
 	av_register_all();
 }
-VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
+/*VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
 {
 	int mod = totLength, i = (int)(sqrt(totLength) + 1);
 	while (mod != 0)
@@ -54,7 +55,7 @@ VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
 	current = NULL;
 	last = NULL;
 	av_register_all();
-}
+}*/
 VideoHandler::VideoHandler(int width, int height, int fps, int infps, ColorPalete *cpi)
 {
 	this->width = width;
@@ -219,10 +220,12 @@ void VideoHandler::reverseCurrentState()
 {
 	current->accepted = !(current->accepted);
 }
+
 void VideoHandler::setCurrentState(bool newState)
 {
 	current->accepted = newState;
 }
+
 bool VideoHandler::getCurrentState()
 {
 	return (current->accepted);

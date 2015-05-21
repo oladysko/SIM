@@ -14,8 +14,9 @@ using namespace System::Drawing;
 VideoHandler *vh;
 ColorPalete* cp;
 bool dir = true;//z czasem
+int bitmapHeight = 0, bitmapWidth = 0;
 
-[STAThread] 
+[STAThread]
 void Main(array<String^>^ args) 
 { 
 	srand(time(NULL));
@@ -23,6 +24,7 @@ void Main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 	SIMproject::MyForm form;
 	Application::Run(%form); 
+	
 } 
 
 namespace SIMproject{
@@ -33,8 +35,10 @@ namespace SIMproject{
 		String^ debugInfo;
 		String^ fileName;
 		array<System::String^>^ fileNames;
-		int bitmapHeight = 0, bitmapWidth = 0;
+		//int bitmapHeight = 0, bitmapWidth = 0;
 		std::string stdFileName;
+		palette_choice->SelectedItem = 0;
+		palette_choice->Enabled = true;
 
 		try
 		{
@@ -48,13 +52,13 @@ namespace SIMproject{
 			dlg->ShowDialog();
 			fileNames = dlg->FileNames;
 			//fileName = dlg->FileName;
-			if (fileNames->GetLength(0) != 0)
-			{
-				ParserH::MarshalString(fileNames[0], stdFileName);
-				ParserH::fileNametoPath(stdFileName);
-				String^ tmpString = gcnew String(stdFileName.c_str());
-				debugInfo = debugInfo + "selected file = \n" + tmpString + "\n";
-			}
+			//if (fileNames->GetLength(0) != 0)
+			//{
+				//ParserH::MarshalString(fileNames[0], stdFileName);
+				//ParserH::fileNametoPath(stdFileName);
+				//String^ tmpString = gcnew String(stdFileName.c_str());
+				//debugInfo = debugInfo + "selected file = \n" + tmpString + "\n";
+			//}
 		}
 		catch (Exception^ errorHandle){
 			this->Info_label->Text = errorHandle->Message;
@@ -62,19 +66,6 @@ namespace SIMproject{
 		}
 		
 		cp = new ColorPalete(GREYSCALE);
-		//Zabawa. Nie przejmowac sie
-		int** tab;
-		tab = new int*[5];
-		for (int i = 0; i < 5; i++)
-		{
-			tab[i] = new int[3];
-			for (int j = 0; j < 3; j++)
-			{
-				tab[i][j] = rand()%256; //Randomowe kolorki!!! You didn't see that coming, did you?
-			}
-		}
-		cp->makeCustom(tab, 5, 256);
-		//Koniec zabawy
 		vh = new VideoHandler(10,1,cp);
 		
 		//vh->setOddLine(true);
@@ -101,7 +92,8 @@ namespace SIMproject{
 		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 
 		this->Info_label->Text = bitmapWidth + " " + bitmapHeight;
-		int min, max;
+		int min = 0, max = 0;
+		
 		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
 		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
 		int* frame = vh->getThisFrame();
@@ -118,14 +110,20 @@ namespace SIMproject{
 
 	System::Void MyForm::next_Click(System::Object^  sender, System::EventArgs^  e) {
 		
-		int bitmapHeight = 0, bitmapWidth = 0, min,max;
+		//int bitmapHeight = 0, bitmapWidth = 0, min,max;
 		int* frame;
+		int min = 0, max = 0;
 		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
 		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
 		
+		System::Drawing::Color redColor = System::Drawing::Color::FromArgb(255, 0, 0);
+		System::Drawing::Color blackColor = System::Drawing::Color::FromArgb(0, 0, 0);
+
 		if (vh->moveToNextFrame())
 		{
-	
+			next->ForeColor = redColor;
+			//Refresh();
+
 		}
 			else {
 				frame = vh->getThisFrame();
@@ -133,6 +131,8 @@ namespace SIMproject{
 				vh->getSize(bitmapWidth, bitmapHeight);
 				this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 				ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max,cp);
+				back->ForeColor = blackColor;
+				next->ForeColor = blackColor;
 
 				//display picture
 				pictureBox1->Image = this->dicomImage;
@@ -141,14 +141,18 @@ namespace SIMproject{
 	}
 
 	System::Void MyForm::back_Click_1(System::Object^  sender, System::EventArgs^  e) {
-		int bitmapHeight = 0, bitmapWidth = 0, min, max;
+		
 		int* frame;
+		int min = 0, max = 0;
 		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
 		vh->getGlobalMinMax(min, max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
 
+		System::Drawing::Color redColor = System::Drawing::Color::FromArgb(255, 0, 0);
+		System::Drawing::Color blackColor = System::Drawing::Color::FromArgb(0, 0, 0);
+
 		if ((vh->moveToPrevFrame()))
 		{
-
+			back->ForeColor = redColor;
 		}
 		else
 		{
@@ -157,12 +161,28 @@ namespace SIMproject{
 			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 			ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max,cp);
 			reverser->Checked = vh->getCurrentState();
+			next->ForeColor = blackColor;
+			back->ForeColor = blackColor;
 
 			//display picture
 			pictureBox1->Image = this->dicomImage;
 		}
 	}
 	
+	System::Void MyForm::palette_choice_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
+	{
+		int* frame;
+		int min = 0, max = 0;
+		frame = vh->getThisFrame();
+		vh->getCurrentMinMax(min, max);
+		cp->switchPalette((PaleteName)(palette_choice->SelectedIndex));
+		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
+		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max, cp);
+		
+		//display picture
+		pictureBox1->Image = this->dicomImage;
+	}
+
 	
 	System::Void MyForm::video_maker_Click(System::Object^  sender, System::EventArgs^  e)
 	{

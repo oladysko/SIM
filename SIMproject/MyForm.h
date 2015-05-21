@@ -46,6 +46,8 @@ namespace SIMproject {
 	private: System::Windows::Forms::Button^  back;
 	private: System::Windows::Forms::Button^  video_maker;
 	private: System::Windows::Forms::CheckBox^  reverser;
+	private: System::Windows::Forms::ComboBox^  palette_choice;
+
 
 
 			 /// </summary>
@@ -65,6 +67,7 @@ namespace SIMproject {
 				 this->back = (gcnew System::Windows::Forms::Button());
 				 this->video_maker = (gcnew System::Windows::Forms::Button());
 				 this->reverser = (gcnew System::Windows::Forms::CheckBox());
+				 this->palette_choice = (gcnew System::Windows::Forms::ComboBox());
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				 this->SuspendLayout();
 				 // 
@@ -167,11 +170,28 @@ namespace SIMproject {
 				 this->reverser->UseVisualStyleBackColor = true;
 				 this->reverser->CheckedChanged += gcnew System::EventHandler(this, &MyForm::reverser_CheckedChanged);
 				 // 
+				 // palette_choice
+				 // 
+				 this->palette_choice->Enabled = false;
+				 this->palette_choice->FormattingEnabled = true;
+				 this->palette_choice->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
+					 L"GREYSCALE", L"RAINBOW", L"JET", L"STAR",
+						 L"GREENSTAR", L"RANDOM"
+				 });
+				 this->palette_choice->Location = System::Drawing::Point(557, 171);
+				 this->palette_choice->Name = L"palette_choice";
+				 this->palette_choice->Size = System::Drawing::Size(109, 21);
+				 this->palette_choice->TabIndex = 10;
+				 this->palette_choice->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::palette_choice_SelectedIndexChanged);
+				 this->palette_choice->SelectedItem = 0;
+				 this->palette_choice->Text = "GREYSCALE";
+				 // 
 				 // MyForm
 				 // 
 				 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				 this->ClientSize = System::Drawing::Size(803, 526);
+				 this->Controls->Add(this->palette_choice);
 				 this->Controls->Add(this->reverser);
 				 this->Controls->Add(this->video_maker);
 				 this->Controls->Add(this->back);
@@ -204,6 +224,8 @@ namespace SIMproject {
 		private: System::Void video_maker_Click(System::Object^  sender, System::EventArgs^  e);
 
 		private: System::Void reverser_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
+
+		private: System::Void palette_choice_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e);
 
 };
 }

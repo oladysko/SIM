@@ -175,6 +175,7 @@ unsigned char* ColorPalete::calculateRGBsCUSTOM(int value, int** customPoints,in
 									* (value % (size / (ranges - 1))) / (size / (ranges - 1));
 	return tab;
 }
+
 unsigned char* ColorPalete::calculateYUVs(unsigned char *rgb)
 {
 	unsigned char* tab = new unsigned char[3];
@@ -277,6 +278,21 @@ void ColorPalete::switchPalette(PaleteName paname)
 				rgbLookUp[i] = calculateRGBsGREENSTAR(i);
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
+			break;
+		}
+		case RANDOM:
+		{
+			int** tab;
+			tab = new int*[5];
+			for (int i = 0; i < 5; i++)
+			{
+				tab[i] = new int[3];
+				for (int j = 0; j < 3; j++)
+				{
+					tab[i][j] = rand() % 256; //Randomowe kolorki!!! You didn't see that coming, did you?
+				}
+			}
+			makeCustom(tab, 5, 256);
 			break;
 		}
 		default:
