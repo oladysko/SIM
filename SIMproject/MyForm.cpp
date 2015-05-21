@@ -171,16 +171,19 @@ namespace SIMproject{
 	
 	System::Void MyForm::palette_choice_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
 	{
-		int* frame;
-		int min = 0, max = 0;
-		frame = vh->getThisFrame();
-		vh->getCurrentMinMax(min, max);
-		cp->switchPalette((PaleteName)(palette_choice->SelectedIndex));
-		this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
-		ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max, cp);
-		
-		//display picture
-		pictureBox1->Image = this->dicomImage;
+		if (vh != NULL)
+		{
+			int* frame;
+			int min = 0, max = 0;
+			frame = vh->getThisFrame();
+			vh->getGlobalMinMax(min, max);
+			cp->switchPalette((PaleteName)(palette_choice->SelectedIndex));
+			this->dicomImage = gcnew Bitmap(bitmapHeight, bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
+			ParserH::getBitmap(bitmapWidth, bitmapHeight, this->dicomImage, frame, min, max, cp);
+
+			//display picture
+			pictureBox1->Image = this->dicomImage;
+		}
 	}
 
 	

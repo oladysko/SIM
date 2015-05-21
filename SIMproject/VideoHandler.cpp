@@ -109,6 +109,27 @@ bool VideoHandler::checkDimensions()
 	}
 }
 
+void VideoHandler::setOutputDimensions(int outwidth, int outheight)
+{
+	this->outwidth = width;
+	this->outheigth = height;
+}
+
+void VideoHandler::setFps(int fps)
+{
+	this->fps = fps;
+}
+
+void VideoHandler::setInfps(int infps)
+{
+	this->infps = infps;
+}
+
+void VideoHandler::setTotalLength(int totalLength)
+{
+	this->totalTime = totalLength;
+}
+
 int* VideoHandler::getThisFrame()
 {
 	if (current != NULL)
@@ -132,6 +153,29 @@ int VideoHandler::moveToNextFrame()
 		return 2;
 	}
 }
+int VideoHandler::moveToNextFrame(int &isBorderline)
+{
+	if (current != NULL)
+	{
+		isBorderline = 0;
+		if (current->next != NULL)
+		{
+			current = current->next;
+			if (current->next == NULL)
+				isBorderline = 1;
+			return 0;//all ok
+		}
+		else{
+			if (current->prev == NULL)
+				isBorderline = -1;
+			else
+				isBorderline = 1;
+			return 1;//Failure
+		}
+	}else{
+		return 2;
+	}
+}
 int* VideoHandler::getAndMoveFrame()
 {
 	int *h = getThisFrame();
@@ -143,15 +187,44 @@ int* VideoHandler::getAndMoveFrame()
 }
 int VideoHandler::moveToPrevFrame()
 {
-	if (current->prev != NULL)
+	if (current != NULL)
 	{
-		current = current->prev;
-		return 0;//all ok
-	}
-	else{
-		return 1;//Failure
+		if (current->prev != NULL)
+		{
+			current = current->prev;
+			return 0;//all ok
+		}
+		else{
+			return 1;//Failure
+		}
+	}else{
+		return 2;
 	}
 }
+int VideoHandler::moveToPrevFrame(int &isBorderline)
+{
+	if (current != NULL)
+	{
+		isBorderline = 0;
+		if (current->prev != NULL)
+		{
+			current = current->prev;
+			if (current->prev == NULL)
+				isBorderline = -1;
+			return 0;//all ok
+		}
+		else{
+			if (current->next == NULL)
+				isBorderline = 1;
+			else
+				isBorderline = -1;
+			return 1;//Failure
+		}
+	}else{
+		return 2;
+	}
+}
+
 int* VideoHandler::getAndBackFrame()
 {
 	int *h = getThisFrame();
@@ -446,12 +519,9 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	/* frames per second */
 	if (totalTime != 0)
 	{
-		fps = (int)(totalTime / frameN); //rounds down time temporialy
-		c->time_base = av_make_q(1, fps);
+		infps = (int)(totalTime / frameN); //rounds down time temporialy
 	}
-	else{
-		c->time_base = av_make_q(1, fps);
-	}
+	c->time_base = av_make_q(1, fps);
 
 
 	//char *fileName = "test3.mp4";

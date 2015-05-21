@@ -54,14 +54,16 @@ private:
 	int width, height, frameN = 0, fps, infps;
 	int maxV = 0, minV = 5000000;
 	int endFrameN=0;
-	int dst_w=0, dst_h=0;
+	int outwidth=0, outheigth=0;
 	double totalTime = 0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last, *headInt;
 	ColorPalete *cp;
 
 public:
+	/* new instance with only pointer to ColorPalete. Use setFps(), setInfps() and setTotalLength(), otherwise errors will occur*/
+	VideoHandler(ColorPalete *cpi);
 	/* new instance with specified frames per seconds*/
-	VideoHandler(int fps, int infps,ColorPalete *cpi);
+	VideoHandler(int fps, int infps, ColorPalete *cpi);
 	/* new instance with specified frame size and frames per seconds*/
 	VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi);
 	/* new instance with specified frame size and frames per seconds*/
@@ -74,15 +76,31 @@ public:
 	void VideoHandler::setDimensions(int width, int height);
 	/*check whether dimensions were set*/
 	bool VideoHandler::checkDimensions();
+	/*changes, or sets dimensions of output video frame*/
+	void VideoHandler::setOutputDimensions(int outwidth, int outheight);
+
+	/*changes, or sets frames per second of output video*/
+	void VideoHandler::setFps(int fps);
+	/*changes, or sets frequency with which orginal frames occur in output video*/
+	void VideoHandler::setInfps(int infps);
+	/*changes, or sets total time in seconds of output video. It's imperative over setInfps(), and will override it.
+	 *Therefore only setFps() should be used with it.*/
+	void VideoHandler::setTotalLength(int totalLength);
 
 	/*Returns pointer to array cointaining frame data*/
 	int* VideoHandler::getThisFrame();
 	/*Moves internal pointer to the next frame if possible (returns 0), if not returns 1*/
 	int VideoHandler::moveToNextFrame();
+	/*Moves internal pointer to the next frame if possible (returns 0), if not returns 1. Additionally returns
+	 *to isBorderline 1 if next element is NULL after pointer movement, and -1 if previous element is NULL*/
+	int VideoHandler::moveToNextFrame(int &isBorderline);
 	/*Combines two functions above. Even if retriving frame is possible, but next element is NULL it returns NULL*/
 	int* VideoHandler::getAndMoveFrame();
 	/*Moves internal pointer to the previous frame if possible (returns 0), if not returns 1*/
 	int VideoHandler::moveToPrevFrame();
+	/*Moves internal pointer to the previous frame if possible (returns 0), if not returns 1. Additionally returns
+	 *to isBorderline 1 if next element is NULL after pointer movement, and -1 if previous element is NULL*/
+	int VideoHandler::moveToPrevFrame(int &isBorderline);
 	/*Anolog to getAndMoveFrame but moves backward*/
 	int* VideoHandler::getAndBackFrame();
 	/*Returns pointer to n frame. If not possible returns NULL. It's more expensive than aboveones*/
