@@ -51,7 +51,8 @@ public:
 
 class VideoHandler {
 private:
-	int width, height, frameN = 0, fps, infps;
+	int width, height, frameN = 0;
+	double fps, infps;
 	int maxV = 0, minV = 5000000;
 	int endFrameN=0;
 	int outwidth=0, outheigth=0;
@@ -80,12 +81,12 @@ public:
 	void VideoHandler::setOutputDimensions(int outwidth, int outheight);
 
 	/*changes, or sets frames per second of output video*/
-	void VideoHandler::setFps(int fps);
+	void VideoHandler::setFps(double fps);
 	/*changes, or sets frequency with which orginal frames occur in output video*/
-	void VideoHandler::setInfps(int infps);
+	void VideoHandler::setInfps(double infps);
 	/*changes, or sets total time in seconds of output video. It's imperative over setInfps(), and will override it.
 	 *Therefore only setFps() should be used with it.*/
-	void VideoHandler::setTotalLength(int totalLength);
+	void VideoHandler::setTotalLength(double totalLength);
 
 	/*Returns pointer to array cointaining frame data*/
 	int* VideoHandler::getThisFrame();
@@ -122,6 +123,9 @@ public:
 	void VideoHandler::setCurrentState(bool newState);
 	bool VideoHandler::getCurrentState();
 
+	/*calculates residuum from x divided by y*/
+	double moduloDouble(double x, double y);
+
 	void VideoHandler::interpolate();
 
 	/* Adds new frame to the end of sequence.
@@ -144,6 +148,9 @@ public:
 	Input frame is two dimension array of size [height][width].
 	*/
 	void addNewFrame(int **frame);
+
+	/*calculates numerator and denumerator from double f, and returns them under num and denum. md defines how good approximation is*/
+	void VideoHandler::rat_approx(double f, int64_t md, int64_t *num, int64_t *denom);
 
 	/* Produces and saves the video using specified codec to the specified filename.
 	*/

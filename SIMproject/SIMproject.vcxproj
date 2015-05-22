@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="ColorPalete.cpp" />
     <ClCompile Include="DicomDataAdapter.cpp" />
+    <ClCompile Include="GlobalVariables.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="VideoHandler.cpp" />
@@ -96,6 +97,7 @@
   <ItemGroup>
     <ClInclude Include="ColorPalete.h" />
     <ClInclude Include="DicomDataAdapter.h" />
+    <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

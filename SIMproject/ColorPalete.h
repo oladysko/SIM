@@ -3,6 +3,8 @@
 
 #include <algorithm>
 #include <vector>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -57,6 +59,8 @@ class ColorPalete
 		/*creates custom Palette from specified points, which should be of size [ranges][3]. Each line defines 
 		 *RGB values of one point in between linear interpolation takes place */
 		void makeCustom(int** customPoints, int ranges, int size);
+		/*Saves current color palette to file*/
+		void savePalette(char* fileName);
 		/*returns corresponding RGB values to the value inputted*/
 		unsigned char* getRGBValues(int value);
 		/*returns corresponding YUV values to the value inputted*/

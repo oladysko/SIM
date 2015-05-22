@@ -184,6 +184,7 @@ unsigned char* ColorPalete::calculateYUVs(unsigned char *rgb)
 	tab[2] = ((112 * rgb[2] - 94 * rgb[1] - 18 * rgb[0] + 128) >> 8) + 128;//V
 	return tab;
 }
+
 void ColorPalete::clearLookUp()
 {
 	if (rgbLookUp != NULL)
@@ -289,7 +290,7 @@ void ColorPalete::switchPalette(PaleteName paname)
 				tab[i] = new int[3];
 				for (int j = 0; j < 3; j++)
 				{
-					tab[i][j] = rand() % 256; //Randomowe kolorki!!! You didn't see that coming, did you?
+					tab[i][j] = rand() % 256; 
 				}
 			}
 			makeCustom(tab, 5, 256);
@@ -313,6 +314,16 @@ void ColorPalete::makeCustom(int** customPoints, int ranges, int size)
 		rgbLookUp[i] = calculateRGBsCUSTOM(i,customPoints,ranges);
 		yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 	}
+}
+void ColorPalete::savePalette(char* fileName)
+{
+	ofstream myfile;
+	myfile.open(fileName);
+	for (int i = 0; i < size; i++)
+	{
+		myfile << to_string(rgbLookUp[i][0]) << ' ' << to_string(rgbLookUp[i][1]) << ' ' << to_string(rgbLookUp[i][2]) << endl;
+	}
+	myfile.close();
 }
 unsigned char* ColorPalete::getRGBValues(int value)
 {

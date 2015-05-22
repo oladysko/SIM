@@ -27,6 +27,18 @@ DICOMBasedFrame::~DICOMBasedFrame()
 	delete[] frame;
 }
 
+VideoHandler::VideoHandler(ColorPalete *cpi)
+{
+	this->width = 0;
+	this->height = 0;
+	this->fps = 0;
+	this->infps = 0;
+	cp = cpi;
+	head = NULL;
+	current = NULL;
+	last = NULL;
+	av_register_all();
+}
 VideoHandler::VideoHandler(int fps, int infps, ColorPalete *cpi)
 {
 	this->width = 0;
@@ -115,17 +127,17 @@ void VideoHandler::setOutputDimensions(int outwidth, int outheight)
 	this->outheigth = height;
 }
 
-void VideoHandler::setFps(int fps)
+void VideoHandler::setFps(double fps)
 {
 	this->fps = fps;
 }
 
-void VideoHandler::setInfps(int infps)
+void VideoHandler::setInfps(double infps)
 {
 	this->infps = infps;
 }
 
-void VideoHandler::setTotalLength(int totalLength)
+void VideoHandler::setTotalLength(double totalLength)
 {
 	this->totalTime = totalLength;
 }
@@ -304,6 +316,12 @@ bool VideoHandler::getCurrentState()
 	return (current->accepted);
 }
 
+double VideoHandler::moduloDouble(double x, double y)
+{
+	int h = (int)(x / y);
+	return (x/y-h)*y;
+}
+
 void VideoHandler::interpolate()
 {
 	DICOMBasedFrame *current, *helper,*base,*baseCurrent;
@@ -331,7 +349,11 @@ void VideoHandler::interpolate()
 		}
 		helper = helper->next;
 	}
-	endFrameN = (int)(count*(int)(fps / infps));
+	if (totalTime != 0)
+	{
+		infps = count / totalTime;
+	}
+	endFrameN = (int)(count*fps / infps);
 	newframe = new int[width*height];
 	for (int j = 0; j < width*height; j++)
 	{
@@ -346,16 +368,18 @@ void VideoHandler::interpolate()
 		nextframe = helper->frame;
 	else
 		nextframe = headInt->frame;
-	int fif = ((int)(fps / infps));
+	double fif = fps / infps;
+	double modulo;
 	for (int i = 1; i < endFrameN; i++)
 	{
-		if (i%fif > 0)
+		modulo = moduloDouble(i, fif);
+		if (modulo >= 0.999) //should be 1, but because of finite resolution of double must be somewhat less
 		{
 			newframe = new int[width*height];
 			for (int j = 0; j < width*height; j++)
 			{
-				newframe[j] = (int)((lastframe[j] * (fif - (i%fif))) / (fif)+
-									(nextframe[j] * (i%fif)) / (fif));
+				newframe[j] = (int)((lastframe[j] * (fif - modulo)) / (fif)+
+									(nextframe[j] * modulo) / (fif));
 			}
 			current = new DICOMBasedFrame(newframe,NULL,current);
 		}else{
@@ -485,6 +509,43 @@ void VideoHandler::addNewFrame(int **frame)
 	addNewFrame(oneDFrame);
 }
 
+void VideoHandler::rat_approx(double f, int64_t md, int64_t *num, int64_t *denom)
+{
+	/*  a: continued fraction coefficients. */
+	int64_t a, h[3] = { 0, 1, 0 }, k[3] = { 1, 0, 0 };
+	int64_t x, d, n = 1;
+	int i, neg = 0;
+
+	if (md <= 1) { *denom = 1; *num = (int64_t)f; return; }
+
+	if (f < 0) { neg = 1; f = -f; }
+
+	while (f != floor(f)) { n <<= 1; f *= 2; }
+	d = f;
+
+	/* continued fraction and check denominator each step */
+	for (i = 0; i < 64; i++) {
+		a = n ? d / n : 0;
+		if (i && !a) break;
+
+		x = d; d = n; n = x % n;
+
+		x = a;
+		if (k[1] * a + k[0] >= md) {
+			x = (md - k[0]) / k[1];
+			if (x * 2 >= a || k[1] >= md)
+				i = 65;
+			else
+				break;
+		}
+
+		h[2] = x * h[1] + h[0]; h[0] = h[1]; h[1] = h[2];
+		k[2] = x * k[1] + k[0]; k[0] = k[1]; k[1] = k[2];
+	}
+	*denom = k[1];
+	*num = neg ? -h[1] : h[1];
+}
+
 /* Produces and saves the video using specified codec to the specified filename.
 */
 void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
@@ -517,11 +578,9 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	c->width = width;
 	c->height = height;
 	/* frames per second */
-	if (totalTime != 0)
-	{
-		infps = (int)(totalTime / frameN); //rounds down time temporialy
-	}
-	c->time_base = av_make_q(1, fps);
+	int64_t *num = new int64_t(), *denum = new int64_t();
+	rat_approx(fps,256*256*256*256,num, denum);
+	c->time_base = av_make_q((int)*denum, (int)*num);
 
 
 	//char *fileName = "test3.mp4";
@@ -538,8 +597,8 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	outStrm->disposition = AV_DISPOSITION_DEFAULT;
 	outStrm->codec->chroma_sample_location = AVCHROMA_LOC_LEFT;
 	outStrm->codec->codec_id = codec_id;
-	outStrm->codec->time_base.den = fps;
-	outStrm->codec->time_base.num = 1;
+	outStrm->codec->time_base.den = (int)*num;
+	outStrm->codec->time_base.num = (int)*denum;
 	outStrm->codec->pix_fmt = PIX_FMT_YUV420P;
 	outStrm->codec->width = width;
 	outStrm->codec->height = height;
@@ -631,7 +690,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 				
 				if (x>(width - 10))
 				{
-					pom = cp->getYUVValues((height - 1 - y)*(maxV - minV) / (height) + minV);
+					pom = cp->getYUVValues(((height - 1 - y)*256/height)*(maxV - minV) / (height) + minV);
 				}else{
 					pom = cp->getYUVValues(helper->frame[y*width + x]);
 				}
