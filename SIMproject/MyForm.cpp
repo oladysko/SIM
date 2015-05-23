@@ -157,6 +157,7 @@ namespace SIMproject{
 	
 	System::Void MyForm::video_maker_Click(System::Object^  sender, System::EventArgs^  e)
 	{
+		gb->vh->setScale(1.5);
 		gb->vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
 	}
 	

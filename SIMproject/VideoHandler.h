@@ -55,7 +55,7 @@ private:
 	double fps, infps;
 	int maxV = 0, minV = 5000000;
 	int endFrameN=0;
-	int outwidth=0, outheigth=0;
+	int outwidth=0, outheight=0;
 	double totalTime = 0; //overrides fps if not 0
 	DICOMBasedFrame * head, *current, *last, *headInt;
 	ColorPalete *cp;
@@ -79,6 +79,8 @@ public:
 	bool VideoHandler::checkDimensions();
 	/*changes, or sets dimensions of output video frame*/
 	void VideoHandler::setOutputDimensions(int outwidth, int outheight);
+	/*changes Output dimensions according to initial dimensions ans scale. Can be used only after loading at least one frame*/
+	void VideoHandler::setScale(double scale);
 
 	/*changes, or sets frames per second of output video*/
 	void VideoHandler::setFps(double fps);
@@ -152,9 +154,8 @@ public:
 	/*calculates numerator and denumerator from double f, and returns them under num and denum. md defines how good approximation is*/
 	void VideoHandler::rat_approx(double f, int64_t md, int64_t *num, int64_t *denom);
 
-	/* Produces and saves the video using specified codec to the specified filename.
-	*/
-	void video_encode(const char *filename, enum AVCodecID codec_id);
+	/* Produces and saves the video using specified codec to the specified filename. 0 upon success and other numbers if failure*/
+	int video_encode(const char *filename, enum AVCodecID codec_id);
 };
 
 #endif

@@ -123,8 +123,14 @@ bool VideoHandler::checkDimensions()
 
 void VideoHandler::setOutputDimensions(int outwidth, int outheight)
 {
-	this->outwidth = width;
-	this->outheigth = height;
+	this->outwidth = outwidth;
+	this->outheight = outheight;
+}
+
+void VideoHandler::setScale(double scale)
+{
+	outwidth = scale*width;
+	outheight = scale*height;
 }
 
 void VideoHandler::setFps(double fps)
@@ -548,7 +554,7 @@ void VideoHandler::rat_approx(double f, int64_t md, int64_t *num, int64_t *denom
 
 /* Produces and saves the video using specified codec to the specified filename.
 */
-void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
+int VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 {
 
 	AVCodec *codec;
@@ -559,24 +565,31 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	AVPacket pkt;
 	uint8_t endcode[] = { 0, 0, 1, 0xb7 };
 
+	int owdth, ohght;
+	if (outwidth*outheight)
+	{
+		owdth = outwidth;
+		ohght = outheight;
+	}else{
+		owdth = width;
+		ohght = height;
+	}
 
 	// find the mpeg1 video encoder 
 	codec = avcodec_find_encoder(codec_id);
 	if (!codec) {
-		system("pause");
-		exit(1);
+		return 1;
 	}
 
 	c = avcodec_alloc_context3(codec);
 	if (!c) {
-		system("pause");
-		exit(1);
+		return 2;
 	}
 
 	// put sample parameters 
 	c->bit_rate = 400000;
-	c->width = width;
-	c->height = height;
+	c->width = owdth;
+	c->height = ohght;
 	/* frames per second */
 	int64_t *num = new int64_t(), *denum = new int64_t();
 	rat_approx(fps,256*256*256*256,num, denum);
@@ -600,8 +613,8 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	outStrm->codec->time_base.den = (int)*num;
 	outStrm->codec->time_base.num = (int)*denum;
 	outStrm->codec->pix_fmt = PIX_FMT_YUV420P;
-	outStrm->codec->width = width;
-	outStrm->codec->height = height;
+	outStrm->codec->width = owdth;
+	outStrm->codec->height = ohght;
 	outStrm->codec->bit_rate = 500000;
 	outStrm->codec->gop_size = 10; // Keyframe interval(=GOP length). Determines maximum distance distance between I-frames
 	outStrm->codec->keyint_min = 25; // minimum GOP size
@@ -649,16 +662,12 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 	int err = avcodec_open2(c, codec, NULL);
 	if (err < 0) {
-		fprintf(stderr, "Could not open codec\n");
-		system("pause");
-		exit(err);
+		return 3;
 	}
 
 	frame = av_frame_alloc();
 	if (!frame) {
-		fprintf(stderr, "Could not allocate video frame\n");
-		system("pause");
-		exit(1);
+		return 4;
 	}
 	frame->format = AV_PIX_FMT_YUV420P;
 	frame->width = width;
@@ -669,10 +678,12 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	ret = av_image_alloc(frame->data, frame->linesize, width, height,
 		AV_PIX_FMT_YUV420P, 32);
 	if (ret < 0) {
-		fprintf(stderr, "Could not allocate raw picture buffer\n");
-		system("pause");
-		exit(1);
+		return 5;
 	}
+
+	SwsContext *swsctx;
+	if(outwidth*outheight)
+		swsctx = sws_getContext(width, height, PIX_FMT_YUV420P, outwidth, outheight, PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
 
 	/* encode video */
 	for (i = 0; i < endFrameN; i++) {
@@ -690,7 +701,7 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 				
 				if (x>(width - 10))
 				{
-					pom = cp->getYUVValues(((height - 1 - y)*256/height)*(maxV - minV) / (height) + minV);
+					pom = cp->getYUVValues(((height - 1 - y) * 256 / height)*(maxV - minV) / (height)+minV);
 				}else{
 					pom = cp->getYUVValues(helper->frame[y*width + x]);
 				}
@@ -703,18 +714,25 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			}
 		}
 
-		/* Cb and Cr */
-		/*for (y = 0; y < height / 2; y++) {
-			for (x = 0; x < width / 2; x++) {
-				frame->data[1][y * frame->linesize[1] + x] = 127;
-				frame->data[2][y * frame->linesize[2] + x] = 127;
-			}
-		}*/
+		if (outwidth*outheight)
+		{
+			AVFrame* av_frame = avcodec_alloc_frame();
+			int num_bytes = avpicture_get_size(AV_PIX_FMT_YUV420P, outwidth, outheight);
+			uint8_t* av_frame_buffer = (uint8_t *)av_malloc(num_bytes*sizeof(uint8_t));
+			avpicture_fill((AVPicture*)av_frame, av_frame_buffer, AV_PIX_FMT_YUV420P, outwidth, outheight);
+			sws_scale(swsctx, frame->data, frame->linesize, 0, height, av_frame->data, av_frame->linesize);
+			av_freep(&frame->data[0]);
+			frame = av_frame;
+		}
+
 
 		frame->pts = i;
 
 		/* encode the image */
 		ret = avcodec_encode_video2(c, &pkt, frame, &got_output);
+		if (ret < 0) {
+			return 6;
+		}
 		if (pkt.pts != AV_NOPTS_VALUE)
 			pkt.pts = av_rescale_q(pkt.pts, outStrm->codec->time_base, outStrm->time_base);
 		if (pkt.dts != AV_NOPTS_VALUE)
@@ -724,13 +742,10 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		pkt.duration = 1;
 
 		if (ret < 0) {
-			fprintf(stderr, "Error encoding frame\n");
-			system("pause");
-			exit(1);
+			return 7;
 		}
 
 		if (got_output) {
-			printf("Write frame %3d (size=%5d)\n", i, pkt.size);
 			av_write_frame(outFmtCtx, &pkt);
 			av_free_packet(&pkt);
 		}
@@ -748,23 +763,14 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 
 		ret = avcodec_encode_video2(c, &pkt, NULL, &got_output);
 		if (ret < 0) {
-			fprintf(stderr, "Error encoding frame\n");
-			system("pause");
-			exit(1);
+			return 8;
 		}
 
 		if (got_output) {
-			printf("Write frame %3d (size=%5d)\n", i, pkt.size);
 			av_write_frame(outFmtCtx, &pkt);
 			av_free_packet(&pkt);
 		}
 	}
-
-
-	/* add sequence end code to have a real mpeg file */
-	/*fwrite(endcode, 1, sizeof(endcode), f);
-	fclose(f);*/
-
 
 	avcodec_close(c);
 	av_free(c);
@@ -775,5 +781,5 @@ void VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 	avio_close(outFmtCtx->pb);
 	avformat_free_context(outFmtCtx);
 
-	//clearFrames();
+	return 0;
 }
