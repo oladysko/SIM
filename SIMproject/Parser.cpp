@@ -48,8 +48,8 @@ namespace  ParserH
 				helper = cp->getRGBValues(frame[counter / 3]);
 			if ((counter/3)%width>(width-10))
 			{
-				helper = cp->getRGBValues((rgbValues->Length / 3 / width - 1 - counter / 3 / width)
-					*(maxPixelValue - minPixelValue) / (rgbValues->Length / 3 / width) + minPixelValue);
+				helper = cp->getRGBValues((height - 1 - counter / 3 / width)
+					*(maxPixelValue - minPixelValue) / (height) + minPixelValue);
 			}
 			rgbValues[counter] = helper[counter % 3];
 		}

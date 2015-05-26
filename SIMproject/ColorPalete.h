@@ -12,9 +12,12 @@ enum PaleteName
 {
 	GREYSCALE,
 	RAINBOW,
+	SYMMETRIC,
 	JET,
 	STAR,
 	GREENSTAR,
+	HOTRANDOM,
+	COLDRANDOM,
 	RANDOM,
 	CUSTOM
 };
@@ -33,6 +36,8 @@ class ColorPalete
 		unsigned char* calculateYUVsGreyScale(int value);
 		/*Calculates and returns RGB values corresponding to inputed value scaled to size for RAINBOW*/
 		unsigned char* calculateRGBsRainbow(int value);
+		/*Calculates and returns RGB values corresponding to inputed value scaled to size for SYMMETRIC*/
+		unsigned char* calculateRGBsSymmetric(int value);
 		/*Calculates and returns RGB values corresponding to inputed value scaled to size for JET*/
 		unsigned char* calculateRGBsJET(int value);
 		/*Calculates and returns RGB values corresponding to inputed value scaled to size for STAR*/
@@ -59,6 +64,7 @@ class ColorPalete
 		/*creates custom Palette from specified points, which should be of size [ranges][3]. Each line defines 
 		 *RGB values of one point in between linear interpolation takes place */
 		void makeCustom(int** customPoints, int ranges, int size);
+		void makeHotColdCustom(int hot = 1);
 		/*Saves current color palette to file*/
 		void savePalette(char* fileName);
 		/*returns corresponding RGB values to the value inputted*/

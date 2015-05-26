@@ -40,127 +40,103 @@ unsigned char* ColorPalete::calculateRGBsRainbow(int value)
 	return tab;
 }
 
+unsigned char* ColorPalete::calculateRGBsSymmetric(int value)
+{
+	unsigned char* tab;
+	int** points = new int*[9];
+	for (int i = 0; i < 9; i++)
+	{
+		points[i] = new int[3];
+	}
+	points[0][0] = 128; points[0][1] = 0; points[0][2] = 0;
+	points[1][0] = 0; points[1][1] = 255; points[1][2] = 0;
+	points[2][0] = 0; points[2][1] = 255; points[2][2] = 255;
+	points[3][0] = 0; points[3][1] = 128; points[3][2] = 255;
+	points[4][0] = 0; points[4][1] = 0; points[4][2] = 255;
+	points[8][0] = 128; points[8][1] = 0; points[8][2] = 0;
+	points[7][0] = 0; points[7][1] = 255; points[7][2] = 0;
+	points[6][0] = 0; points[6][1] = 255; points[6][2] = 255;
+	points[5][0] = 0; points[5][1] = 128; points[5][2] = 255;
+	tab = calculateRGBsCUSTOM(value, points, 9);
+	for (int i = 0; i < 9; i++)
+	{
+		delete[] points[i];
+	}
+	delete[] points;
+	return tab;
+}
+
 unsigned char* ColorPalete::calculateRGBsJET(int value)
 {
-	unsigned char* tab = new unsigned char[3];
 		/*0.0  -> (0, 0, 128)    (dark blue)
 		  0.25 -> (0, 255, 0)    (green)
 		  0.5  -> (255, 255, 0)  (yellow)
 		  0.75 -> (255, 128, 0)  (orange)
 		  1.0  -> (255, 0, 0)    (red)*/
-	switch (value * 4 / 256)
+	unsigned char* tab;
+	int** points = new int*[5];
+	for (int i = 0; i < 5; i++)
 	{
-	case 0:
+		points[i] = new int[3];
+	}
+	points[0][0] = 128; points[0][1] = 0; points[0][2] = 0;
+	points[1][0] = 0; points[1][1] = 255; points[1][2] = 0;
+	points[2][0] = 0; points[2][1] = 255; points[2][2] = 255;
+	points[3][0] = 0; points[3][1] = 128; points[3][2] = 255;
+	points[4][0] = 0; points[4][1] = 0; points[4][2] = 255;
+	tab = calculateRGBsCUSTOM(value, points, 5);
+	for (int i = 0; i < 5; i++)
 	{
-		tab[2] = 0;
-		tab[1] = 4 * (value % 64);
-		tab[0] = 127 - value % 128;
-		break;
+		delete[] points[i];
 	}
-	case 1:
-	{
-		tab[2] = 4 * (value % 64);
-		tab[1] = 255;
-		tab[0] = 0;
-		break;
-	}
-	case 2:
-	{
-		tab[2] = 255;
-		tab[1] = 255 - 2 * (value % 64);
-		tab[0] = 0;
-		break;
-	}
-	case 3:
-	{
-		tab[2] = 255;
-		tab[1] = 127 - 2 * (value % 64);
-		tab[0] = 0;
-		break;
-	}
-	}
+	delete[] points;
 	return tab;
 }
 unsigned char* ColorPalete::calculateRGBsSTAR(int value)
 {
-	unsigned char* tab = new unsigned char[3];
 	/*0.0  -> (128, 0, 0)    (dark red)
 	0.25 -> (255, 128, 0)    (red)
 	0.5  -> (255, 255, 128)  (yellow)
 	0.75 -> (0, 192, 192)  (orange)
 	1.0  -> (0, 128, 255)    (red)*/
-	switch (value * 4 / 256)
+	unsigned char* tab;
+	int** points = new int*[5];
+	for (int i = 0; i < 5; i++)
 	{
-	case 0:
+		points[i] = new int[3];
+	}
+	points[0][0] = 0; points[0][1] = 0; points[0][2] = 128;
+	points[1][0] = 0; points[1][1] = 128; points[1][2] = 255;
+	points[2][0] = 128; points[2][1] = 255; points[2][2] = 255;
+	points[3][0] = 192; points[3][1] = 128; points[3][2] = 128;
+	points[4][0] = 255; points[4][1] = 128; points[4][2] = 0;
+	tab = calculateRGBsCUSTOM(value, points, 5);
+	for (int i = 0; i < 5; i++)
 	{
-		tab[2] = 128 + 2 * (value % 64);
-		tab[1] = 2 * (value % 64);
-		tab[0] = 0;
-		break;
+		delete[] points[i];
 	}
-	case 1:
-	{
-		tab[2] = 255;
-		tab[1] = 128 + 2 * (value % 64);
-		tab[0] = 2 * (value % 64);
-		break;
-	}
-	case 2:
-	{
-		tab[2] = 255 - 2 * (value % 64);
-		tab[1] = 255 - 2 * (value % 64);
-		tab[0] = 128 + (value % 64);
-		break;
-	}
-	case 3:
-	{
-		tab[2] = 128 - 2 * (value % 64);
-		tab[1] = 128;
-		tab[0] = 192 + (value % 64);
-		break;
-	}
-	}
+	delete[] points;
 	return tab;
 }
 unsigned char* ColorPalete::calculateRGBsGREENSTAR(int value)
 {
-	unsigned char* tab = new unsigned char[3];
-	/*0.0  -> (128, 0, 0)    (dark red)
-	0.25 -> (255, 128, 0)    (red)
-	0.5  -> (255, 255, 0)  (yellow)
-	0.75 -> (0, 128, 128)  (orange)
-	1.0  -> (0, 128, 255)    (red)*/
-	switch (value * 4 / 256)
+	unsigned char* tab;
+	int** points = new int*[5];
+	for (int i = 0; i < 5; i++)
 	{
-	case 0:
+		points[i] = new int[3];
+	}
+	points[0][0] = 0; points[0][1] = 0; points[0][2] = 128;
+	points[1][0] = 0; points[1][1] = 128; points[1][2] = 255;
+	points[2][0] = 0; points[2][1] = 255; points[2][2] = 255;
+	points[3][0] = 128; points[3][1] = 128; points[3][2] = 0;
+	points[4][0] = 255; points[4][1] = 128; points[4][2] = 0;
+	tab = calculateRGBsCUSTOM(value,points,5);
+	for (int i = 0; i < 5; i++)
 	{
-		tab[2] = 128 + 2 * (value % 64);
-		tab[1] = 2 * (value % 64);
-		tab[0] = 0;
-		break;
+		delete[] points[i];
 	}
-	case 1:
-	{
-		tab[2] = 255;
-		tab[1] = 128 + 2 * (value % 64);
-		tab[0] = 0;
-		break;
-	}
-	case 2:
-	{
-		tab[2] = 255 - 4 * (value % 64);
-		tab[1] = 255 - 2 * (value % 64);
-		tab[0] = 2 * (value % 64);
-		break;
-	}
-	case 3:
-	{
-		tab[2] = 0;
-		tab[1] = 128;
-		tab[0] = 128 + 2 * (value % 64);
-		break;
-	}
-	}
+	delete[] points;
 	return tab;
 }
 unsigned char* ColorPalete::calculateRGBsCUSTOM(int value, int** customPoints,int ranges)
@@ -209,6 +185,7 @@ void ColorPalete::setMinMax(int min, int max)
 {
 	minV = min;
 	maxV = max;
+	switchPalette(pn);
 }
 
 void ColorPalete::switchPalette(PaleteName paname)
@@ -219,25 +196,38 @@ void ColorPalete::switchPalette(PaleteName paname)
 		case GREYSCALE:
 		{
 			clearLookUp();
-			size = 256;
+			size = maxV-minV+1;
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
 			{
-				rgbLookUp[i] = calculateRGBsGreyScale(i);
-				yuvLookUp[i] = calculateYUVsGreyScale(i);
+				rgbLookUp[i] = calculateRGBsGreyScale(i*256/(size));
+				yuvLookUp[i] = calculateYUVsGreyScale(i * 256 / (size));
 			}
 			break;
 		}
 		case RAINBOW:
 		{
 			clearLookUp();
-			size = 256;
+			size = maxV - minV+1;
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
 			{
-				rgbLookUp[i] = calculateRGBsRainbow(i);
+				rgbLookUp[i] = calculateRGBsRainbow(i * 256 / (size));
+				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
+			}
+			break;
+		}
+		case SYMMETRIC:
+		{
+			clearLookUp();
+			size = maxV - minV + 1;
+			rgbLookUp = new unsigned char*[size];
+			yuvLookUp = new unsigned char*[size];
+			for (int i = 0; i < size; i++)
+			{
+				rgbLookUp[i] = calculateRGBsSymmetric(i);
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
 			break;
@@ -245,7 +235,7 @@ void ColorPalete::switchPalette(PaleteName paname)
 		case JET:
 		{
 			clearLookUp();
-			size = 256;
+			size = maxV - minV+1;
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -258,7 +248,7 @@ void ColorPalete::switchPalette(PaleteName paname)
 		case STAR:
 		{
 			clearLookUp();
-			size = 256;
+			size = maxV - minV+1;
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -271,7 +261,7 @@ void ColorPalete::switchPalette(PaleteName paname)
 		case GREENSTAR:
 		{
 			clearLookUp();
-			size = 256;
+			size = maxV - minV+1;
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -279,6 +269,16 @@ void ColorPalete::switchPalette(PaleteName paname)
 				rgbLookUp[i] = calculateRGBsGREENSTAR(i);
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
+			break;
+		}
+		case HOTRANDOM:
+		{
+			makeHotColdCustom();
+			break;
+		}
+		case COLDRANDOM:
+		{
+			makeHotColdCustom(-1);
 			break;
 		}
 		case RANDOM:
@@ -293,7 +293,13 @@ void ColorPalete::switchPalette(PaleteName paname)
 					tab[i][j] = rand() % 256; 
 				}
 			}
-			makeCustom(tab, 5, 256);
+			makeCustom(tab, 5, maxV - minV+1);
+			for (int i = 0; i < 5; i++)
+			{
+				delete[] tab[i];
+			}
+			delete[] tab;
+			pn = RANDOM;
 			break;
 		}
 		default:
@@ -315,6 +321,46 @@ void ColorPalete::makeCustom(int** customPoints, int ranges, int size)
 		yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 	}
 }
+void ColorPalete::makeHotColdCustom(int hot)
+{
+	int** tab;
+	int s = 7;
+	tab = new int*[s];
+	for (int i = 0; i < s; i++)
+	{
+		tab[i] = new int[3];
+		for (int j = 0; j < 3; j++)
+		{
+			tab[i][j] = rand() % 256;
+		}
+	}
+	//sorting. blue is interpreted as cold, and red as hot
+	int* ptr;
+	for (int i = 0; i < s; i++)
+	{
+		for (int j = i; j < s; j++)
+		{
+			if (hot*tab[j][2] + 255 - hot*tab[j][0] < hot*tab[i][2] + 255 - hot*tab[i][0])
+			{
+				ptr = tab[i];
+				tab[i] = tab[j];
+				tab[j] = ptr;
+			}
+		}
+	}
+
+	makeCustom(tab, s, maxV - minV + 1);
+	for (int i = 0; i < s; i++)
+	{
+		delete[] tab[i];
+	}
+	delete[] tab;
+	if (hot > 0)
+		pn = HOTRANDOM;
+	else
+		pn = COLDRANDOM;
+	this->size = size;
+}
 void ColorPalete::savePalette(char* fileName)
 {
 	ofstream myfile;
@@ -327,9 +373,9 @@ void ColorPalete::savePalette(char* fileName)
 }
 unsigned char* ColorPalete::getRGBValues(int value)
 {
-	return rgbLookUp[(int)(((value - minV) * (size - 1)) / (maxV - minV))];
+	return rgbLookUp[value-minV];
 }
 unsigned char* ColorPalete::getYUVValues(int value)
 {
-	return yuvLookUp[(int)(((value - minV) * (size - 1)) / (maxV - minV))];
+	return yuvLookUp[value-minV];
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <list>
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/dcmdata/dctk.h"
 #include "dcmtk/dcmdata/dcdatset.h"
@@ -11,6 +13,7 @@
 #include "VideoHandler.h"
 
 using namespace log4cplus;
+using namespace std;
 
 class DicomDataAdapter
 {
@@ -18,13 +21,14 @@ public:
 	DcmFileFormat fileformat;
 	VideoHandler *vh;
 
-	DicomDataAdapter(char* fileName, VideoHandler *vh);
+	DicomDataAdapter(VideoHandler *vh);
 	DicomDataAdapter();
 	virtual ~DicomDataAdapter();
 
 	DcmDataset* dataSet;
-	void CreateBmp();
-	void getFrameSize(Uint32 frameNumber, Uint32& height, Uint32& width);
+	void loadDICOMImage(char* fileName);
+	void loadTXTImage(char* fileName);
+	void loadImage(char* fileName);
 
 private:
 

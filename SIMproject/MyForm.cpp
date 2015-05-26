@@ -54,6 +54,8 @@ namespace SIMproject{
 		
 		gb->vh->setFps(60);
 		gb->vh->setTotalLength(20);
+
+		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(gb->vh);
 		
 		for (int i = 0; i < fileNames->GetLength(0); i++)
 		{
@@ -71,8 +73,7 @@ namespace SIMproject{
 			//gui sie powinno rzucic tu ze podalismy nielegalne znaki w nazwie pliku
 			return;
 
-		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(ch, gb->vh);
-			dicomData.CreateBmp();
+			dicomData.loadImage(ch);
 		}
 		gb->vh->getSize(gb->bitmapWidth, gb->bitmapHeight);
 		this->dicomImage = gcnew Bitmap(gb->bitmapHeight, gb->bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
@@ -157,7 +158,7 @@ namespace SIMproject{
 	
 	System::Void MyForm::video_maker_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		gb->vh->setScale(1.5);
+		gb->vh->setScale(3.5);
 		gb->vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
 	}
 	

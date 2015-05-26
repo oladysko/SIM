@@ -174,17 +174,16 @@ namespace SIMproject {
 				 // 
 				 this->palette_choice->Enabled = false;
 				 this->palette_choice->FormattingEnabled = true;
-				 this->palette_choice->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
-					 L"GREYSCALE", L"RAINBOW", L"JET", L"STAR",
-						 L"GREENSTAR", L"RANDOM"
+				 this->palette_choice->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
+					 L"GREYSCALE", L"RAINBOW", L"SYMMETRIC", L"JET",
+						 L"STAR", L"GREENSTAR", L"HOTRANDOM", L"COLDRANDOM", L"RANDOM"
 				 });
 				 this->palette_choice->Location = System::Drawing::Point(557, 171);
 				 this->palette_choice->Name = L"palette_choice";
 				 this->palette_choice->Size = System::Drawing::Size(109, 21);
 				 this->palette_choice->TabIndex = 10;
+				 this->palette_choice->Text = L"GREYSCALE";
 				 this->palette_choice->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::palette_choice_SelectedIndexChanged);
-				 this->palette_choice->SelectedItem = 0;
-				 this->palette_choice->Text = "GREYSCALE";
 				 // 
 				 // MyForm
 				 // 

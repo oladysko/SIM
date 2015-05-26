@@ -56,7 +56,7 @@ private:
 	int maxV = 0, minV = 5000000;
 	int endFrameN=0;
 	int outwidth=0, outheight=0;
-	double totalTime = 0; //overrides fps if not 0
+	double totalTime = 0; //overrides infps if not 0
 	DICOMBasedFrame * head, *current, *last, *headInt;
 	ColorPalete *cp;
 

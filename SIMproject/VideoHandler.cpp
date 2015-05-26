@@ -698,13 +698,9 @@ int VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		cp->setMinMax(minV,maxV);
 		for (y = 0; y < height; y++) {
 			for (x = 0; x <width; x++) {
-				
-				if (x>(width - 10))
-				{
-					pom = cp->getYUVValues(((height - 1 - y) * 256 / height)*(maxV - minV) / (height)+minV);
-				}else{
-					pom = cp->getYUVValues(helper->frame[y*width + x]);
-				}
+
+				pom = cp->getYUVValues(helper->frame[y*width + x]);
+
 				frame->data[0][y * frame->linesize[0] + x] = pom[0];
 				if (x % 2 && y % 2)
 				{
@@ -724,7 +720,17 @@ int VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 			av_freep(&frame->data[0]);
 			frame = av_frame;
 		}
-
+		for (y = 0; y < ohght; y++) {
+			for (x = owdth-10; x <owdth; x++) {
+					pom = cp->getYUVValues(((owdth - 1 - y))*(maxV - minV) / (owdth)+minV);
+					frame->data[0][y * frame->linesize[0] + x] = pom[0];
+					if (x % 2 && y % 2)
+					{
+						frame->data[1][y / 2 * frame->linesize[1] + x / 2] = pom[1];
+						frame->data[2][y / 2 * frame->linesize[2] + x / 2] = pom[2];
+					}
+			}
+		}
 
 		frame->pts = i;
 

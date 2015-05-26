@@ -11,10 +11,22 @@ using namespace log4cplus;
 DicomDataAdapter::DicomDataAdapter()
 {
 }
-DicomDataAdapter::DicomDataAdapter(char* fileName, VideoHandler *vh)
+DicomDataAdapter::DicomDataAdapter(VideoHandler *vh)
 {
 	this->vh = vh;
 	DJDecoderRegistration::registerCodecs();// register JPEG codecs
+}
+
+
+DicomDataAdapter::~DicomDataAdapter()
+{
+
+}
+
+
+void DicomDataAdapter::loadDICOMImage(char* fileName)
+{
+	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
 	if (fileformat.loadFile(fileName).good())
 	{
 		dataSet = fileformat.getDataset();
@@ -27,24 +39,6 @@ DicomDataAdapter::DicomDataAdapter(char* fileName, VideoHandler *vh)
 	{
 		return;
 	}
-}
-
-
-DicomDataAdapter::~DicomDataAdapter()
-{
-
-}
-
-
-void DicomDataAdapter::getFrameSize(Uint32 frameNumber, Uint32& height, Uint32& width)
-{
-
-}
-
-
-void DicomDataAdapter::CreateBmp()
-{
-	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
 
 	//if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good()) checkowane w konstruktorze
 	{
@@ -146,6 +140,83 @@ void DicomDataAdapter::CreateBmp()
 			else{ exit(2); }//to do: make it smarter in future
 		}
 		else{ exit(1); }//to do: make it smarter in future
+	}
+}
+void DicomDataAdapter::loadTXTImage(char* fileName)
+{
+	list<int> framelist;
+	string str, pom;
+	ifstream istrm;
+	int width=0,height=0,j=0;
+	istrm.open(fileName);
+	while (!istrm.eof())
+	{
+		if (getline(istrm, str))
+		{
+			height++;
+			for (int i = 0; i < str.length(); i++)
+			{
+				if (str[i] == ' ')
+				{
+					if ((str[i - 1] == ',') || (str[i - 1] == ';'))
+					{
+						pom = str.substr(j, i - 2);
+						j = i + 1;
+						framelist.push_back(stoi(pom));
+					}else{
+						pom = str.substr(j, i - 1);
+						j = i + 1;
+						framelist.push_back(stoi(pom));
+					}
+				}else{
+					if ((str[i] == ',') || (str[i] == ';'))
+					{
+						if (str.length()>i + 1)
+						{
+							if (str[i + 1] != ' ')
+							{
+								pom = str.substr(j, i - 1);
+								j = i + 1;
+								framelist.push_back(stoi(pom));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	width = framelist.size()/height;
+	istrm.close();
+	int* frame = new int[framelist.size()];
+	list<int>::iterator i;
+	int cnt = 0;
+	for (i = framelist.begin(); i != framelist.end(); ++i)
+	{
+		frame[cnt++] = *i;
+	}
+	if (!vh->checkDimensions())
+		vh->setDimensions(width, height);
+	vh->addNewFrame(frame);
+}
+void DicomDataAdapter::loadImage(char* fileName)
+{
+	char* extension = new char[3];
+	int i = 0;
+	while (fileName[i] != NULL)
+	{
+		extension[i % 3] = fileName[i];
+		i++;
+	}
+	i--;
+	if ((extension[i % 3] == 't') && (extension[(i - 1) % 3] == 'x') && (extension[(i - 2) % 3] == 't'))
+	{
+		loadTXTImage(fileName);
+	}
+	else{
+		if ((extension[i % 3] == 'm') && (extension[(i - 1) % 3] == 'c') && (extension[(i - 2) % 3] == 'd'))
+		{
+			loadDICOMImage(fileName);
+		}
 	}
 }
 		
