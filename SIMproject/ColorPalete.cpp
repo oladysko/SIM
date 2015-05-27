@@ -217,6 +217,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV-minV+1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1-2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -230,6 +236,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV+1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -243,6 +255,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV + 1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -256,6 +274,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV + 1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -269,6 +293,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV+1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -282,6 +312,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV+1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -295,6 +331,12 @@ void ColorPalete::switchPalette(PaleteName paname)
 		{
 			clearLookUp();
 			size = maxV - minV+1;
+			UT = 0;
+			if (size > 2048)
+			{
+				size = 2048;
+				UT = maxV - minV + 1 - 2048;
+			}
 			rgbLookUp = new unsigned char*[size];
 			yuvLookUp = new unsigned char*[size];
 			for (int i = 0; i < size; i++)
@@ -346,6 +388,12 @@ void ColorPalete::makeCustom(int** customPoints, int ranges, int size)
 	clearLookUp();
 	pn = CUSTOM;
 	this->size = size;
+	UT = 0;
+	if (size > 2048)
+	{
+		size = 2048;
+		UT = maxV - minV + 1 - 2048;
+	}
 	rgbLookUp = new unsigned char*[size];
 	yuvLookUp = new unsigned char*[size];
 	for (int i = 0; i < size; i++)
@@ -406,9 +454,15 @@ void ColorPalete::savePalette(char* fileName)
 }
 unsigned char* ColorPalete::getRGBValues(int value)
 {
-	return rgbLookUp[value-minV];
+	if (value>size)
+		return rgbLookUp[size-1];
+	else
+		return rgbLookUp[value-minV];
 }
 unsigned char* ColorPalete::getYUVValues(int value)
 {
-	return yuvLookUp[value-minV];
+	if (value>size)
+		return yuvLookUp[size - 1];
+	else
+		return yuvLookUp[value-minV];
 }

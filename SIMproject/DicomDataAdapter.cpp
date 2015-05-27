@@ -209,21 +209,33 @@ void DicomDataAdapter::loadTXTImage(char* fileName)
 void DicomDataAdapter::loadBinaryImage(char* fileName)
 {
 	streampos siz;
-	int size;
-	char * memblock;
+	int size,miss=8192;
+	char * memblock,*dump;
 	unsigned short * data;
 
 	ifstream file(fileName, ios::in | ios::binary | ios::ate);
 	if (file.is_open())
 	{
 		siz = file.tellg();
-		size =(siz.operator-(4096));
-		memblock = new char[4096];
-		file.read(memblock, 4096);
-		delete[] memblock;
+		size =(siz.operator-(miss));
+		dump = new char[miss];
+		if(!file.read(dump, miss))
+		{
+			ofstream ost;
+			ost.open("dump2.txt");
+			ost << file.gcount();
+			ost.close();
+		}
+		delete[] dump;
 		memblock = new char[size];
 		file.seekg(0, ios::beg);
-		file.read(memblock, size);
+		if (!file.read(memblock, size))
+		{
+			ofstream ost;
+			ost.open("dump.txt");
+			ost<<file.gcount();
+			ost.close();
+		}
 		file.close();
 
 		data = new unsigned short[size / 2];

@@ -26,7 +26,7 @@ class ColorPalete
 {
 	private:
 		PaleteName pn;
-		int size = 0;
+		int size = 0, UT=0;
 		unsigned char** rgbLookUp;
 		unsigned char** yuvLookUp;
 		int maxV, minV;

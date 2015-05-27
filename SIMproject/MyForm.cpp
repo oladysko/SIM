@@ -90,7 +90,10 @@ namespace SIMproject{
 		reverser->Checked = gb->vh->getCurrentState();
 
 		//display picture
-		pictureBox1->Image = this->dicomImage;
+		if ((double)gb->bitmapHeight / pictureBox1->Height>(double)gb->bitmapWidth / pictureBox1->Width)
+			pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Height, pictureBox1->Height*gb->bitmapWidth / gb->bitmapHeight);
+		else
+			pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Width*gb->bitmapHeight / gb->bitmapWidth, pictureBox1->Width);
 
 		gb->active = true;
 	}
@@ -114,7 +117,10 @@ namespace SIMproject{
 				next->ForeColor = System::Drawing::Color::Black;
 
 				//display picture
-				pictureBox1->Image = this->dicomImage;
+				if ((double)gb->bitmapHeight / pictureBox1->Height>(double)gb->bitmapWidth / pictureBox1->Width)
+					pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Height, pictureBox1->Height*gb->bitmapWidth / gb->bitmapHeight);
+				else
+					pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Width*gb->bitmapHeight / gb->bitmapWidth, pictureBox1->Width);
 				reverser->Checked = gb->vh->getCurrentState();
 			}
 	}
@@ -138,7 +144,10 @@ namespace SIMproject{
 			back->ForeColor = System::Drawing::Color::Black;
 
 			//display picture
-			pictureBox1->Image = this->dicomImage;
+			if ((double)gb->bitmapHeight / pictureBox1->Height>(double)gb->bitmapWidth / pictureBox1->Width)
+				pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Height, pictureBox1->Height*gb->bitmapWidth / gb->bitmapHeight);
+			else
+				pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Width*gb->bitmapHeight / gb->bitmapWidth, pictureBox1->Width);
 		}
 	}
 	
@@ -153,7 +162,10 @@ namespace SIMproject{
 			ParserH::getBitmap(gb->bitmapWidth, gb->bitmapHeight, this->dicomImage, frame, gb->min, gb->max, gb->cp);
 
 			//display picture
-			pictureBox1->Image = this->dicomImage;
+			if ((double)gb->bitmapHeight / pictureBox1->Height>(double)gb->bitmapWidth / pictureBox1->Width)
+				pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Height, pictureBox1->Height*gb->bitmapWidth / gb->bitmapHeight);
+			else
+				pictureBox1->Image = gcnew Bitmap(this->dicomImage, pictureBox1->Width*gb->bitmapHeight / gb->bitmapWidth, pictureBox1->Width);
 		}
 	}
 
