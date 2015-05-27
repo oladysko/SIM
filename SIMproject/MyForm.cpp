@@ -52,7 +52,7 @@ namespace SIMproject{
 			return;
 		}
 		
-		gb->vh->setFps(60);
+		gb->vh->setFps(25);
 		gb->vh->setTotalLength(20);
 
 		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(gb->vh);
@@ -75,6 +75,7 @@ namespace SIMproject{
 
 			dicomData.loadImage(ch);
 		}
+		gb->vh->sort();
 		gb->vh->getSize(gb->bitmapWidth, gb->bitmapHeight);
 		this->dicomImage = gcnew Bitmap(gb->bitmapHeight, gb->bitmapWidth, Imaging::PixelFormat::Format24bppRgb);
 

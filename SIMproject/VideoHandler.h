@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <iostream>
+#include <list>
 #include "dcmtk/ofstd/oftypes.h"
 #include "ColorPalete.h"
 
@@ -42,10 +43,12 @@ class DICOMBasedFrame {
 public:
 	int *frame;
 	int minV, maxV;
+	int timePos=-1;
 	DICOMBasedFrame *next, *prev;
 	bool accepted;
 
 	DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFrame *prev, bool acc = true);
+	DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFrame *prev, int timePos,bool acc = true);
 	~DICOMBasedFrame();
 };
 
@@ -128,12 +131,14 @@ public:
 	/*calculates residuum from x divided by y*/
 	double moduloDouble(double x, double y);
 
+	void VideoHandler::sort();
 	void VideoHandler::interpolate();
 
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].
+	With time marker timePos.
 	*/
-	void addNewFrame(int *frame);
+	void addNewFrame(int *frame, int timePos=-1);
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].
 	*/
@@ -142,6 +147,11 @@ public:
 	Input frame is one dimension array of size [width*height].
 	*/
 	void addNewFrame(Uint16 *frame);
+	/* Adds new frame to the end of sequence.
+	Input frame is one dimension array of size [width*height].
+	With time marker timePos.
+	*/
+	void addNewFrame(Uint16 *frame, int timePos);
 	/* Adds new frame to the end of sequence.
 	Input frame is one dimension array of size [width*height].
 	*/

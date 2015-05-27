@@ -152,6 +152,8 @@ unsigned char* ColorPalete::calculateRGBsCUSTOM(int value, int** customPoints,in
 {
 	unsigned char* tab = new unsigned char[3];
 	int denum = size / (ranges - 1);
+	if (denum == 0)
+		denum++;
 	int range = value / denum;
 	if (range >= ranges-1)
 	{

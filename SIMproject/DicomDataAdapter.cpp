@@ -24,7 +24,7 @@ DicomDataAdapter::~DicomDataAdapter()
 }
 
 
-void DicomDataAdapter::loadDICOMImage(char* fileName)
+int DicomDataAdapter::loadDICOMImage(char* fileName)
 {
 	DJDecoderRegistration::registerCodecs(); // register JPEG codecs
 	if (fileformat.loadFile(fileName).good())
@@ -32,12 +32,12 @@ void DicomDataAdapter::loadDICOMImage(char* fileName)
 		dataSet = fileformat.getDataset();
 		if (dataSet == NULL)
 		{
-			return;
+			return 2;
 		}
 	}
 	else
 	{
-		return;
+		return 1;
 	}
 
 	//if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good()) checkowane w konstruktorze
@@ -52,7 +52,7 @@ void DicomDataAdapter::loadDICOMImage(char* fileName)
 		Uint16 width=0, height=0, depth=0, maxTime;
 		if (dataSet->canWriteXfer((E_TransferSyntax)(representation)))
 		{
-			DcmElement* element = NULL, *rows=NULL,*columns=NULL,*zSize=NULL,*time=NULL;
+			DcmElement* element = NULL, *rows=NULL,*columns=NULL,*zSize=NULL,*time=NULL,*timePos=NULL;
 			
 			if (EC_Normal == dataSet->findAndGetElement(DCM_Rows, rows))
 			{
@@ -101,12 +101,12 @@ void DicomDataAdapter::loadDICOMImage(char* fileName)
 					    // Access first frame (skipping offset table)
 						    dseq->getItem(pixitem, 1);
 					    if (pixitem == NULL)
-						      return;
+						      return 3;
 					    Uint8* pixData = NULL;
 					    // Get the length of this pixel item (i.e. fragment, i.e. most of the time, the lenght of the frame)
 						    Uint32 length = pixitem->getLength();
 					    if (length == 0)
-						      return;
+						      return 4;
 					    // Finally, get the compressed data for this pixel item
 						a = pixitem->getUint8Array(pixData);
 					    // Do something useful with pixData...
@@ -131,16 +131,24 @@ void DicomDataAdapter::loadDICOMImage(char* fileName)
 								hArr = new int[width*height];
 								for (int k = 0; k < width*height; k++)
 									hArr[k] = (int)arr[i*depth*width*height+j*width*height+k];
-								vh->addNewFrame(hArr); //dodaj nowego frame'a
+
+								OFString ofs;
+								Uint32 tablePosition=0;
+								if (EC_Normal == dataSet->findAndGetOFString(DCM_InstanceNumber, ofs))
+								{
+									tablePosition=stoi(ofs.c_str());
+								}
+								vh->addNewFrame(hArr,(int)tablePosition); //dodaj nowego frame'a
 							}
 						}
 					  }
 				  }
 			}
-			else{ exit(2); }//to do: make it smarter in future
+			else{ return 40; }//to do: make it smarter in future
 		}
-		else{ exit(1); }//to do: make it smarter in future
+		else{ return 50; }//to do: make it smarter in future
 	}
+	return 0;
 }
 void DicomDataAdapter::loadTXTImage(char* fileName)
 {
@@ -198,6 +206,43 @@ void DicomDataAdapter::loadTXTImage(char* fileName)
 		vh->setDimensions(width, height);
 	vh->addNewFrame(frame);
 }
+void DicomDataAdapter::loadBinaryImage(char* fileName)
+{
+	streampos siz;
+	int size;
+	char * memblock;
+	unsigned short * data;
+
+	ifstream file(fileName, ios::in | ios::binary | ios::ate);
+	if (file.is_open())
+	{
+		siz = file.tellg();
+		size =(siz.operator-(4096));
+		memblock = new char[4096];
+		file.read(memblock, 4096);
+		delete[] memblock;
+		memblock = new char[size];
+		file.seekg(0, ios::beg);
+		file.read(memblock, size);
+		file.close();
+
+		data = new unsigned short[size / 2];
+		for (int i = 0; i < size; i += 2)
+		{
+			data[i / 2] = ((unsigned short)memblock[i+1])<<8+memblock[i];
+		}
+
+		delete[] memblock;
+		int mod = size/2, i = (int)(sqrt(size/2) + 1);
+		while (mod != 0)
+		{
+			mod = size/2 % (--i);
+		}
+		if (!(vh->checkDimensions()))
+			vh->setDimensions(i, size/2/i);
+		vh->addNewFrame(data);
+	}
+}
 void DicomDataAdapter::loadImage(char* fileName)
 {
 	char* extension = new char[3];
@@ -216,6 +261,12 @@ void DicomDataAdapter::loadImage(char* fileName)
 		if ((extension[i % 3] == 'm') && (extension[(i - 1) % 3] == 'c') && (extension[(i - 2) % 3] == 'd'))
 		{
 			loadDICOMImage(fileName);
+		}
+		else{
+			if (loadDICOMImage(fileName))
+			{
+				loadBinaryImage(fileName);
+			}
 		}
 	}
 }

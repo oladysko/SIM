@@ -14,6 +14,21 @@ DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFr
 	accepted = acc;
 }
 
+DICOMBasedFrame::DICOMBasedFrame(int *frame, DICOMBasedFrame *next, DICOMBasedFrame *prev, int timePos, bool acc)
+{
+	this->frame = frame;
+	this->next = next;
+	this->timePos = timePos;
+	if (next != NULL)
+		next->prev = this;
+	this->prev = prev;
+	if (prev != NULL)
+		prev->next = this;
+	minV = 5000000; //arbitrary maximal value of minimal value
+	maxV = 0;
+	accepted = acc;
+}
+
 DICOMBasedFrame::~DICOMBasedFrame()
 {
 	if (prev != NULL)
@@ -51,7 +66,7 @@ VideoHandler::VideoHandler(int fps, int infps, ColorPalete *cpi)
 	last = NULL;
 	av_register_all();
 }
-/*VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
+VideoHandler::VideoHandler(int totLength, int fps, int infps, ColorPalete *cpi)
 {
 	int mod = totLength, i = (int)(sqrt(totLength) + 1);
 	while (mod != 0)
@@ -67,7 +82,7 @@ VideoHandler::VideoHandler(int fps, int infps, ColorPalete *cpi)
 	current = NULL;
 	last = NULL;
 	av_register_all();
-}*/
+}
 VideoHandler::VideoHandler(int width, int height, int fps, int infps, ColorPalete *cpi)
 {
 	this->width = width;
@@ -327,6 +342,61 @@ double VideoHandler::moduloDouble(double x, double y)
 	int h = (int)(x / y);
 	return (x/y-h)*y;
 }
+void VideoHandler::sort()
+{
+	DICOMBasedFrame *helper=NULL, *base=NULL, *baseCurrent=NULL;
+	list<int> timePoslist;
+	helper = head;
+	while (helper != NULL)
+	{
+		timePoslist.push_back(helper->timePos);
+		helper = helper->next;
+	}
+	timePoslist.sort();
+	int h;
+	int *newframe;
+	for (int i = frameN-1; i >-1; i--)
+	{
+		helper = head;
+
+		h = timePoslist.front();
+		timePoslist.pop_front();
+		while (helper!=NULL)
+		{
+			if (helper->accepted)
+				if (helper->timePos <= h)
+					break;
+			helper = helper->next;
+		}
+
+		if (helper != NULL)
+		{
+			helper->accepted = false;
+				newframe = new int[width*height];
+				for (int j = 0; j < width*height; j++)
+				{
+					newframe[j] = helper->frame[j];
+				}
+				if (base == NULL)
+				{
+					base = new DICOMBasedFrame(newframe, NULL, NULL);
+					baseCurrent = base;
+				}
+				else{
+					baseCurrent = new DICOMBasedFrame(newframe, baseCurrent, NULL);
+				}
+		}
+	}
+	while (head != NULL)
+	{
+		current = head;
+		head = head->next;
+		delete current;
+	}
+	head = baseCurrent;
+	last = base;
+	current = head;
+}
 
 void VideoHandler::interpolate()
 {
@@ -339,17 +409,21 @@ void VideoHandler::interpolate()
 	{
 		if (helper->accepted)
 		{
-			newframe = new int[width*height];
-			for (int j = 0; j < width*height; j++)
+			if (helper->accepted)
 			{
-				newframe[j] = helper->frame[j];
-			}
-			if (base == NULL)
-			{
-				base = new DICOMBasedFrame(newframe, NULL, NULL);
-				baseCurrent = base;
-			}else{
-				baseCurrent = new DICOMBasedFrame(newframe, NULL, baseCurrent);
+				newframe = new int[width*height];
+				for (int j = 0; j < width*height; j++)
+				{
+					newframe[j] = helper->frame[j];
+				}
+				if (base == NULL)
+				{
+					base = new DICOMBasedFrame(newframe, NULL, NULL);
+					baseCurrent = base;
+				}
+				else{
+					baseCurrent = new DICOMBasedFrame(newframe, NULL, baseCurrent);
+				}
 			}
 			count++;
 		}
@@ -425,16 +499,16 @@ void VideoHandler::interpolate()
 /* Adds new frame to the end of sequence.
 Input frame is one dimension array of size [width*height].
 */
-void VideoHandler::addNewFrame(int *frame)
+void VideoHandler::addNewFrame(int *frame, int timePos)
 {
 	if (last != NULL)
 	{
-		last->next = new DICOMBasedFrame(frame, NULL, last);
+		last->next = new DICOMBasedFrame(frame, NULL, last, timePos);
 		last = last->next;
 		frameN++;
 	}
 	else{
-		last = new DICOMBasedFrame(frame, NULL, NULL);
+		last = new DICOMBasedFrame(frame, NULL, NULL, timePos);
 		head = last;
 		current = head;
 		frameN++;
@@ -479,6 +553,19 @@ void VideoHandler::addNewFrame(Uint8 *frame)
 Input frame is one dimension array of size [width*height].
 */
 void VideoHandler::addNewFrame(Uint16 *frame)
+{
+	int *frame2 = new int[height*width];
+	for (int i = 0; i < width*height; i++)
+	{
+		frame2[i] = frame[i];
+	}
+	addNewFrame(frame2);
+}
+/* Adds new frame to the end of sequence.
+Input frame is one dimension array of size [width*height].
+With time marker timePos.
+*/
+void VideoHandler::addNewFrame(Uint16 *frame, int timePos)
 {
 	int *frame2 = new int[height*width];
 	for (int i = 0; i < width*height; i++)
@@ -695,7 +782,7 @@ int VideoHandler::video_encode(const char *filename, enum AVCodecID codec_id)
 		fflush(stdout);
 		/* filling frame */
 		unsigned char * pom;
-		cp->setMinMax(minV,maxV);
+		//cp->setMinMax(minV,maxV);
 		for (y = 0; y < height; y++) {
 			for (x = 0; x <width; x++) {
 

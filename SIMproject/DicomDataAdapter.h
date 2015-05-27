@@ -26,8 +26,9 @@ public:
 	virtual ~DicomDataAdapter();
 
 	DcmDataset* dataSet;
-	void loadDICOMImage(char* fileName);
+	int loadDICOMImage(char* fileName);
 	void loadTXTImage(char* fileName);
+	void loadBinaryImage(char* fileName);
 	void loadImage(char* fileName);
 
 private:
