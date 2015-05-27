@@ -11,9 +11,10 @@ using namespace std;
 enum PaleteName
 {
 	GREYSCALE,
-	RAINBOW,
-	SYMMETRIC,
+	RGB,
+	BGR,
 	JET,
+	SYMMETRIC,
 	STAR,
 	GREENSTAR,
 	HOTRANDOM,
@@ -34,8 +35,10 @@ class ColorPalete
 		unsigned char* calculateRGBsGreyScale(int value);
 		/*Calculates and returns YUV values corresponding to inputed value scaled to size for GrayScale*/
 		unsigned char* calculateYUVsGreyScale(int value);
-		/*Calculates and returns RGB values corresponding to inputed value scaled to size for RAINBOW*/
+		/*Calculates and returns RGB values corresponding to inputed value scaled to size for RGB*/
 		unsigned char* calculateRGBsRainbow(int value);
+		/*Calculates and returns RGB values corresponding to inputed value scaled to size for BGR*/
+		unsigned char* calculateRGBsBGR(int value);
 		/*Calculates and returns RGB values corresponding to inputed value scaled to size for SYMMETRIC*/
 		unsigned char* calculateRGBsSymmetric(int value);
 		/*Calculates and returns RGB values corresponding to inputed value scaled to size for JET*/

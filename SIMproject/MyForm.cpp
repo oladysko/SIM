@@ -82,6 +82,7 @@ namespace SIMproject{
 		
 		//vh->getCurrentMinMax(min,max); //pelna dynamika kazdej klatki. falszuje informacje miedzy obrazami
 		gb->vh->getGlobalMinMax(gb->min, gb->max);  //nie pelna dynamika klatek. Prawdziwe relacje miedzy barwami w roznych klatkach
+		gb->cp->setMinMax(gb->min, gb->max);
 		int* frame = gb->vh->getThisFrame();
 
 		ParserH::getBitmap(gb->bitmapWidth, gb->bitmapHeight, this->dicomImage, frame, gb->min, gb->max, gb->cp);

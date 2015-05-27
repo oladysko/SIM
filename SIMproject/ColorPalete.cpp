@@ -40,6 +40,15 @@ unsigned char* ColorPalete::calculateRGBsRainbow(int value)
 	return tab;
 }
 
+unsigned char* ColorPalete::calculateRGBsBGR(int value)
+{
+	unsigned char* tab = new unsigned char[3];
+	tab[2] = 255 - value; //R
+	tab[1] = 255 - 2 * abs(127 - value);//G
+	tab[0] = value - 255;//B
+	return tab;
+}
+
 unsigned char* ColorPalete::calculateRGBsSymmetric(int value)
 {
 	unsigned char* tab;
@@ -142,13 +151,22 @@ unsigned char* ColorPalete::calculateRGBsGREENSTAR(int value)
 unsigned char* ColorPalete::calculateRGBsCUSTOM(int value, int** customPoints,int ranges)
 {
 	unsigned char* tab = new unsigned char[3];
-	int range = value * (ranges - 1) / size;
-	tab[2] = customPoints[range][2] + (customPoints[range + 1][2] - customPoints[range][2])
-									* (value % (size / (ranges - 1))) / (size / (ranges - 1));
-	tab[1] = customPoints[range][1] + (customPoints[range + 1][1] - customPoints[range][1]) 
-									* (value % (size / (ranges - 1))) / (size / (ranges - 1));
-	tab[0] = customPoints[range][0] + (customPoints[range + 1][0] - customPoints[range][0]) 
-									* (value % (size / (ranges - 1))) / (size / (ranges - 1));
+	int denum = size / (ranges - 1);
+	int range = value / denum;
+	if (range >= ranges-1)
+	{
+		tab[2] = customPoints[range][2];
+		tab[1] = customPoints[range][1];
+		tab[0] = customPoints[range][0];
+	}
+	else{
+		tab[2] = customPoints[range][2] + (customPoints[range + 1][2] - customPoints[range][2])
+			* (value % denum) / denum;
+		tab[1] = customPoints[range][1] + (customPoints[range + 1][1] - customPoints[range][1])
+			* (value % denum) / denum;
+		tab[0] = customPoints[range][0] + (customPoints[range + 1][0] - customPoints[range][0])
+			* (value % denum) / denum;
+	}
 	return tab;
 }
 
@@ -206,7 +224,7 @@ void ColorPalete::switchPalette(PaleteName paname)
 			}
 			break;
 		}
-		case RAINBOW:
+		case RGB:
 		{
 			clearLookUp();
 			size = maxV - minV+1;
@@ -215,6 +233,19 @@ void ColorPalete::switchPalette(PaleteName paname)
 			for (int i = 0; i < size; i++)
 			{
 				rgbLookUp[i] = calculateRGBsRainbow(i * 256 / (size));
+				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
+			}
+			break;
+		}
+		case BGR:
+		{
+			clearLookUp();
+			size = maxV - minV + 1;
+			rgbLookUp = new unsigned char*[size];
+			yuvLookUp = new unsigned char*[size];
+			for (int i = 0; i < size; i++)
+			{
+				rgbLookUp[i] = calculateRGBsBGR(i * 256 / (size));
 				yuvLookUp[i] = calculateYUVs(rgbLookUp[i]);
 			}
 			break;
@@ -324,7 +355,7 @@ void ColorPalete::makeCustom(int** customPoints, int ranges, int size)
 void ColorPalete::makeHotColdCustom(int hot)
 {
 	int** tab;
-	int s = 7;
+	int s = rand()%15+3;
 	tab = new int*[s];
 	for (int i = 0; i < s; i++)
 	{

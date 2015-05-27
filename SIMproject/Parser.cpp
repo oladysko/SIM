@@ -40,7 +40,7 @@ namespace  ParserH
 		int bytes = dicomImage->Width * dicomImage->Height*3;
 		array<Byte>^ rgbValues = gcnew array<Byte>(bytes);
 
-		cp->setMinMax(minPixelValue,maxPixelValue);
+		//cp->setMinMax(minPixelValue,maxPixelValue);
 		unsigned char* helper;
 		//normalize data to 255 in other words, make some artefacts
 		for (int counter = 0; counter < rgbValues->Length; counter++){

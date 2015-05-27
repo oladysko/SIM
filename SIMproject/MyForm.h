@@ -174,8 +174,8 @@ namespace SIMproject {
 				 // 
 				 this->palette_choice->Enabled = false;
 				 this->palette_choice->FormattingEnabled = true;
-				 this->palette_choice->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
-					 L"GREYSCALE", L"RAINBOW", L"SYMMETRIC", L"JET",
+				 this->palette_choice->Items->AddRange(gcnew cli::array< System::Object^  >(10) {
+					 L"GREYSCALE,", L"RGB", L"BGR", L"JET", L"SYMMETRIC",
 						 L"STAR", L"GREENSTAR", L"HOTRANDOM", L"COLDRANDOM", L"RANDOM"
 				 });
 				 this->palette_choice->Location = System::Drawing::Point(557, 171);

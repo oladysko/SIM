@@ -1,9 +1,6 @@
-﻿Build started 2015-05-26 22:17:50.
+﻿Build started 2015-05-27 07:46:47.
      1>Project "C:\Users\Marek Kos\Desktop\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib ColorPalete.cpp
-         ColorPalete.cpp
-       Link:
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\Users\Marek Kos\Desktop\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\ColorPalete.obj
          Debug\DicomDataAdapter.obj
          Debug\GlobalVariables.obj
@@ -321,4 +318,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:10.37
+Time Elapsed 00:00:04.38
