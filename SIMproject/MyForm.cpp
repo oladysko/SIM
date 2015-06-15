@@ -37,10 +37,6 @@ namespace SIMproject{
 
 		try
 		{
-			//get frame number
-			frameNumber = Convert::ToUInt32(this->frame_textBox->Text);
-			debugInfo = "selected frame = " + Convert::ToString(frameNumber) + "\n";
-
 			//get file
 			OpenFileDialog^ dlg = gcnew OpenFileDialog();
 			dlg->Multiselect = true; 
@@ -172,8 +168,34 @@ namespace SIMproject{
 	
 	System::Void MyForm::video_maker_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		gb->vh->setScale(3.5);
-		gb->vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+		try
+		{
+			Double fpsValue = Convert::ToDouble(this->textBox1->Text);
+			Double lenghtValue = Convert::ToDouble(this->textBox2->Text);
+			Double scale = Convert::ToDouble(this->textBox3->Text);
+
+			if (fpsValue != 0)
+			{
+				gb->vh->setFps(fpsValue);
+			}
+
+			if (lenghtValue != 0)
+			{
+				gb->vh->setTotalLength(lenghtValue);
+			}
+
+			if (scale != 0)
+			{
+				gb->vh->setScale(scale);
+			}
+
+			gb->vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+			this->Info_label->Text = "finished creating a video";
+		}
+		catch (Exception^ e)
+		{
+			this->Info_label->Text = "Settings are incorrect";
+		}
 	}
 	
 	System::Void MyForm::reverser_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
