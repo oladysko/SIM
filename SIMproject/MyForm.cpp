@@ -170,6 +170,10 @@ namespace SIMproject{
 	{
 		try
 		{
+		
+			std::string stdFileName;
+			String^ fileName;
+
 			Double fpsValue = Convert::ToDouble(this->textBox1->Text);
 			Double lenghtValue = Convert::ToDouble(this->textBox2->Text);
 			Double scale = Convert::ToDouble(this->textBox3->Text);
@@ -189,7 +193,29 @@ namespace SIMproject{
 				gb->vh->setScale(scale);
 			}
 
-			gb->vh->video_encode("test2.mp4", AV_CODEC_ID_MPEG4);
+			try
+			{
+				//get file
+				SaveFileDialog^ svdlg = gcnew SaveFileDialog();
+				svdlg->ShowDialog();
+				fileName = svdlg->FileName;
+			}
+			catch (Exception^ errorHandle){
+				this->Info_label->Text = errorHandle->Message;
+				return;
+			}
+
+			
+			//Przyklad skradziony z MSDN
+			pin_ptr<const wchar_t> wch = PtrToStringChars(fileName);
+			size_t convertedChars = 0;
+			size_t  sizeInBytes = ((fileName->Length + 1) * 2);
+			errno_t err = 0;
+				
+			char *fileName2 = (char *)malloc(sizeInBytes);
+			err = wcstombs_s(&convertedChars, fileName2, sizeInBytes, wch, sizeInBytes);
+	
+			gb->vh->video_encode(fileName2, AV_CODEC_ID_MPEG4);
 			this->Info_label->Text = "finished creating a video";
 		}
 		catch (Exception^ e)
