@@ -1,13 +1,19 @@
-﻿Build started 2015-06-17 18:43:48.
+﻿Build started 2015-06-18 17:36:39.
 Project "\\vmware-host\Shared Folders\Documents\GitHub\SIM\SIMproject\SIMproject.vcxproj" on node 2 (Build target(s)).
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iffmpeg\dev\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib DicomDataAdapter.cpp MyForm.cpp Parser.cpp
+  DicomDataAdapter.cpp
+DicomDataAdapter.cpp(149): warning C4018: '<' : signed/unsigned mismatch
+DicomDataAdapter.cpp(166): warning C4018: '>' : signed/unsigned mismatch
+DicomDataAdapter.cpp(204): warning C4244: '=' : conversion from 'std::streamoff' to 'int', possible loss of data
+DicomDataAdapter.cpp(228): warning C4554: '<<' : check operator precedence for possible error; use parentheses to clarify precedence
   MyForm.cpp
 MyForm.cpp(18): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-MyForm.cpp(35): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-MyForm.cpp(31): warning C4101: 'frameNumber' : unreferenced local variable
-MyForm.cpp(32): warning C4101: 'debugInfo' : unreferenced local variable
-MyForm.cpp(221): warning C4101: 'e' : unreferenced local variable
+MyForm.cpp(33): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+MyForm.cpp(30): warning C4101: 'debugInfo' : unreferenced local variable
+MyForm.cpp(223): warning C4101: 'e' : unreferenced local variable
+  Parser.cpp
+  Generating Code...
 Link:
   C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\vmware-host\Shared Folders\Documents\GitHub\SIM\Debug\SIMproject.exe" /INCREMENTAL /NOLOGO /LIBPATH:ffmpeg\dev\lib\ /LIBPATH:DCMTK\lib\ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ffmpeg\dev\lib\avcodec.lib ffmpeg\dev\lib\avutil.lib ffmpeg\dev\lib\avformat.lib ffmpeg\dev\lib\swresample.lib ffmpeg\dev\lib\swscale.lib ffmpeg\dev\lib\postproc.lib oflog.lib netapi32.lib wsock32.lib ofstd.lib dcmdata.lib dcmimgle.lib dcmimage.lib ijg8.lib ijg12.lib ijg16.lib dcmjpeg.lib dcmnet.lib dcmdsig.lib dcmsr.lib dcmtls.lib dcmpstat.lib dcmwlm.lib dcmqrdb.lib /ASSEMBLYRESOURCE:Debug\SIMproject.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\vmware-host\Shared Folders\Documents\GitHub\SIM\Debug\SIMproject.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"\\vmware-host\Shared Folders\Documents\GitHub\SIM\Debug\SIMproject.lib" /MACHINE:X86 Debug\ColorPalete.obj
   Debug\DicomDataAdapter.obj
@@ -326,4 +332,4 @@ Done Building Project "\\vmware-host\Shared Folders\Documents\GitHub\SIM\SIMproj
 
 Build succeeded.
 
-Time Elapsed 00:00:14.70
+Time Elapsed 00:00:22.08

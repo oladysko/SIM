@@ -13,8 +13,6 @@ using namespace System::Drawing::Imaging;
 
 namespace  ParserH
 {
-	void MarshalString(String ^ s, std::string& os);
-	void fileNametoPath(std::string% os);
 	void getBitmap(int width, int height, Bitmap^ dicomImage, int* frame, int minPixelValue, int maxPixelValue, ColorPalete* cp);
 }
 

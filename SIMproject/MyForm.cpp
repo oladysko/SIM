@@ -21,19 +21,18 @@ void Main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 	SIMproject::MyForm form;
 	Application::Run(%form); 
-	
 } 
 
 namespace SIMproject{
 	System::Void MyForm::button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-
-		unsigned int frameNumber;
+		//unsigned int frameNumber;
 		String^ debugInfo;
 		array<System::String^>^ fileNames;
 		std::string stdFileName;
 		palette_choice->SelectedItem = 0;
 		palette_choice->Enabled = true;
+		
 
 		try
 		{
@@ -48,8 +47,11 @@ namespace SIMproject{
 			return;
 		}
 		
-		gb->vh->setFps(25);
-		gb->vh->setTotalLength(20);
+		//gb->vh->setFps(25);
+		//gb->vh->setTotalLength(20);
+		textBox1->Text = "25";
+		textBox2->Text = "5";
+		textBox3->Text = "1";
 
 		DicomDataAdapter dicomData = DicomDataAdapter::DicomDataAdapter(gb->vh);
 		

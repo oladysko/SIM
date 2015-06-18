@@ -11,6 +11,7 @@ using namespace log4cplus;
 DicomDataAdapter::DicomDataAdapter()
 {
 }
+
 DicomDataAdapter::DicomDataAdapter(VideoHandler *vh)
 {
 	this->vh = vh;
@@ -40,9 +41,6 @@ int DicomDataAdapter::loadDICOMImage(char* fileName)
 		return 1;
 	}
 
-	//if (fileformat.loadFile("E:/Ax Flair - 5/IM-0001-0001.dcm").good()) checkowane w konstruktorze
-	{
-		//DcmDataset *dataset = fileformat.getDataset();
 		int representation = -1;
 		OFCondition a;
 		do{
@@ -58,18 +56,20 @@ int DicomDataAdapter::loadDICOMImage(char* fileName)
 			{
 				rows->getUint16(height);
 			}
+
 			if (EC_Normal == dataSet->findAndGetElement(DCM_Columns, columns))
 			{
 				columns->getUint16(width);
 			}
+
 			if (EC_Normal == dataSet->findAndGetElement(DCM_Columns, zSize))
 			{
-				//zSize->getUint16(depth);
 				depth = 1; //dla chetnych znalezc tag DICOMu dzieki ktoremu to zadziala
 			}
 			else{
 				depth = 1;
 			}
+
 			if (EC_Normal == dataSet->findAndGetElement(DCM_NumberOfFrames, time))
 			{
 				time->getUint16(maxTime);
@@ -80,43 +80,27 @@ int DicomDataAdapter::loadDICOMImage(char* fileName)
 			else{
 				maxTime = 1;
 			}
+
 			if (EC_Normal == dataSet->findAndGetElement(DCM_PixelData, element))
 			{
 				DcmPixelData *dpix = NULL;
 				dpix = OFstatic_cast(DcmPixelData*, element);
-				/* Since we have compressed data, we must utilize DcmPixelSequence
-				     in order to access it in raw format, e. g. for decompressing it
-				     with an external library.
-				   */
-				  DcmPixelSequence *dseq = NULL;
-				  E_TransferSyntax xferSyntax = EXS_Unknown;
-				  const DcmRepresentationParameter *rep = NULL;
+
+				 DcmPixelSequence *dseq = NULL;
+				 E_TransferSyntax xferSyntax = EXS_Unknown;
+				 const DcmRepresentationParameter *rep = NULL;
+
 				  // Find the key that is needed to access the right representation of the data within DCMTK
-					  dpix->getOriginalRepresentationKey(xferSyntax, rep);
+				dpix->getOriginalRepresentationKey(xferSyntax, rep);
 				  // Access original data representation and get result within pixel sequence
-					  a = dpix->getEncapsulatedRepresentation(xferSyntax, rep, dseq);
+				a = dpix->getEncapsulatedRepresentation(xferSyntax, rep, dseq);
+
 				  if (a == EC_Normal)
-					{
-					    DcmPixelItem* pixitem = NULL;
-					    // Access first frame (skipping offset table)
-						    dseq->getItem(pixitem, 1);
-					    if (pixitem == NULL)
-						      return 3;
-					    Uint8* pixData = NULL;
-					    // Get the length of this pixel item (i.e. fragment, i.e. most of the time, the lenght of the frame)
-						    Uint32 length = pixitem->getLength();
-					    if (length == 0)
-						      return 4;
-					    // Finally, get the compressed data for this pixel item
-						a = pixitem->getUint8Array(pixData);
-					    // Do something useful with pixData...
-						if (a == EC_Normal)
-						{
-							if (!(vh->checkDimensions()))
-								vh->setDimensions((int)width, (int)height);
-								vh->addNewFrame(pixData); //dodaj nowego frame'a
-						}
-				  }else{
+				  {
+						return 70; // brak obs³ugi encapsulated danych
+				  }
+				  else
+				  {
 					  Uint16 *arr=new Uint16 [width*height*depth*maxTime];
 					  a=element->getUint16Array(arr);
 					  if (a == EC_Normal)
@@ -147,9 +131,9 @@ int DicomDataAdapter::loadDICOMImage(char* fileName)
 			else{ return 40; }//to do: make it smarter in future
 		}
 		else{ return 50; }//to do: make it smarter in future
-	}
 	return 0;
 }
+
 void DicomDataAdapter::loadTXTImage(char* fileName)
 {
 	list<int> framelist;
