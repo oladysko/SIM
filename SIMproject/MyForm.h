@@ -59,6 +59,8 @@ namespace SIMproject {
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::TextBox^  textBox4;
 
 
 
@@ -84,6 +86,8 @@ namespace SIMproject {
 				 this->label4 = (gcnew System::Windows::Forms::Label());
 				 this->label2 = (gcnew System::Windows::Forms::Label());
 				 this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+				 this->label3 = (gcnew System::Windows::Forms::Label());
+				 this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				 this->SuspendLayout();
 				 // 
@@ -229,11 +233,30 @@ namespace SIMproject {
 				 this->textBox2->Size = System::Drawing::Size(112, 20);
 				 this->textBox2->TabIndex = 22;
 				 // 
+				 // label3
+				 // 
+				 this->label3->AutoSize = true;
+				 this->label3->Location = System::Drawing::Point(504, 367);
+				 this->label3->Name = L"label3";
+				 this->label3->Size = System::Drawing::Size(76, 13);
+				 this->label3->TabIndex = 25;
+				 this->label3->Text = L"Color dynamic:";
+				 // 
+				 // textBox4
+				 // 
+				 this->textBox4->Location = System::Drawing::Point(586, 360);
+				 this->textBox4->Name = L"textBox4";
+				 this->textBox4->Size = System::Drawing::Size(112, 20);
+				 this->textBox4->TabIndex = 24;
+				 this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox4_TextChanged);
+				 // 
 				 // MyForm
 				 // 
 				 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				 this->ClientSize = System::Drawing::Size(803, 526);
+				 this->Controls->Add(this->label3);
+				 this->Controls->Add(this->textBox4);
 				 this->Controls->Add(this->label2);
 				 this->Controls->Add(this->textBox2);
 				 this->Controls->Add(this->label4);
@@ -264,6 +287,7 @@ namespace SIMproject {
 		private: System::Void video_maker_Click(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void reverser_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void palette_choice_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void textBox4_TextChanged(System::Object^ sender, EventArgs^ e);
 
 };
 }

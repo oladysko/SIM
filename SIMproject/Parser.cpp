@@ -28,9 +28,9 @@ namespace  ParserH
 		for (int counter = 0; counter < rgbValues->Length; counter++){ //for each byte
 
 			if (counter % 3 == 0)									// co trzeci element
-				helper = cp->getRGBValues(frame[counter / 3]);		// zwraca wskaŸnik na 3 elementow¹ tablicê zawieraj¹ca wartoœci sk³adowych R, G i B
+				helper = cp->getRGBValues(frame[counter / 3]);		// zwraca wskaŸnik na 3 elementow¹ tablicEzawieraj¹ca wartoœci sk³adowych R, G i B
 
-			if ((counter/3)%width>(width-10)) // pêtla robi¹ca skalê barw z boku / na ostatnich 10 pixelach
+			if ((counter/3)%width>(width-10)) // pêtla robi¹ca skalEbarw z boku / na ostatnich 10 pixelach
 			{
 				helper = cp->getRGBValues((height - 1 - counter / 3 / width)*(maxPixelValue - minPixelValue) / (height) + minPixelValue);
 			}

@@ -152,11 +152,11 @@ void DicomDataAdapter::loadTXTImage(char* fileName)
 				{
 					if ((str[i - 1] == ',') || (str[i - 1] == ';'))
 					{
-						pom = str.substr(j, i - 2);
+						pom = str.substr(j, i - 1-j);
 						j = i + 1;
 						framelist.push_back(stoi(pom));
 					}else{
-						pom = str.substr(j, i - 1);
+						pom = str.substr(j, i -j);
 						j = i + 1;
 						framelist.push_back(stoi(pom));
 					}
@@ -167,14 +167,20 @@ void DicomDataAdapter::loadTXTImage(char* fileName)
 						{
 							if (str[i + 1] != ' ')
 							{
-								pom = str.substr(j, i - 1);
+								pom = str.substr(j, i - j);
 								j = i + 1;
 								framelist.push_back(stoi(pom));
 							}
+						}else{
+							pom = str.substr(j, i - j);
+							j = i + 1;
+							framelist.push_back(stoi(pom));
 						}
 					}
 				}
 			}
+			j = 0;
+			//widthCalc = true;
 		}
 	}
 	width = framelist.size()/height;
@@ -193,34 +199,35 @@ void DicomDataAdapter::loadTXTImage(char* fileName)
 void DicomDataAdapter::loadBinaryImage(char* fileName)
 {
 	streampos siz;
-	int size,miss=8192;
-	char * memblock,*dump;
+	int size,miss=1024*4;
+	char * memblock=NULL,*dump=NULL;
 	unsigned short * data;
+	int fh;
 
 	ifstream file(fileName, ios::in | ios::binary | ios::ate);
 	if (file.is_open())
 	{
 		siz = file.tellg();
-		size =(siz.operator-(miss));
-		dump = new char[miss];
-		if(!file.read(dump, miss))
-		{
-			ofstream ost;
-			ost.open("dump2.txt");
-			ost << file.gcount();
-			ost.close();
-		}
-		delete[] dump;
-		memblock = new char[size];
-		file.seekg(0, ios::beg);
-		if (!file.read(memblock, size))
-		{
-			ofstream ost;
-			ost.open("dump.txt");
-			ost<<file.gcount();
-			ost.close();
-		}
-		file.close();
+		size = (siz.operator-(2 * miss));
+	}
+	file.close();
+
+	if (_sopen_s(&fh, fileName, _O_BINARY, _SH_DENYNO, _S_IREAD | _S_IWRITE))
+	{
+		exit(1);
+	}
+
+	/* Read in input: */
+	dump = new char[miss];
+	if ((_read(fh, dump, miss)) <= 0)
+		exit(2);
+	delete[] dump;
+	memblock = new char[size];
+	int praiseMe;
+	if ((praiseMe=_read(fh, memblock, size)) <= 0)
+		exit(3);
+
+	_close(fh);
 
 		data = new unsigned short[size / 2];
 		for (int i = 0; i < size; i += 2)
@@ -237,7 +244,6 @@ void DicomDataAdapter::loadBinaryImage(char* fileName)
 		if (!(vh->checkDimensions()))
 			vh->setDimensions(i, size/2/i);
 		vh->addNewFrame(data);
-	}
 }
 void DicomDataAdapter::loadImage(char* fileName)
 {

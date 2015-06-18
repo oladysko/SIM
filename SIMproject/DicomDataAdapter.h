@@ -2,6 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <fcntl.h>      /* Needed only for _O_RDWR definition */
+#include <io.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <share.h>
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/dcmdata/dctk.h"
 #include "dcmtk/dcmdata/dcdatset.h"

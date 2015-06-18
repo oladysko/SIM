@@ -57,6 +57,7 @@ class ColorPalete
 		void ColorPalete::clearLookUp();
 
 	public:
+		int dynamic = 2048;
 		ColorPalete(PaleteName initialPN);
 		~ColorPalete();
 
